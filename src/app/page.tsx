@@ -42,6 +42,25 @@ export default function Home() {
                   <Link href="/science">Learn the Science</Link>
                 </Button>
               </div>
+               <div className="pt-6">
+                <h3 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">Trusted by the Best Brands</h3>
+                 <div className="mx-auto grid max-w-5xl grid-cols-4 items-center gap-x-6 gap-y-4 pt-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5">
+                  {brands.slice(0,5).map((brand) => (
+                    <div key={brand.id} className="flex justify-center">
+                      {brand.logoUrl && (
+                        <Image
+                          alt={brand.name}
+                          className="aspect-[2/1] overflow-hidden rounded-lg object-contain object-center opacity-70 hover:opacity-100 transition-opacity"
+                          data-ai-hint={`${brand.name} logo`}
+                          height="40"
+                          src={brand.logoUrl}
+                          width="80"
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </AnimatedSection>
             <AnimatedSection className="flex items-center justify-center" animation="animate-scroll-in" delay={200}>
                <Carousel
@@ -52,23 +71,19 @@ export default function Home() {
                 className="w-full max-w-lg"
               >
                 <CarouselContent>
-                  {brands.map((brand) => (
-                    <CarouselItem key={brand.id} className="md:basis-1/2 lg:basis-1/3">
+                  {PlaceHolderImages.filter(img => img.id.startsWith('product-')).slice(0, 5).map((image, index) => (
+                    <CarouselItem key={index}>
                       <div className="p-1">
-                        <Link href={`/products?brand=${encodeURIComponent(brand.name)}`}>
-                           <Card className="flex aspect-square items-center justify-center p-6 transition-all hover:shadow-lg hover:bg-background/50">
-                            {brand.logoUrl && (
-                              <Image
-                                src={brand.logoUrl}
-                                alt={`${brand.name} logo`}
-                                width={120}
-                                height={60}
-                                className="object-contain"
-                                data-ai-hint={`${brand.name} logo`}
-                              />
-                            )}
-                          </Card>
-                        </Link>
+                         <Card className="overflow-hidden">
+                           <Image
+                            src={image.imageUrl}
+                            alt={image.description}
+                            width={500}
+                            height={500}
+                            className="aspect-square w-full object-cover"
+                            data-ai-hint={image.imageHint}
+                           />
+                         </Card>
                       </div>
                     </CarouselItem>
                   ))}
@@ -80,35 +95,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <AnimatedSection className="py-12 md:py-20 lg:py-24">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Trusted by the Best Brands</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                We've partnered with the leading names in water ionization to bring you a curated selection of the highest quality products.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-12">
-            {brands.map((brand, index) => (
-              <div key={brand.id} className="flex justify-center">
-                {brand.logoUrl && (
-                  <Image
-                    alt={brand.name}
-                    className="aspect-[2/1] overflow-hidden rounded-lg object-contain object-center"
-                    data-ai-hint={`${brand.name} logo`}
-                    height="70"
-                    src={brand.logoUrl}
-                    width="140"
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </AnimatedSection>
 
       <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
         <div className="container px-4 md:px-6">
