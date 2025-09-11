@@ -7,7 +7,6 @@ import { AnimatedSection } from '@/components/animated-section';
 import { ScienceIcons } from '@/components/science-icons';
 import { placeholderData } from '@/lib/placeholder-data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 export default function Home() {
   const featuredProducts = placeholderData.products.slice(0, 3);
@@ -45,7 +44,7 @@ export default function Home() {
                <div className="pt-6 text-center">
                 <h3 className="text-lg font-semibold tracking-wide text-foreground">Trusted by the Best Brands</h3>
                  <div className="mx-auto grid max-w-5xl grid-cols-4 items-center gap-x-6 gap-y-4 pt-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5">
-                  {brands.slice(0,5).map((brand) => (
+                  {brands.map((brand) => (
                     <div key={brand.id} className="flex justify-center">
                       <Link href={`/products?brand=${encodeURIComponent(brand.name)}`}>
                         {brand.logoUrl && (
@@ -65,36 +64,14 @@ export default function Home() {
               </div>
             </AnimatedSection>
             <AnimatedSection className="flex items-center justify-center" animation="animate-scroll-in" delay={200}>
-               <Carousel
-                opts={{
-                  align: "start",
-                  loop: true,
-                }}
-                className="w-full max-w-lg"
-              >
-                <CarouselContent>
-                  {brands.map((brand, index) => (
-                    <CarouselItem key={index} className="basis-1/3">
-                      <div className="p-1">
-                         <Link href={`/products?brand=${encodeURIComponent(brand.name)}`}>
-                           {brand.logoUrl && (
-                             <Image
-                              src={brand.logoUrl}
-                              alt={brand.name}
-                              width={150}
-                              height={75}
-                              className="aspect-[2/1] w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-                              data-ai-hint={`${brand.name} logo`}
-                             />
-                           )}
-                         </Link>
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
+               <Image
+                 alt="Hero"
+                 className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
+                 data-ai-hint="water glass"
+                 height="600"
+                 src="https://picsum.photos/seed/hero/600/600"
+                 width="600"
+               />
             </AnimatedSection>
           </div>
         </div>
@@ -212,8 +189,7 @@ export default function Home() {
                             <div className="flex justify-center items-center mb-2">
                                 <div className="bg-background rounded-full p-4 border shadow-sm">
                                     <Icon className="h-8 w-8 text-primary" />
-                                d_message_2
-</div>
+                                </div>
                             </div>
                             <h3 className="text-lg font-bold">{concept.title}</h3>
                             <p className="text-sm text-muted-foreground">{concept.description}</p>
@@ -272,3 +248,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
