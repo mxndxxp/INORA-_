@@ -19,6 +19,7 @@ export type Brand = {
   name: string;
   logoId: string;
   logoUrl?: string;
+  description?: string;
 };
 
 export type Testimonial = {

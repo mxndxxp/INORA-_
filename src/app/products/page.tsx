@@ -38,6 +38,14 @@ export default function ProductsPage() {
     return Array.from(brands);
   }, []);
 
+  const selectedBrandDetails = useMemo(() => {
+    if (selectedBrands.length === 1) {
+      return placeholderData.brands.find(b => b.name === selectedBrands[0]);
+    }
+    return null;
+  }, [selectedBrands]);
+
+
   useEffect(() => {
     setIsMounted(true);
     setPriceRange([minPrice, maxPrice]);
@@ -147,6 +155,12 @@ export default function ProductsPage() {
 
             {/* Products Grid */}
             <main className="lg:col-span-3">
+              {selectedBrandDetails && (
+                <div className="mb-8 p-6 bg-secondary/50 rounded-lg">
+                  <h2 className="text-2xl font-bold font-headline mb-2">About {selectedBrandDetails.name}</h2>
+                  <p className="text-muted-foreground">{selectedBrandDetails.description}</p>
+                </div>
+              )}
               {filteredProducts.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
                   {filteredProducts.map((product) => {

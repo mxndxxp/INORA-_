@@ -8,6 +8,7 @@ import { Menu, Droplet, Heart, ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/why-ionora', label: 'Why Ionora?' },
   { href: '/science', label: 'The Science Hub' },
   { href: '/products', label: 'Products' },

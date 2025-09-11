@@ -264,14 +264,14 @@ export const placeholderData: {
     }
   ],
   brands: [
-    { id: 'b1', name: 'Life Ionizers', logoId: 'brand-life-ionizers', logoUrl: getImageUrl('brand-life-ionizers') },
-    { id: 'b2', name: 'Mediqua', logoId: 'brand-mediqua', logoUrl: getImageUrl('brand-mediqua') },
-    { id: 'b3', name: 'KYK', logoId: 'brand-kyk', logoUrl: getImageUrl('brand-kyk') },
-    { id: 'b4', name: 'Enagic', logoId: 'brand-enagic', logoUrl: getImageUrl('brand-enagic') },
-    { id: 'b5', name: 'Tyent', logoId: 'brand-tyent', logoUrl: getImageUrl('brand-tyent') },
-    { id: 'b6', name: 'Alkamedi', logoId: 'brand-alkamedi', logoUrl: getImageUrl('brand-alkamedi') },
-    { id: 'b7', name: 'ZeroB', logoId: 'brand-zerob', logoUrl: getImageUrl('brand-zerob') },
-    { id: 'b8', name: 'Medisoul', logoId: 'brand-medisoul', logoUrl: getImageUrl('brand-medisoul') },
+    { id: 'b1', name: 'Life Ionizers', logoId: 'brand-life-ionizers', logoUrl: getImageUrl('brand-life-ionizers'), description: 'Life Ionizers is a leading manufacturer of water ionizers, known for their powerful machines and lifetime warranties.' },
+    { id: 'b2', name: 'Mediqua', logoId: 'brand-mediqua', logoUrl: getImageUrl('brand-mediqua'), description: 'Mediqua focuses on creating medical-grade water ionizers with advanced filtration systems for the purest water.' },
+    { id: 'b3', name: 'KYK', logoId: 'brand-kyk', logoUrl: getImageUrl('brand-kyk'), description: 'KYK is a renowned Korean brand that has been developing top-quality water ionizers for over 25 years.' },
+    { id: 'b4', name: 'Enagic', logoId: 'brand-enagic', logoUrl: getImageUrl('brand-enagic'), description: 'Enagic is a global leader in water ionization systems, famous for their Kangen Water® machines and direct sales model.' },
+    { id: 'b5', name: 'Tyent', logoId: 'brand-tyent', logoUrl: getImageUrl('brand-tyent'), description: 'Tyent is known for its stylish and technologically advanced ionizers, often featuring large touchscreens and hybrid plates.' },
+    { id: 'b6', name: 'Alkamedi', logoId: 'brand-alkamedi', logoUrl: getImageUrl('brand-alkamedi'), description: 'Alkamedi offers a range of reliable and affordable water ionizers, balancing performance with cost-effectiveness.' },
+    { id: 'b7', name: 'ZeroB', logoId: 'brand-zerob', logoUrl: getImageUrl('brand-zerob'), description: 'ZeroB is an Indian brand that provides a variety of water purification solutions, including ionizers designed for local water conditions.' },
+    { id: 'b8', name: 'Medisoul', logoId: 'brand-medisoul', logoUrl: getImageUrl('brand-medisoul'), description: 'Medisoul is committed to providing health and wellness products, with a focus on advanced water ionization technology for Indian consumers.' },
   ],
   testimonials: [
     {
