@@ -1,3 +1,100 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-image",
+      "description": "A glass of clean, bubbly water held up to the light.",
+      "imageUrl": "https://picsum.photos/seed/hero/600/600",
+      "imageHint": "water glass"
+    },
+    {
+      "id": "product-1",
+      "description": "Sleek countertop water ionizer model.",
+      "imageUrl": "https://picsum.photos/seed/p1/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-2",
+      "description": "Under-counter water ionizer with a modern faucet.",
+      "imageUrl": "https://picsum.photos/seed/p2/400/250",
+      "imageHint": "kitchen faucet"
+    },
+    {
+      "id": "product-3",
+      "description": "Portable hydrogen water bottle.",
+      "imageUrl": "https://picsum.photos/seed/p3/400/250",
+      "imageHint": "water bottle"
+    },
+    {
+      "id": "brand-life-ionizers",
+      "description": "Life Ionizers Logo",
+      "imageUrl": "https://picsum.photos/seed/lifeionizers/140/70",
+      "imageHint": "logo"
+    },
+    {
+      "id": "brand-mediqua",
+      "description": "Mediqua Logo",
+      "imageUrl": "https://picsum.photos/seed/mediqua/140/70",
+      "imageHint": "logo"
+    },
+    {
+      "id": "brand-kyk",
+      "description": "KYK Logo",
+      "imageUrl": "https://picsum.photos/seed/kyk/140/70",
+      "imageHint": "logo"
+    },
+    {
+      "id": "brand-enagic",
+      "description": "Enagic Logo",
+      "imageUrl": "https://picsum.photos/seed/enagic/140/70",
+      "imageHint": "logo"
+    },
+    {
+      "id": "brand-tyent",
+      "description": "Tyent Logo",
+      "imageUrl": "https://picsum.photos/seed/tyent/140/70",
+      "imageHint": "logo"
+    },
+    {
+      "id": "brand-alkamedi",
+      "description": "Alkamedi Logo",
+      "imageUrl": "https://picsum.photos/seed/alkamedi/140/70",
+      "imageHint": "logo"
+    },
+    {
+      "id": "brand-zerob",
+      "description": "ZeroB Logo",
+      "imageUrl": "https://picsum.photos/seed/zerob/140/70",
+      "imageHint": "logo"
+    },
+    {
+      "id": "brand-medisoul",
+      "description": "Medisoul Logo",
+      "imageUrl": "https://picsum.photos/seed/medisoul/140/70",
+      "imageHint": "logo"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "Avatar of Rohan Sharma",
+      "imageUrl": "https://picsum.photos/seed/rohan/48/48",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "Avatar of Priya Desai",
+      "imageUrl": "https://picsum.photos/seed/priya/48/48",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "Avatar of Amit Patel",
+      "imageUrl": "https://picsum.photos/seed/amit/48/48",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "science-diagram",
+      "description": "Diagram explaining a scientific concept",
+      "imageUrl": "https://picsum.photos/seed/diagram/500/300",
+      "imageHint": "diagram chart"
+    }
+  ]
 }
