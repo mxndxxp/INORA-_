@@ -199,7 +199,6 @@ export function WaterAnimation() {
         uLightDir: { value: new THREE.Vector3(0.5, 0.8, 0.2) },
         uRipplePos: { value: new Array(MAX_RIPPLES).fill(new THREE.Vector2()) },
         uRippleTime: { value: new Float32Array(MAX_RIPPLES) },
-        uRippleParams: { value: new Float32Array(MAX_RIPPLES).fill(1.0) },
       },
       vertexShader,
       fragmentShader,
@@ -269,7 +268,9 @@ export function WaterAnimation() {
       for (let i = 0; i < MAX_RIPPLES; i++) {
         const r = ripples[i];
         mat.uniforms.uRippleTime.value[i] = r.time > 0 ? r.time : -9999;
-        mat.uniforms.uRipplePos.value[i] = new THREE.Vector2(r.pos.x, r.pos.y);
+        if(r.pos) {
+          mat.uniforms.uRipplePos.value[i] = new THREE.Vector2(r.pos.x, r.pos.y);
+        }
       }
       
       const t = clock.getElapsedTime();
