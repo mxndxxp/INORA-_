@@ -15,6 +15,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { WaterAnimation } from '@/components/water-animation';
+import { RaindropAnimation } from '@/components/raindrop-animation';
 
 
 export default function Home() {
@@ -260,12 +261,13 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-12 md:py20 lg:py-24">
-        <div className="container px-4 md:px-6">
+      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-foreground">
+        <RaindropAnimation />
+        <div className="container px-4 md:px-6 relative">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">What Our Customers Say</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-background">What Our Customers Say</h2>
+              <p className="max-w-[900px] text-muted md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Real stories from people who have experienced the benefits of ionized water.
               </p>
             </div>
@@ -274,7 +276,7 @@ export default function Home() {
             {testimonials.map((testimonial) => {
               const avatarImage = PlaceHolderImages.find(p => p.id === testimonial.avatarId);
               return (
-              <Card key={testimonial.id}>
+              <Card key={testimonial.id} className="bg-background/90 backdrop-blur-sm">
                 <CardContent className="p-6">
                   <Quote className="h-8 w-8 text-muted-foreground" />
                   <p className="mt-4 text-muted-foreground">{testimonial.quote}</p>
