@@ -42,21 +42,23 @@ export default function Home() {
                   <Link href="/science">Learn the Science</Link>
                 </Button>
               </div>
-               <div className="pt-6">
-                <h3 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">Trusted by the Best Brands</h3>
+               <div className="pt-6 text-center">
+                <h3 className="text-lg font-semibold tracking-wide text-foreground">Trusted by the Best Brands</h3>
                  <div className="mx-auto grid max-w-5xl grid-cols-4 items-center gap-x-6 gap-y-4 pt-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5">
                   {brands.slice(0,5).map((brand) => (
                     <div key={brand.id} className="flex justify-center">
-                      {brand.logoUrl && (
-                        <Image
-                          alt={brand.name}
-                          className="aspect-[2/1] overflow-hidden rounded-lg object-contain object-center opacity-70 hover:opacity-100 transition-opacity"
-                          data-ai-hint={`${brand.name} logo`}
-                          height="40"
-                          src={brand.logoUrl}
-                          width="80"
-                        />
-                      )}
+                      <Link href={`/products?brand=${encodeURIComponent(brand.name)}`}>
+                        {brand.logoUrl && (
+                          <Image
+                            alt={brand.name}
+                            className="aspect-[2/1] overflow-hidden rounded-lg object-contain object-center opacity-70 hover:opacity-100 transition-opacity"
+                            data-ai-hint={`${brand.name} logo`}
+                            height="40"
+                            src={brand.logoUrl}
+                            width="80"
+                          />
+                        )}
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -208,7 +210,8 @@ export default function Home() {
                             <div className="flex justify-center items-center mb-2">
                                 <div className="bg-background rounded-full p-4 border shadow-sm">
                                     <Icon className="h-8 w-8 text-primary" />
-                                </div>
+                                d_message_2
+</div>
                             </div>
                             <h3 className="text-lg font-bold">{concept.title}</h3>
                             <p className="text-sm text-muted-foreground">{concept.description}</p>
