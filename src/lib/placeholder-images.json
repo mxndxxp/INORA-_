@@ -241,6 +241,24 @@
       "imageUrl": "https://picsum.photos/seed/amit/48/48",
       "imageHint": "man portrait"
     },
+     {
+      "id": "testimonial-4",
+      "description": "Avatar of Sunita Nair",
+      "imageUrl": "https://picsum.photos/seed/sunita/48/48",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "testimonial-5",
+      "description": "Avatar of Vikram Singh",
+      "imageUrl": "https://picsum.photos/seed/vikram/48/48",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "testimonial-6",
+      "description": "Avatar of Anjali Rao",
+      "imageUrl": "https://picsum.photos/seed/anjali/48/48",
+      "imageHint": "woman portrait"
+    },
     {
       "id": "science-diagram",
       "description": "Diagram explaining a scientific concept",
@@ -249,5 +267,3 @@
     }
   ]
 }
-
-    

@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-16 lg:pt-40 lg:pb-12 overflow-hidden">
+      <section className="relative w-full pt-24 pb-12 md:pt-32 lg:pt-40 lg:pb-12 overflow-hidden">
         <WaterAnimation />
         <div className="container px-4 md:px-6 relative z-10">
           <div className="flex flex-col items-center justify-center space-y-8 text-center">
@@ -54,9 +54,9 @@ export default function Home() {
               </div>
             </AnimatedSection>
             
-            <AnimatedSection className="w-full max-w-7xl pt-16" animation="animate-scroll-in" delay={200}>
-               <h3 className="text-5xl font-bold tracking-wide text-white shadow-sm">Trusted by the Best Brands</h3>
-                 <div className="relative mt-16">
+            <AnimatedSection className="w-full max-w-7xl pt-8" animation="animate-scroll-in" delay={200}>
+               <h3 className="text-3xl font-bold tracking-wide text-white shadow-sm">Trusted by the Best Brands</h3>
+                 <div className="relative mt-8">
                    <Carousel
                      opts={{
                        align: "start",
@@ -64,20 +64,20 @@ export default function Home() {
                      }}
                      className="w-full"
                    >
-                     <CarouselContent className="-ml-16">
+                     <CarouselContent className="-ml-12">
                        {brands.map((brand) => (
-                         <CarouselItem key={brand.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 pl-16">
-                           <div className="p-2 flex justify-center">
+                         <CarouselItem key={brand.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 pl-12">
+                           <div className="p-1 flex justify-center">
                               <Link href={`/products?brand=${encodeURIComponent(brand.name)}`} className="block w-full">
                                  {brand.logoUrl && (
-                                   <div className="bg-white/90 p-4 rounded-lg shadow-lg hover:bg-white transition-colors">
+                                   <div className="bg-white/90 p-3 rounded-lg shadow-lg hover:bg-white transition-colors">
                                      <Image
                                        alt={brand.name}
                                        className="aspect-[3/2] overflow-hidden rounded-lg object-contain object-center opacity-80 group-hover:opacity-100 transition-opacity"
                                        data-ai-hint={`${brand.name} logo`}
-                                       height="130"
+                                       height="100"
                                        src={brand.logoUrl}
-                                       width="195"
+                                       width="150"
                                      />
                                    </div>
                                  )}
@@ -86,8 +86,8 @@ export default function Home() {
                          </CarouselItem>
                        ))}
                      </CarouselContent>
-                     <CarouselPrevious className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 h-12 w-12 bg-white/50 hover:bg-white/80 border-none text-white" />
-                     <CarouselNext className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 h-12 w-12 bg-white/50 hover:bg-white/80 border-none text-white" />
+                     <CarouselPrevious className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 h-10 w-10 bg-white/50 hover:bg-white/80 border-none text-white" />
+                     <CarouselNext className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 h-10 w-10 bg-white/50 hover:bg-white/80 border-none text-white" />
                    </Carousel>
                  </div>
             </AnimatedSection>
@@ -214,9 +214,19 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
+      <AnimatedSection className="py-12 md:py-20 lg:py-24">
         <div className="container px-4 md:px-6">
           <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
+            <div className="flex justify-center">
+               <Image
+                 alt="Why Ionora"
+                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                 data-ai-hint="happy family drinking water"
+                 height="310"
+                 src="https://picsum.photos/seed/ionora-why/550/310"
+                 width="550"
+               />
+             </div>
             <div className="space-y-4">
               <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Why Ionora?</div>
               <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Your Guide to a Healthier Life</h2>
@@ -247,16 +257,6 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-             <div className="flex justify-center">
-               <Image
-                 alt="Why Ionora"
-                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                 data-ai-hint="happy family drinking water"
-                 height="310"
-                 src="https://picsum.photos/seed/ionora-why/550/310"
-                 width="550"
-               />
-             </div>
           </div>
         </div>
       </AnimatedSection>
@@ -278,13 +278,13 @@ export default function Home() {
                 align: 'start',
                 loop: true,
               }}
-              className="w-full max-w-4xl mx-auto"
+              className="w-full max-w-6xl mx-auto"
             >
-              <CarouselContent className="-ml-8">
+              <CarouselContent className="-ml-4">
                 {testimonials.map((testimonial) => {
                   const avatarImage = PlaceHolderImages.find(p => p.id === testimonial.avatarId);
                   return (
-                    <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-8">
+                    <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
                       <div className="h-full p-px rounded-lg bg-gradient-to-b from-white/20 to-transparent">
                         <Card className="h-full bg-background/10 backdrop-blur-md border-white/20 shadow-xl">
                           <CardContent className="p-6 text-center flex flex-col items-center">
@@ -299,7 +299,7 @@ export default function Home() {
                               />
                             }
                             <Quote className="h-8 w-8 text-primary" />
-                            <p className="mt-4 text-lg text-background/90 leading-relaxed">"{testimonial.quote}"</p>
+                            <p className="mt-4 text-base text-background/90 leading-relaxed">"{testimonial.quote}"</p>
                             <div className="mt-6">
                               <p className="font-bold text-background text-lg">{testimonial.name}</p>
                               <p className="text-sm text-background/70">{testimonial.location}</p>
