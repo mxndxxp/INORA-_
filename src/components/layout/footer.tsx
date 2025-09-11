@@ -12,7 +12,7 @@ const footerLinks = {
     { href: '/affiliate', label: 'Affiliate Program' },
   ],
   learn: [
-    { href: '/science', label: 'Science Hub' },
+    { href: '/science', label: 'Why Water Ionizers?' },
     { href: '/benefits', label: 'Benefits' },
     { href: '/hydrogen-water', label: 'Hydrogen Water' },
     { href: '/compare', label: 'Compare Products' },
