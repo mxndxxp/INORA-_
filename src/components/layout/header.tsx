@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Droplet, Heart, ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
@@ -91,6 +91,7 @@ export function Header() {
               </button>
             </SheetTrigger>
             <SheetContent side="right" className={cn('menu-overlay', isMenuOpen && 'active p-0')}>
+              <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
               <div className="grid gap-4 p-4">
                 <Link href="/" className="flex items-center gap-2 mb-4">
                   <Droplet className="h-6 w-6 text-primary" />
