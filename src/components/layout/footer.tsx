@@ -1,7 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Droplet, Twitter, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Droplet, Twitter, Facebook, Instagram, Linkedin, Send, MapPin, Phone, ArrowUp } from 'lucide-react';
+import {useEffect, useState} from "react";
 
 const footerLinks = {
   company: [
@@ -33,75 +36,158 @@ const socialLinks = [
 ];
 
 export function Footer() {
+    const [isVisible, setIsVisible] = useState(false);
+
+    const toggleVisibility = () => {
+        if (window.scrollY > 300) {
+            setIsVisible(true);
+        } else {
+            setIsVisible(false);
+        }
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', toggleVisibility);
+        return () => window.removeEventListener('scroll', toggleVisibility);
+    }, []);
+
+
   return (
-    <footer className="bg-secondary/70 text-secondary-foreground border-t">
-      <div className="container mx-auto px-4 py-12 md:px-6 lg:py-16">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-2">
-              <Droplet className="h-7 w-7 text-primary" />
-              <span className="text-2xl font-headline font-bold">IONORA</span>
-            </Link>
-            <p className="max-w-xs text-muted-foreground">
-              India's trusted marketplace for premium water ionizers and wellness products.
-            </p>
-            <div className="space-y-2">
-              <h4 className="font-semibold">Stay updated</h4>
-              <form className="flex space-x-2">
-                <Input type="email" placeholder="Enter your email" className="max-w-lg flex-1 bg-background" />
-                <Button type="submit" className="bg-primary hover:bg-primary/90 text-primary-foreground">Subscribe</Button>
-              </form>
+      <footer id="dk-footer" className="dk-footer">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 col-lg-4">
+              <div className="dk-footer-box-info">
+                <Link href="/" className="footer-logo">
+                    <div className="flex items-center gap-2">
+                        <Droplet className="h-10 w-10 text-primary" />
+                        <span className="text-4xl font-headline font-bold text-foreground">IONORA</span>
+                    </div>
+                </Link>
+                <p className="footer-info-text">
+                  India's trusted marketplace for premium water ionizers and wellness products.
+                </p>
+                <div className="footer-social-link">
+                  <h3>Follow us</h3>
+                  <ul>
+                    {socialLinks.map(link => (
+                        <li key={link.name}>
+                            <a href={link.href}>
+                                <link.icon size={20} />
+                            </a>
+                        </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-12 col-lg-8">
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="contact-us">
+                    <div className="contact-icon">
+                      <MapPin />
+                    </div>
+                    <div className="contact-info">
+                      <h3>Ionora HQ</h3>
+                      <p>123 Wellness Way, Jaipur</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="contact-us contact-us-last">
+                    <div className="contact-icon">
+                      <Phone />
+                    </div>
+                    <div className="contact-info">
+                      <h3>+91 987 654 3210</h3>
+                      <p>Give us a call</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12 col-lg-6">
+                  <div className="footer-widget footer-left-widget">
+                    <div className="section-heading">
+                      <h3>Useful Links</h3>
+                      <span className="animate-border border-black"></span>
+                    </div>
+                    <div className="flex">
+                        <ul>
+                          {footerLinks.company.map(link => (
+                            <li key={link.href}>
+                              <Link href={link.href}>{link.label}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                        <ul>
+                           {footerLinks.learn.slice(0,4).map(link => (
+                            <li key={link.href}>
+                              <Link href={link.href}>{link.label}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-12 col-lg-6">
+                  <div className="footer-widget">
+                    <div className="section-heading">
+                      <h3>Subscribe</h3>
+                      <span className="animate-border border-black"></span>
+                    </div>
+                    <p>Don’t miss our new feeds, kindly fill the form below.</p>
+                    <form action="#">
+                      <div className="form-row">
+                        <div className="col dk-footer-form">
+                          <input type="email" className="form-control" placeholder="Email Address" />
+                          <button type="submit">
+                            <Send />
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div>
-            <h3 className="font-semibold mb-4">Company</h3>
-            <ul className="space-y-2">
-              {footerLinks.company.map(link => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-4">Learn</h3>
-            <ul className="space-y-2">
-              {footerLinks.learn.map(link => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-4">Support</h3>
-            <ul className="space-y-2">
-              {footerLinks.support.map(link => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+        </div>
+        <div className="copyright">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6">
+                <span>Copyright © {new Date().getFullYear()}, All Right Reserved IONORA</span>
+              </div>
+              <div className="col-md-6">
+                <div className="copyright-menu">
+                  <ul>
+                    <li><Link href="/">Home</Link></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><Link href="/contact">Contact</Link></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="mt-8 border-t pt-8 flex flex-col sm:flex-row items-center justify-between">
-          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} IONORA. All rights reserved.</p>
-          <div className="flex items-center space-x-4 mt-4 sm:mt-0">
-            {socialLinks.map(link => (
-              <Link key={link.name} href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
-                <link.icon className="h-5 w-5" />
-                <span className="sr-only">{link.name}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </footer>
+
+        {isVisible && (
+            <div id="back-to-top" className="back-to-top">
+                <button className="btn btn-dark" title="Back to Top" onClick={scrollToTop} style={{display: 'block'}}>
+                    <ArrowUp />
+                </button>
+            </div>
+        )}
+      </footer>
   );
 }
