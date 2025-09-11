@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Droplet, Heart, ShoppingCart } from 'lucide-react';
+import { Droplet, Heart, ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -17,6 +18,8 @@ const navLinks = [
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +28,12 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Close the menu when the route changes
+    setIsMenuOpen(false);
+  }, [pathname]);
+
 
   return (
     <header
@@ -70,25 +79,30 @@ export function Header() {
             </Button>
         </div>
         <div className="md:hidden">
-          <Sheet>
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
+              <button
+                className={cn('menu-btn', isMenuOpen && 'active')}
+                aria-label="Toggle navigation menu"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className={cn('menu-overlay', isMenuOpen && 'active p-0')}>
               <div className="grid gap-4 p-4">
                 <Link href="/" className="flex items-center gap-2 mb-4">
                   <Droplet className="h-6 w-6 text-primary" />
                   <span className="text-xl font-bold font-headline">IONORA</span>
                 </Link>
-                <nav className="grid gap-2">
-                  {navLinks.map((link) => (
+                <nav className="grid gap-2 menu-items">
+                  {navLinks.map((link, index) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       className="flex w-full items-center py-2 text-lg font-medium hover:text-primary"
+                      style={{'--delay': `${(index + 1) * 0.2}s`} as React.CSSProperties}
                     >
                       {link.label}
                     </Link>
@@ -96,18 +110,19 @@ export function Header() {
                    <Link
                       href="/compare"
                       className="flex w-full items-center py-2 text-lg font-medium hover:text-primary"
+                      style={{'--delay': `${(navLinks.length + 1) * 0.2}s`} as React.CSSProperties}
                     >
                       Compare
                     </Link>
                 </nav>
-                 <div className="flex items-center gap-4 pt-4">
-                    <Button variant="ghost" size="icon" asChild>
+                 <div className="flex items-center gap-4 pt-4 menu-items">
+                    <Button variant="ghost" size="icon" asChild style={{'--delay': '1.4s'} as React.CSSProperties}>
                         <Link href="/wishlist">
                             <Heart className="h-6 w-6" />
                             <span className="sr-only">Wishlist</span>
                         </Link>
                     </Button>
-                    <Button variant="ghost" size="icon" asChild>
+                    <Button variant="ghost" size="icon" asChild style={{'--delay': '1.6s'} as React.CSSProperties}>
                         <Link href="/cart">
                             <ShoppingCart className="h-6 w-6" />
                             <span className="sr-only">Cart</span>
