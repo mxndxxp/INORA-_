@@ -1,3 +1,4 @@
+
 {
   "placeholderImages": [
     {
@@ -53,6 +54,126 @@
       "description": "Life Ionizer M13 with a glass of water.",
       "imageUrl": "https://picsum.photos/seed/p8/400/250",
       "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-9",
+      "description": "Aqua-Ionizer Pro 7.5 on a counter.",
+      "imageUrl": "https://picsum.photos/seed/p9/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-10",
+      "description": "Tyent ACE-13 above-counter ionizer.",
+      "imageUrl": "https://picsum.photos/seed/p10/400/250",
+      "imageHint": "water filter"
+    },
+    {
+      "id": "product-11",
+      "description": "Enagic Leveluk SD501 machine.",
+      "imageUrl": "https://picsum.photos/seed/p11/400/250",
+      "imageHint": "water purifier"
+    },
+    {
+      "id": "product-12",
+      "description": "Alkamedi 5000 ionizer in a modern kitchen.",
+      "imageUrl": "https://picsum.photos/seed/p12/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-13",
+      "description": "Life Ionizer M9 with a pitcher.",
+      "imageUrl": "https://picsum.photos/seed/p13/400/250",
+      "imageHint": "water filter"
+    },
+    {
+      "id": "product-14",
+      "description": "ZeroB Ion-Max device.",
+      "imageUrl": "https://picsum.photos/seed/p14/400/250",
+      "imageHint": "water purifier"
+    },
+    {
+      "id": "product-15",
+      "description": "Medisoul Aqua Prime ionizer.",
+      "imageUrl": "https://picsum.photos/seed/p15/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-16",
+      "description": "KYK Harmony ionizer on a tabletop.",
+      "imageUrl": "https://picsum.photos/seed/p16/400/250",
+      "imageHint": "water filter"
+    },
+    {
+      "id": "product-17",
+      "description": "Tyent Edge 9000T countertop model.",
+      "imageUrl": "https://picsum.photos/seed/p17/400/250",
+      "imageHint": "kitchen appliance"
+    },
+    {
+      "id": "product-18",
+      "description": "Enagic JRIV machine.",
+      "imageUrl": "https://picsum.photos/seed/p18/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-19",
+      "description": "Life Ionizer M5 model.",
+      "imageUrl": "https://picsum.photos/seed/p19/400/250",
+      "imageHint": "water filter"
+    },
+    {
+      "id": "product-20",
+      "description": "Alkamedi 7000 ionizer.",
+      "imageUrl": "https://picsum.photos/seed/p20/400/250",
+      "imageHint": "water purifier"
+    },
+    {
+      "id": "product-21",
+      "description": "ZeroB Alkaline Craze ionizer.",
+      "imageUrl": "https://picsum.photos/seed/p21/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-22",
+      "description": "Medisoul Genesis Pro on display.",
+      "imageUrl": "https://picsum.photos/seed/p22/400/250",
+      "imageHint": "kitchen appliance"
+    },
+    {
+      "id": "product-23",
+      "description": "KYK Generation 3 machine.",
+      "imageUrl": "https://picsum.photos/seed/p23/400/250",
+      "imageHint": "water filter"
+    },
+    {
+      "id": "product-24",
+      "description": "Tyent H2 Hybrid ionizer.",
+      "imageUrl": "https://picsum.photos/seed/p24/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-25",
+      "description": "Enagic Super 501 heavy-duty ionizer.",
+      "imageUrl": "https://picsum.photos/seed/p25/400/250",
+      "imageHint": "water purifier"
+    },
+    {
+      "id": "product-26",
+      "description": "Life Ionizer Stream model.",
+      "imageUrl": "https://picsum.photos/seed/p26/400/250",
+      "imageHint": "water filter"
+    },
+    {
+      "id": "product-27",
+      "description": "Alkamedi LITE ionizer.",
+      "imageUrl": "https://picsum.photos/seed/p27/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-28",
+      "description": "Medisoul Aqua Atom ionizer.",
+      "imageUrl": "https://picsum.photos/seed/p28/400/250",
+      "imageHint": "kitchen appliance"
     },
     {
       "id": "brand-life-ionizers",
