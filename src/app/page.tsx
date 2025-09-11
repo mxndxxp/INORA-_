@@ -73,19 +73,21 @@ export default function Home() {
                 className="w-full max-w-lg"
               >
                 <CarouselContent>
-                  {PlaceHolderImages.filter(img => img.id.startsWith('product-')).slice(0, 5).map((image, index) => (
-                    <CarouselItem key={index}>
+                  {brands.map((brand, index) => (
+                    <CarouselItem key={index} className="basis-1/3">
                       <div className="p-1">
-                         <Card className="overflow-hidden">
-                           <Image
-                            src={image.imageUrl}
-                            alt={image.description}
-                            width={500}
-                            height={500}
-                            className="aspect-square w-full object-cover"
-                            data-ai-hint={image.imageHint}
-                           />
-                         </Card>
+                         <Link href={`/products?brand=${encodeURIComponent(brand.name)}`}>
+                           {brand.logoUrl && (
+                             <Image
+                              src={brand.logoUrl}
+                              alt={brand.name}
+                              width={150}
+                              height={75}
+                              className="aspect-[2/1] w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+                              data-ai-hint={`${brand.name} logo`}
+                             />
+                           )}
+                         </Link>
                       </div>
                     </CarouselItem>
                   ))}
