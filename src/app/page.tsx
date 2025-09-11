@@ -51,18 +51,18 @@ export default function Home() {
             </AnimatedSection>
             
             <AnimatedSection className="w-full max-w-6xl pt-16" animation="animate-scroll-in" delay={200}>
-               <h3 className="text-2xl font-bold tracking-wide text-foreground">Trusted by the Best Brands</h3>
-                 <div className="relative mt-8">
+               <h3 className="text-3xl font-bold tracking-wide text-foreground">Trusted by the Best Brands</h3>
+                 <div className="relative mt-12">
                    <Carousel
                      opts={{
                        align: "start",
                        loop: true,
                      }}
-                     className="w-full max-w-5xl mx-auto"
+                     className="w-full max-w-6xl mx-auto"
                    >
-                     <CarouselContent className="-ml-8">
+                     <CarouselContent className="-ml-12">
                        {brands.map((brand) => (
-                         <CarouselItem key={brand.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 pl-8">
+                         <CarouselItem key={brand.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 pl-12">
                            <div className="p-2 flex justify-center">
                               <Link href={`/products?brand=${encodeURIComponent(brand.name)}`} className="block w-full">
                                  {brand.logoUrl && (
@@ -70,9 +70,9 @@ export default function Home() {
                                      alt={brand.name}
                                      className="aspect-[3/2] overflow-hidden rounded-lg object-contain object-center opacity-70 hover:opacity-100 transition-opacity"
                                      data-ai-hint={`${brand.name} logo`}
-                                     height="80"
+                                     height="100"
                                      src={brand.logoUrl}
-                                     width="120"
+                                     width="150"
                                    />
                                  )}
                                </Link>
@@ -80,8 +80,8 @@ export default function Home() {
                          </CarouselItem>
                        ))}
                      </CarouselContent>
-                     <CarouselPrevious className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2" />
-                     <CarouselNext className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2" />
+                     <CarouselPrevious className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 h-10 w-10" />
+                     <CarouselNext className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 h-10 w-10" />
                    </Carousel>
                  </div>
             </AnimatedSection>
