@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
+      <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-16 lg:pt-40 lg:pb-20">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-8 text-center">
             <AnimatedSection
@@ -50,7 +50,7 @@ export default function Home() {
               </div>
             </AnimatedSection>
             
-            <AnimatedSection className="w-full max-w-6xl pt-20" animation="animate-scroll-in" delay={200}>
+            <AnimatedSection className="w-full max-w-6xl pt-16" animation="animate-scroll-in" delay={200}>
                <h3 className="text-4xl font-bold tracking-wide text-foreground">Trusted by the Best Brands</h3>
                  <div className="relative mt-16">
                    <Carousel
