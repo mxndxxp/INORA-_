@@ -30,13 +30,13 @@ export default function ProductsPage() {
             {products.map((product) => {
               const productImage = PlaceHolderImages.find(p => p.id === product.imageId);
               return (
-                <Card key={product.id} className="group overflow-hidden rounded-lg shadow-sm transition-all hover:shadow-lg">
+                <Card key={product.id} className="group overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                   <CardHeader className="p-0">
-                    <Link href={`/products/${product.id}`} className="block relative">
+                    <Link href={`/products/${product.id}`} className="block relative overflow-hidden">
                       {productImage && (
                         <Image
                           alt={product.name}
-                          className="aspect-video w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          className="aspect-video w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                           height="250"
                           src={productImage.imageUrl}
                           width="400"
@@ -52,7 +52,7 @@ export default function ProductsPage() {
                     </CardTitle>
                     <div className="flex items-center justify-between">
                       <span className="text-2xl font-bold">&#8377;{product.price.toLocaleString('en-IN')}</span>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <Button variant="ghost" size="icon" className="rounded-full">
                            <Heart className="h-5 w-5" />
                            <span className="sr-only">Add to Wishlist</span>
