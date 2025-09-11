@@ -7,6 +7,13 @@ import { AnimatedSection } from '@/components/animated-section';
 import { ScienceIcons } from '@/components/science-icons';
 import { placeholderData } from '@/lib/placeholder-data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 export default function Home() {
   const featuredProducts = placeholderData.products.slice(0, 3);
@@ -16,11 +23,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32 bg-secondary/50">
+      <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32">
         <div className="container px-4 md:px-6">
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          <div className="flex flex-col items-center justify-center space-y-8 text-center">
             <AnimatedSection
-              className="flex flex-col justify-center space-y-4"
+              className="flex flex-col justify-center items-center space-y-4"
               animation="animate-scroll-in"
             >
               <div className="space-y-4">
@@ -41,38 +48,44 @@ export default function Home() {
                   <Link href="/science">Learn the Science</Link>
                 </Button>
               </div>
-               <div className="pt-6 text-center">
-                <h3 className="text-lg font-semibold tracking-wide text-foreground">Trusted by the Best Brands</h3>
-                 <div className="mx-auto grid max-w-5xl grid-cols-4 items-center gap-x-6 gap-y-4 pt-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5">
-                  {brands.map((brand) => (
-                    <div key={brand.id} className="flex justify-center">
-                      <Link href={`/products?brand=${encodeURIComponent(brand.name)}`}>
-                        {brand.logoUrl && (
-                          <Image
-                            alt={brand.name}
-                            className="aspect-[2/1] overflow-hidden rounded-lg object-contain object-center opacity-70 hover:opacity-100 transition-opacity"
-                            data-ai-hint={`${brand.name} logo`}
-                            height="40"
-                            src={brand.logoUrl}
-                            width="80"
-                          />
-                        )}
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </AnimatedSection>
-            <AnimatedSection className="flex items-center justify-center" animation="animate-scroll-in" delay={200}>
-               <Image
-                 alt="Hero"
-                 className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
-                 data-ai-hint="water glass"
-                 height="600"
-                 src="https://picsum.photos/seed/hero/600/600"
-                 width="600"
-               />
+            
+            <AnimatedSection className="w-full max-w-5xl pt-10" animation="animate-scroll-in" delay={200}>
+               <h3 className="text-xl font-bold tracking-wide text-foreground">Trusted by the Best Brands</h3>
+                 <div className="relative mt-4">
+                   <Carousel
+                     opts={{
+                       align: "start",
+                       loop: true,
+                     }}
+                     className="w-full max-w-4xl mx-auto"
+                   >
+                     <CarouselContent className="-ml-4">
+                       {brands.map((brand) => (
+                         <CarouselItem key={brand.id} className="basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 pl-4">
+                           <div className="p-1 flex justify-center">
+                              <Link href={`/products?brand=${encodeURIComponent(brand.name)}`}>
+                                 {brand.logoUrl && (
+                                   <Image
+                                     alt={brand.name}
+                                     className="aspect-[2/1] overflow-hidden rounded-lg object-contain object-center opacity-70 hover:opacity-100 transition-opacity"
+                                     data-ai-hint={`${brand.name} logo`}
+                                     height="50"
+                                     src={brand.logoUrl}
+                                     width="100"
+                                   />
+                                 )}
+                               </Link>
+                           </div>
+                         </CarouselItem>
+                       ))}
+                     </CarouselContent>
+                     <CarouselPrevious className="absolute left-[-20px] md:left-[-50px] top-1/2 -translate-y-1/2" />
+                     <CarouselNext className="absolute right-[-20px] md:right-[-50px] top-1/2 -translate-y-1/2" />
+                   </Carousel>
+                 </div>
             </AnimatedSection>
+
           </div>
         </div>
       </section>
@@ -248,5 +261,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
