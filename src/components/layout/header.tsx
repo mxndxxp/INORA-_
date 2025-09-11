@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Droplet } from 'lucide-react';
+import { Menu, Droplet, Heart, ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -49,10 +49,22 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="hidden md:flex">
-          <Button asChild>
-            <Link href="/products">Shop All</Link>
-          </Button>
+        <div className="hidden md:flex items-center gap-4">
+            <Button variant="ghost" size="icon" asChild>
+                <Link href="/wishlist">
+                    <Heart className="h-6 w-6" />
+                    <span className="sr-only">Wishlist</span>
+                </Link>
+            </Button>
+            <Button variant="ghost" size="icon" asChild>
+                <Link href="/cart">
+                    <ShoppingCart className="h-6 w-6" />
+                    <span className="sr-only">Cart</span>
+                </Link>
+            </Button>
+            <Button asChild>
+                <Link href="/products">Shop All</Link>
+            </Button>
         </div>
         <div className="md:hidden">
           <Sheet>
@@ -79,6 +91,20 @@ export function Header() {
                     </Link>
                   ))}
                 </nav>
+                 <div className="flex items-center gap-4 pt-4">
+                    <Button variant="ghost" size="icon" asChild>
+                        <Link href="/wishlist">
+                            <Heart className="h-6 w-6" />
+                            <span className="sr-only">Wishlist</span>
+                        </Link>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild>
+                        <Link href="/cart">
+                            <ShoppingCart className="h-6 w-6" />
+                            <span className="sr-only">Cart</span>
+                        </Link>
+                    </Button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
