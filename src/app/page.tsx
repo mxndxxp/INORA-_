@@ -89,53 +89,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
-        <div className="container px-4 md:px-6">
-          <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
-            <div className="space-y-4">
-              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Why Ionora?</div>
-              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Your Guide to a Healthier Life</h2>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Choosing a water ionizer is a significant decision. At Ionora, we empower you with knowledge, choice, and support every step of the way.
-              </p>
-              <ul className="grid gap-4">
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                  <div>
-                    <h3 className="font-bold">Unparalleled Choice</h3>
-                    <p className="text-muted-foreground">Access a wide range of top-tier brands and models, all in one place.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                  <div>
-                    <h3 className="font-bold">Expert Knowledge</h3>
-                    <p className="text-muted-foreground">Our Science Hub breaks down complex topics into easy-to-understand guides.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                  <div>
-                    <h3 className="font-bold">Side-by-Side Comparison</h3>
-                    <p className="text-muted-foreground">Use our powerful tools to compare products and make an informed decision.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-             <div className="flex justify-center">
-               <Image
-                 alt="Why Ionora"
-                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                 data-ai-hint="happy family drinking water"
-                 height="310"
-                 src="https://picsum.photos/seed/ionora-why/550/310"
-                 width="550"
-               />
-             </div>
-          </div>
-        </div>
-      </AnimatedSection>
       
       <AnimatedSection className="py-12 md:py-20 lg:py-24">
         <div className="container px-4 md:px-6">
@@ -218,7 +171,54 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-12 md:py-20 lg:py-24">
+      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
+        <div className="container px-4 md:px-6">
+          <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
+            <div className="space-y-4">
+              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Why Ionora?</div>
+              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Your Guide to a Healthier Life</h2>
+              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Choosing a water ionizer is a significant decision. At Ionora, we empower you with knowledge, choice, and support every step of the way.
+              </p>
+              <ul className="grid gap-4">
+                <li className="flex items-start gap-4">
+                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                  <div>
+                    <h3 className="font-bold">Unparalleled Choice</h3>
+                    <p className="text-muted-foreground">Access a wide range of top-tier brands and models, all in one place.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                  <div>
+                    <h3 className="font-bold">Expert Knowledge</h3>
+                    <p className="text-muted-foreground">Our Science Hub breaks down complex topics into easy-to-understand guides.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                  <div>
+                    <h3 className="font-bold">Side-by-Side Comparison</h3>
+                    <p className="text-muted-foreground">Use our powerful tools to compare products and make an informed decision.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+             <div className="flex justify-center">
+               <Image
+                 alt="Why Ionora"
+                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                 data-ai-hint="happy family drinking water"
+                 height="310"
+                 src="https://picsum.photos/seed/ionora-why/550/310"
+                 width="550"
+               />
+             </div>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection className="py-12 md:py20 lg:py-24">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
