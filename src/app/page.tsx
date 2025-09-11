@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-16 lg:pt-40 overflow-hidden">
+      <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-16 lg:pt-40 lg:pb-12 overflow-hidden">
         <WaterAnimation />
         <div className="container px-4 md:px-6 relative z-10">
           <div className="flex flex-col items-center justify-center space-y-8 text-center">
@@ -35,7 +35,7 @@ export default function Home() {
               animation="animate-scroll-in"
             >
               <div className="space-y-4">
-                <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white shadow-lg">
+                <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-7xl/none text-white shadow-lg">
                   Pure Water, Pure Life.
                   <br />
                   Discover Ionora.
@@ -54,15 +54,15 @@ export default function Home() {
               </div>
             </AnimatedSection>
             
-            <AnimatedSection className="w-full max-w-6xl pt-8" animation="animate-scroll-in" delay={200}>
-               <h3 className="text-4xl font-bold tracking-wide text-white shadow-sm">Trusted by the Best Brands</h3>
+            <AnimatedSection className="w-full max-w-7xl pt-16" animation="animate-scroll-in" delay={200}>
+               <h3 className="text-5xl font-bold tracking-wide text-white shadow-sm">Trusted by the Best Brands</h3>
                  <div className="relative mt-16">
                    <Carousel
                      opts={{
                        align: "start",
                        loop: true,
                      }}
-                     className="w-full max-w-6xl mx-auto"
+                     className="w-full"
                    >
                      <CarouselContent className="-ml-16">
                        {brands.map((brand) => (
@@ -272,33 +272,48 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 py-12 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((testimonial) => {
-              const avatarImage = PlaceHolderImages.find(p => p.id === testimonial.avatarId);
-              return (
-              <Card key={testimonial.id} className="bg-background/90 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <Quote className="h-8 w-8 text-muted-foreground" />
-                  <p className="mt-4 text-muted-foreground">{testimonial.quote}</p>
-                  <div className="mt-6 flex items-center gap-4">
-                    {avatarImage && 
-                      <Image
-                        alt={testimonial.name}
-                        className="rounded-full"
-                        height="48"
-                        src={avatarImage.imageUrl}
-                        width="48"
-                        data-ai-hint={avatarImage.imageHint}
-                      />
-                    }
-                    <div>
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )})}
+          <div className="relative mt-12">
+            <Carousel
+              opts={{
+                align: 'start',
+                loop: true,
+              }}
+              className="w-full max-w-4xl mx-auto"
+            >
+              <CarouselContent className="-ml-8">
+                {testimonials.map((testimonial) => {
+                  const avatarImage = PlaceHolderImages.find(p => p.id === testimonial.avatarId);
+                  return (
+                    <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-8">
+                      <div className="h-full p-px rounded-lg bg-gradient-to-b from-white/20 to-transparent">
+                        <Card className="h-full bg-background/10 backdrop-blur-md border-white/20 shadow-xl">
+                          <CardContent className="p-6 text-center flex flex-col items-center">
+                            {avatarImage && 
+                              <Image
+                                alt={testimonial.name}
+                                className="rounded-full border-4 border-white/20 shadow-lg mb-4"
+                                height="80"
+                                src={avatarImage.imageUrl}
+                                width="80"
+                                data-ai-hint={avatarImage.imageHint}
+                              />
+                            }
+                            <Quote className="h-8 w-8 text-primary" />
+                            <p className="mt-4 text-lg text-background/90 leading-relaxed">"{testimonial.quote}"</p>
+                            <div className="mt-6">
+                              <p className="font-bold text-background text-lg">{testimonial.name}</p>
+                              <p className="text-sm text-background/70">{testimonial.location}</p>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  )
+                })}
+              </CarouselContent>
+              <CarouselPrevious className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 h-12 w-12 bg-white/10 hover:bg-white/20 border-white/20 text-white" />
+              <CarouselNext className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 h-12 w-12 bg-white/10 hover:bg-white/20 border-white/20 text-white" />
+            </Carousel>
           </div>
         </div>
       </AnimatedSection>
