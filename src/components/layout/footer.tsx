@@ -9,6 +9,7 @@ const footerLinks = {
     { href: '/blog', label: 'Blog' },
     { href: '/testimonials', label: 'Testimonials' },
     { href: '/distributors', label: 'Business Opportunity' },
+    { href: '/affiliate', label: 'Affiliate Program' },
   ],
   learn: [
     { href: '/science', label: 'Science Hub' },
