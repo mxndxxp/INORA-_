@@ -7,9 +7,9 @@ import { AnimatedSection } from '@/components/animated-section';
 import { ScienceIcons } from '@/components/science-icons';
 import { placeholderData } from '@/lib/placeholder-data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 export default function Home() {
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-image');
   const featuredProducts = placeholderData.products.slice(0, 3);
   const brands = placeholderData.brands;
   const testimonials = placeholderData.testimonials;
@@ -19,7 +19,7 @@ export default function Home() {
     <div className="flex flex-col min-h-[100dvh]">
       <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32 bg-secondary/50">
         <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
             <AnimatedSection
               className="flex flex-col justify-center space-y-4"
               animation="animate-scroll-in"
@@ -44,16 +44,38 @@ export default function Home() {
               </div>
             </AnimatedSection>
             <AnimatedSection className="flex items-center justify-center" animation="animate-scroll-in" delay={200}>
-              {heroImage && (
-                <Image
-                  alt="Hero"
-                  className="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
-                  data-ai-hint="water glass"
-                  height="600"
-                  src={heroImage.imageUrl}
-                  width="600"
-                />
-              )}
+               <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full max-w-lg"
+              >
+                <CarouselContent>
+                  {brands.map((brand) => (
+                    <CarouselItem key={brand.id} className="md:basis-1/2 lg:basis-1/3">
+                      <div className="p-1">
+                        <Link href={`/products?brand=${encodeURIComponent(brand.name)}`}>
+                           <Card className="flex aspect-square items-center justify-center p-6 transition-all hover:shadow-lg hover:bg-background/50">
+                            {brand.logoUrl && (
+                              <Image
+                                src={brand.logoUrl}
+                                alt={`${brand.name} logo`}
+                                width={120}
+                                height={60}
+                                className="object-contain"
+                                data-ai-hint={`${brand.name} logo`}
+                              />
+                            )}
+                          </Card>
+                        </Link>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
             </AnimatedSection>
           </div>
         </div>

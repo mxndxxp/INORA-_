@@ -12,10 +12,14 @@ import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
+import { useSearchParams } from 'next/navigation';
 
 export default function ProductsPage() {
+  const searchParams = useSearchParams();
+  const brandQuery = searchParams.get('brand');
+
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>(brandQuery ? [brandQuery] : []);
   const [filteredProducts, setFilteredProducts] = useState(placeholderData.products);
 
   const { minPrice, maxPrice } = useMemo(() => {
@@ -38,6 +42,12 @@ export default function ProductsPage() {
     setIsMounted(true);
     setPriceRange([minPrice, maxPrice]);
   }, [minPrice, maxPrice]);
+
+  useEffect(() => {
+    if (brandQuery && !selectedBrands.includes(brandQuery)) {
+      setSelectedBrands(prev => [...prev, brandQuery]);
+    }
+  }, [brandQuery, selectedBrands]);
 
   useEffect(() => {
     const results = placeholderData.products.filter(product => {
