@@ -12,6 +12,7 @@ const navLinks = [
   { href: '/science', label: 'The Science Hub' },
   { href: '/brands', label: 'Brands' },
   { href: '/products', label: 'Products' },
+  { href: '/compare', label: 'Compare' },
   { href: '/contact', label: 'Contact' },
 ];
 
