@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/carousel';
 
 export default function Home() {
-  const featuredProducts = placeholderData.products.slice(0, 3);
+  const featuredProducts = placeholderData.products.slice(0, 9);
   const brands = placeholderData.brands;
   const testimonials = placeholderData.testimonials;
   const scienceConcepts = placeholderData.scienceConcepts.slice(0, 4);
@@ -101,57 +101,74 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-            {featuredProducts.map((product) => {
-              const productImage = PlaceHolderImages.find(p => p.id === product.imageId);
-              return (
-              <div key={product.id} className="product-card">
-                 <div className="product-card-badge">Featured</div>
-                 <Link href={`/products/${product.id}`} className="product-card-tilt">
-                   <div className="product-card-img">
-                      {productImage && (
-                        <Image
-                          alt={product.name}
-                          src={productImage.imageUrl}
-                          layout="fill"
-                          objectFit="cover"
-                          data-ai-hint={productImage.imageHint}
-                        />
-                      )}
-                   </div>
-                 </Link>
-                 <div className="product-card-info">
-                   <div className="product-card-cat">{product.brand}</div>
-                   <h2 className="product-card-title">{product.name}</h2>
-                   <p className="product-card-desc">{product.description}</p>
-                   <div className="product-card-feats">
-                     <span className="product-card-feat">{product.specs.plates} Plates</span>
-                     <span className="product-card-feat">pH {product.specs.phRange}</span>
-                     <span className="product-card-feat">{product.specs.orpRange} ORP</span>
-                   </div>
-                   <div className="product-card-bottom">
-                     <div className="product-card-price">
-                       <span className="product-card-new">&#8377;{product.price.toLocaleString('en-IN')}</span>
-                     </div>
-                     <button className="product-card-btn">
-                       <span>Add to Cart</span>
-                       <ShoppingBag className="product-card-icon" />
-                     </button>
-                   </div>
-                   <div className="product-card-meta">
-                     <div className="product-card-rating">
-                        <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
-                        <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
-                        <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
-                        <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
-                        <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
-                       <span className="product-card-rcount">45 Reviews</span>
-                     </div>
-                     <div className="product-card-stock">In Stock</div>
-                   </div>
-                 </div>
-              </div>
-            )})}
+          <div className="relative mt-12">
+            <Carousel
+              opts={{
+                align: 'start',
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-8">
+                {featuredProducts.map((product) => {
+                  const productImage = PlaceHolderImages.find((p) => p.id === product.imageId);
+                  return (
+                    <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3 pl-8">
+                        <div className="product-card">
+                          <div className="product-card-badge">Featured</div>
+                          <Link href={`/products/${product.id}`} className="product-card-tilt">
+                            <div className="product-card-img">
+                              {productImage && (
+                                <Image
+                                  alt={product.name}
+                                  src={productImage.imageUrl}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  data-ai-hint={productImage.imageHint}
+                                />
+                              )}
+                            </div>
+                          </Link>
+                          <div className="product-card-info">
+                            <div className="product-card-cat">{product.brand}</div>
+                            <h2 className="product-card-title">{product.name}</h2>
+                            <p className="product-card-desc">{product.description}</p>
+                            <div className="product-card-feats">
+                              <span className="product-card-feat">{product.specs.plates} Plates</span>
+                              <span className="product-card-feat">pH {product.specs.phRange}</span>
+                              <span className="product-card-feat">{product.specs.orpRange} ORP</span>
+                            </div>
+                            <div className="product-card-bottom">
+                              <div className="product-card-price">
+                                <span className="product-card-new">
+                                  &#8377;{product.price.toLocaleString('en-IN')}
+                                </span>
+                              </div>
+                              <button className="product-card-btn">
+                                <span>Add to Cart</span>
+                                <ShoppingBag className="product-card-icon" />
+                              </button>
+                            </div>
+                            <div className="product-card-meta">
+                              <div className="product-card-rating">
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <span className="product-card-rcount">45 Reviews</span>
+                              </div>
+                              <div className="product-card-stock">In Stock</div>
+                            </div>
+                          </div>
+                        </div>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+              <CarouselPrevious className="absolute left-[-20px] md:left-[-40px] top-1/2 -translate-y-1/2 h-12 w-12" />
+              <CarouselNext className="absolute right-[-20px] md:right-[-40px] top-1/2 -translate-y-1/2 h-12 w-12" />
+            </Carousel>
           </div>
         </div>
       </AnimatedSection>
