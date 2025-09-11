@@ -47,12 +47,12 @@ export function Header() {
           <Droplet className="h-7 w-7 text-primary" />
           <span className="text-2xl font-headline font-bold">IONORA</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary px-4 py-2 rounded-md hover:bg-primary/10"
             >
               {link.label}
             </Link>
