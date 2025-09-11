@@ -11,11 +11,23 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
 
 export default function ProductsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [filteredProducts, setFilteredProducts] = useState(placeholderData.products);
+
+  const { minPrice, maxPrice } = useMemo(() => {
+    const prices = placeholderData.products.map(p => p.price);
+    return {
+      minPrice: Math.min(...prices),
+      maxPrice: Math.max(...prices),
+    };
+  }, []);
+  
+  const [priceRange, setPriceRange] = useState<[number, number]>([minPrice, maxPrice]);
+  const [isMounted, setIsMounted] = useState(false);
 
   const allBrands = useMemo(() => {
     const brands = new Set(placeholderData.products.map(p => p.brand));
@@ -23,19 +35,30 @@ export default function ProductsPage() {
   }, []);
 
   useEffect(() => {
+    setIsMounted(true);
+    setPriceRange([minPrice, maxPrice]);
+  }, [minPrice, maxPrice]);
+
+  useEffect(() => {
     const results = placeholderData.products.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
-      return matchesSearch && matchesBrand;
+      const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
+      return matchesSearch && matchesBrand && matchesPrice;
     });
     setFilteredProducts(results);
-  }, [searchTerm, selectedBrands]);
+  }, [searchTerm, selectedBrands, priceRange]);
 
   const handleBrandChange = (brand: string) => {
     setSelectedBrands(prev =>
       prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]
     );
   };
+  
+  const handlePriceChange = (value: number[]) => {
+    setPriceRange(value as [number, number]);
+  };
+
 
   return (
     <div className="bg-background">
@@ -89,6 +112,26 @@ export default function ProductsPage() {
                     ))}
                   </div>
                 </div>
+
+                {isMounted && (
+                  <div>
+                    <h3 className="text-xl font-headline font-bold mb-4">Price Range</h3>
+                    <div className="space-y-4">
+                       <Slider
+                          min={minPrice}
+                          max={maxPrice}
+                          step={1000}
+                          value={priceRange}
+                          onValueChange={handlePriceChange}
+                          className="w-full"
+                        />
+                      <div className="flex justify-between items-center text-sm text-muted-foreground">
+                        <span>&#8377;{priceRange[0].toLocaleString('en-IN')}</span>
+                        <span>&#8377;{priceRange[1].toLocaleString('en-IN')}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </aside>
 
@@ -151,5 +194,3 @@ export default function ProductsPage() {
     </div>
   );
 }
-
-  
