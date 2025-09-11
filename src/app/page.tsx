@@ -14,6 +14,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { WaterAnimation } from '@/components/water-animation';
+
 
 export default function Home() {
   const featuredProducts = placeholderData.products.slice(0, 9);
@@ -23,20 +25,21 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-16 lg:pt-40">
-        <div className="container px-4 md:px-6">
+      <section className="relative w-full pt-24 pb-12 md:pt-32 md:pb-16 lg:pt-40 overflow-hidden">
+        <WaterAnimation />
+        <div className="container px-4 md:px-6 relative z-10">
           <div className="flex flex-col items-center justify-center space-y-8 text-center">
             <AnimatedSection
               className="flex flex-col justify-center items-center space-y-4"
               animation="animate-scroll-in"
             >
               <div className="space-y-4">
-                <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white shadow-lg">
                   Pure Water, Pure Life.
                   <br />
                   Discover Ionora.
                 </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                <p className="max-w-[600px] text-gray-200 md:text-xl">
                   India's premier marketplace for water ionizers. Explore top brands, understand the science, and find the perfect match for your healthy lifestyle.
                 </p>
               </div>
@@ -44,14 +47,14 @@ export default function Home() {
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
                   <Link href="/products">Shop Now</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg">
+                <Button asChild variant="outline" size="lg" className="bg-white/20 text-white border-white/50 hover:bg-white/30">
                   <Link href="/science">Learn the Science</Link>
                 </Button>
               </div>
             </AnimatedSection>
             
-            <AnimatedSection className="w-full max-w-6xl pt-16" animation="animate-scroll-in" delay={200}>
-               <h3 className="text-4xl font-bold tracking-wide text-foreground">Trusted by the Best Brands</h3>
+            <AnimatedSection className="w-full max-w-6xl pt-8" animation="animate-scroll-in" delay={200}>
+               <h3 className="text-4xl font-bold tracking-wide text-white shadow-sm">Trusted by the Best Brands</h3>
                  <div className="relative mt-16">
                    <Carousel
                      opts={{
@@ -66,22 +69,24 @@ export default function Home() {
                            <div className="p-2 flex justify-center">
                               <Link href={`/products?brand=${encodeURIComponent(brand.name)}`} className="block w-full">
                                  {brand.logoUrl && (
-                                   <Image
-                                     alt={brand.name}
-                                     className="aspect-[3/2] overflow-hidden rounded-lg object-contain object-center opacity-70 hover:opacity-100 transition-opacity"
-                                     data-ai-hint={`${brand.name} logo`}
-                                     height="130"
-                                     src={brand.logoUrl}
-                                     width="195"
-                                   />
+                                   <div className="bg-white/90 p-4 rounded-lg shadow-lg hover:bg-white transition-colors">
+                                     <Image
+                                       alt={brand.name}
+                                       className="aspect-[3/2] overflow-hidden rounded-lg object-contain object-center opacity-80 group-hover:opacity-100 transition-opacity"
+                                       data-ai-hint={`${brand.name} logo`}
+                                       height="130"
+                                       src={brand.logoUrl}
+                                       width="195"
+                                     />
+                                   </div>
                                  )}
                                </Link>
                            </div>
                          </CarouselItem>
                        ))}
                      </CarouselContent>
-                     <CarouselPrevious className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 h-12 w-12" />
-                     <CarouselNext className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 h-12 w-12" />
+                     <CarouselPrevious className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 h-12 w-12 bg-white/50 hover:bg-white/80 border-none text-white" />
+                     <CarouselNext className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 h-12 w-12 bg-white/50 hover:bg-white/80 border-none text-white" />
                    </Carousel>
                  </div>
             </AnimatedSection>
@@ -122,8 +127,8 @@ export default function Home() {
                                 <Image
                                   alt={product.name}
                                   src={productImage.imageUrl}
-                                  layout="fill"
-                                  objectFit="cover"
+                                  fill
+                                  style={{objectFit: 'cover'}}
                                   data-ai-hint={productImage.imageHint}
                                 />
                               )}
