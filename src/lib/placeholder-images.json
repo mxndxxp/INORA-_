@@ -25,6 +25,36 @@
       "imageHint": "water bottle"
     },
     {
+      "id": "product-4",
+      "description": "Enagic K8 water ionizer on a kitchen counter.",
+      "imageUrl": "https://picsum.photos/seed/p4/400/250",
+      "imageHint": "water filter"
+    },
+    {
+      "id": "product-5",
+      "description": "Alkamedi 3000S ionizer.",
+      "imageUrl": "https://picsum.photos/seed/p5/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
+      "id": "product-6",
+      "description": "ZeroB Eco-Ionizer in a kitchen setting.",
+      "imageUrl": "https://picsum.photos/seed/p6/400/250",
+      "imageHint": "water purifier"
+    },
+    {
+      "id": "product-7",
+      "description": "Medisoul Genesis Plus machine.",
+      "imageUrl": "https://picsum.photos/seed/p7/400/250",
+      "imageHint": "water filter"
+    },
+    {
+      "id": "product-8",
+      "description": "Life Ionizer M13 with a glass of water.",
+      "imageUrl": "https://picsum.photos/seed/p8/400/250",
+      "imageHint": "water ionizer"
+    },
+    {
       "id": "brand-life-ionizers",
       "description": "Life Ionizers Logo",
       "imageUrl": "https://picsum.photos/seed/lifeionizers/140/70",
