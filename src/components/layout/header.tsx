@@ -69,9 +69,9 @@ export function Header() {
               Compare Now
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-primary hover:bg-primary/10 cart-button h-12 w-12">
+          <Button asChild variant="ghost" size="icon" className="text-primary hover:bg-primary/10 cart-button h-10 w-10">
             <Link href="/cart">
-              <ShoppingCart className="h-6 w-6 cart-icon" />
+              <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
             </Link>
           </Button>
