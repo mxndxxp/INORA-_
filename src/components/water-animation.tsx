@@ -98,10 +98,9 @@ const fragmentShader = `
   uniform float uTransparency; uniform float uSpec; uniform vec3 uLightDir; uniform float uTime; uniform vec3 uCameraPos;
   varying vec3 vWorldPos; varying vec3 vNormal; varying float vHeight; varying vec3 vViewDir;
 
-  // procedural sky sampling by direction
   vec3 sampleSky(vec3 dir){
     float t = smoothstep(0.0, 0.6, dir.y);
-    return mix(vec3(0.1, 0.2, 0.4), vec3(0.4, 0.7, 1.0), t);
+    return mix(vec3(0.4, 0.7, 1.0), vec3(0.7, 0.9, 1.0), t);
   }
 
   float fresnelSchlick(float cosTheta, float f0){
@@ -113,35 +112,28 @@ const fragmentShader = `
     vec3 V = normalize(vViewDir);
     vec3 L = normalize(uLightDir);
 
-    // reflection vector and refraction vector
     vec3 R = reflect(-V, N);
-    vec3 refr = refract(-V, N, 0.95); // small eta for subtle refraction
+    vec3 refr = refract(-V, N, 0.95); 
 
     vec3 reflCol = sampleSky(R);
     vec3 refrCol = sampleSky(refr) * vec3(0.7,0.9,1.0);
 
-    // specular
     float spec = pow(max(dot(reflect(-L,N), V), 0.0), 80.0) * uSpec;
 
-    // fresnel for mix
     float cosTheta = max(dot(N, V), 0.0);
     float fres = fresnelSchlick(cosTheta, 0.02);
 
-    // base water tint based on height/depth
     float depthFactor = smoothstep(-1.5, 2.5, vHeight);
     vec3 base = mix(vec3(0.3, 0.7, 0.9), vec3(0.05, 0.15, 0.25), depthFactor);
 
-    // foam on crests
     float crest = smoothstep(0.35, 0.95, vHeight);
     float upness = 1.0 - pow(max(dot(N, vec3(0.0,1.0,0.0)), 3.0), 3.0);
     float foam = crest * upness;
 
-    // combine
     vec3 color = mix(refrCol * 0.5 + base * 0.5, reflCol, fres);
     color = mix(color, vec3(1.0), clamp(foam*1.8, 0.0, 1.0));
     color += spec * 1.2;
 
-    // fresnel-based alpha (more transparent when looking down)
     float alpha = mix(0.9, 0.1, pow(1.0 - fres, 2.0));
     alpha = mix(alpha, uTransparency, 0.5);
 
@@ -164,7 +156,6 @@ export function WaterAnimation() {
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
     camera.position.set(0, 8, 18);
     
-    // Water geometry
     const size = 120;
     const seg = 320;
     const geo = new THREE.PlaneGeometry(size, size, seg, seg);
@@ -180,10 +171,10 @@ export function WaterAnimation() {
         uTime: { value: 0 },
         uAmp: { value: 0.45 },
         uWl: { value: 4.0 },
-        uSpeed: { value: 2.0 },
+        uSpeed: { value: 0.8 },
         uChop: { value: 0.6 },
         uTransparency: { value: 0.78 },
-        uSpec: { value: 1.2 },
+        uSpec: { value: 0.9 },
         uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
         uCameraPos: { value: new THREE.Vector3() },
         uLightDir: { value: new THREE.Vector3(0.5, 0.8, 0.2) },
@@ -203,7 +194,6 @@ export function WaterAnimation() {
     const mesh = new THREE.Mesh(geo, mat);
     scene.add(mesh);
     
-    // Light
     const hemi = new THREE.HemisphereLight(0x88bfff, 0x041829, 0.7);
     scene.add(hemi);
 
@@ -225,7 +215,7 @@ export function WaterAnimation() {
     let moveCooldown = 0;
     const onPointerMove = (e: PointerEvent) => {
       const t = performance.now();
-      if (t - moveCooldown > 60) { // throttle
+      if (t - moveCooldown > 60) {
         pushRipple(e.clientX, e.clientY);
         moveCooldown = t;
       }
