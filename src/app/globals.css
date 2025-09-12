@@ -651,7 +651,7 @@
 
   /* Like Button Animation */
   .like-button {
-    @apply relative cursor-pointer w-10 h-10;
+    @apply relative cursor-pointer w-8 h-8;
     background: transparent;
     border-radius: 50%;
     transition: background-color 0.25s ease;
@@ -748,4 +748,3 @@
     to { transform: scale(1); opacity: 0; }
   }
 }
-

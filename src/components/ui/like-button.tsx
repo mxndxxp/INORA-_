@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import React, { useState, useEffect } from "react";
-import Link from 'next/link';
 
 type LikeState = "Unliked" | "Saving" | "Liked";
 
