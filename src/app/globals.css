@@ -75,11 +75,12 @@
 
   .header-wave-container {
     position: absolute;
-    bottom: 0;
+    top: 100%;
     left: 0;
     width: 100%;
     height: 100px; /* Adjust height as needed */
     overflow: hidden;
+    transform: translateY(-100%) rotate(180deg);
   }
 
   .waves {
@@ -762,30 +763,85 @@
     100% { transform: rotate(0); }
   }
 
-  /* Metallic Button */
-  .metallic-button {
-    @apply text-sm font-semibold text-gray-700 transition-all duration-200;
-    background: linear-gradient(to bottom, #fefefe, #e0e0e0);
-    border: 1px solid #b0b0b0;
-    text-shadow: 0 1px 0 #fff;
-    box-shadow:
-      0 1px 1px rgba(0,0,0,0.1),
-      inset 0 1px 0 #fff;
+  /* 3D Push Button */
+  .push-button {
+    all: unset;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: relative;
+    border-radius: 999vw;
+    background-color: hsl(var(--primary) / 0.75);
+    box-shadow: -0.15em -0.15em 0.15em -0.075em hsla(var(--primary) / 0.25), 0.0375em 0.0375em 0.0675em 0 hsla(var(--primary) / 0.1);
   }
 
-  .metallic-button:hover {
-    background: linear-gradient(to bottom, #f0f0f0, #d8d8d8);
-    box-shadow:
-      0 1px 1px rgba(0,0,0,0.15),
-      inset 0 1px 0 #fefefe;
+  .push-button::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    width: calc(100% + 0.3em);
+    height: calc(100% + 0.3em);
+    top: -0.15em;
+    left: -0.15em;
+    border-radius: inherit;
+    background: linear-gradient(-135deg, hsla(var(--primary) / 0.5), transparent 20%, transparent 100%);
+    filter: blur(0.0125em);
+    opacity: 0.25;
+    mix-blend-mode: multiply;
   }
 
-  .metallic-button:active {
-    background: linear-gradient(to bottom, #d8d8d8, #e8e8e8);
-    box-shadow:
-      inset 0 2px 4px rgba(0,0,0,0.2),
-      0 1px 0 #fff;
-    transform: translateY(1px);
+  .push-button .button-outer {
+    position: relative;
+    z-index: 1;
+    border-radius: inherit;
+    transition: box-shadow 300ms ease;
+    will-change: box-shadow;
+    box-shadow: 0 0.05em 0.05em -0.01em hsl(var(--primary)), 0 0.01em 0.01em -0.01em hsla(var(--primary) / 0.5), 0.15em 0.3em 0.1em -0.01em hsla(var(--primary) / 0.25);
+  }
+
+  .push-button:hover .button-outer {
+    box-shadow: 0 0 0 0 hsl(var(--primary)), 0 0 0 0 hsla(var(--primary) / 0.5), 0 0 0 0 hsla(var(--primary) / 0.25);
+  }
+
+  .push-button .button-inner {
+    position: relative;
+    z-index: 1;
+    border-radius: inherit;
+    padding: 0.5em 1em;
+    font-size: 0.875rem;
+    background-image: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary) / 0.6));
+    transition: box-shadow 300ms ease, clip-path 250ms ease, background-image 250ms ease, transform 250ms ease;
+    will-change: box-shadow, clip-path, background-image, transform;
+    overflow: clip;
+    clip-path: inset(0 0 0 0 round 999vw);
+    box-shadow: 0 0 0 0 inset hsla(var(--primary) / 0.1), -0.05em -0.05em 0.05em 0 inset hsla(var(--primary) / 0.25), 0 0 0 0 inset hsla(var(--primary) / 0.1), 0 0 0.05em 0.2em inset hsla(0, 0%, 100% / 0.25), 0.025em 0.05em 0.1em 0 inset hsla(0, 0%, 100% / 1), 0.12em 0.12em 0.12em inset hsla(0, 0%, 100% / 0.25), -0.075em -0.25em 0.25em 0.1em inset hsla(var(--primary) / 0.25);
+  }
+
+  .push-button:hover .button-inner {
+    clip-path: inset(clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 999vw);
+    box-shadow: 0.1em 0.15em 0.05em 0 inset hsla(var(--primary) / 0.75), -0.025em -0.03em 0.05em 0.025em inset hsla(var(--primary) / 0.5), 0.25em 0.25em 0.2em 0 inset hsla(var(--primary) / 0.5), 0 0 0.05em 0.5em inset hsla(0, 0%, 100% / 0.15), 0 0 0 0 inset hsla(0, 0%, 100% / 1), 0.12em 0.12em 0.12em inset hsla(0, 0%, 100% / 0.25), -0.075em -0.12em 0.2em 0.1em inset hsla(var(--primary) / 0.25);
+  }
+
+  .push-button .button-inner span {
+    position: relative;
+    z-index: 4;
+    letter-spacing: -0.05em;
+    font-weight: 500;
+    color: hsl(var(--primary-foreground));
+    transition: transform 250ms ease;
+    display: block;
+    will-change: transform;
+    text-shadow: hsla(var(--primary-foreground) / 0.1) 0 0 0.1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  .push-button:hover .button-inner span {
+    transform: scale(0.975);
+  }
+
+  .push-button:active .button-inner {
+    transform: scale(0.975);
   }
 
 }

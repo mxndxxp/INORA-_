@@ -64,11 +64,15 @@ export function Header() {
           <Link href="/wishlist">
             <LikeButton />
           </Link>
-          <Button asChild className="metallic-button">
-            <Link href="/compare">
-              Compare Now
-            </Link>
-          </Button>
+          <Link href="/compare">
+            <button className="push-button">
+              <div className="button-outer">
+                <div className="button-inner">
+                  <span>Compare Now</span>
+                </div>
+              </div>
+            </button>
+          </Link>
           <Button asChild variant="ghost" size="icon" className="text-primary hover:bg-primary/10 cart-button h-10 w-10">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5 cart-icon" />
@@ -100,7 +104,7 @@ export function Header() {
           </div>
 
       </div>
-      <div className="header-wave-container" style={{transform: 'rotate(180deg)'}}>
+      <div className="header-wave-container">
           <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
           viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
           <defs>
