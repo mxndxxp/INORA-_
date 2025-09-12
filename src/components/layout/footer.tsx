@@ -19,6 +19,7 @@ const footerLinks = {
     { href: '/benefits', label: 'Benefits' },
     { href: '/hydrogen-water', label: 'Hydrogen Water' },
     { href: '/compare', label: 'Compare Products' },
+    { href: '/certifications', label: 'Certifications' },
   ],
   support: [
     { href: '/contact', label: 'Contact Us' },
@@ -129,7 +130,7 @@ export function Footer() {
                           ))}
                         </ul>
                         <ul>
-                           {footerLinks.learn.slice(0,4).map(link => (
+                           {footerLinks.learn.map(link => (
                             <li key={link.href}>
                               <Link href={link.href}>{link.label}</Link>
                             </li>

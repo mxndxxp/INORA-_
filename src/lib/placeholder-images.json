@@ -264,6 +264,30 @@
       "description": "Diagram explaining a scientific concept",
       "imageUrl": "https://picsum.photos/seed/diagram/500/300",
       "imageHint": "diagram chart"
+    },
+    {
+      "id": "cert-iso-9001",
+      "description": "ISO 9001 Certification Logo",
+      "imageUrl": "https://picsum.photos/seed/iso9001/160/120",
+      "imageHint": "certification logo"
+    },
+    {
+      "id": "cert-ce",
+      "description": "CE Certification Logo",
+      "imageUrl": "https://picsum.photos/seed/celogo/160/120",
+      "imageHint": "certification logo"
+    },
+    {
+      "id": "cert-wqa",
+      "description": "Water Quality Association Logo",
+      "imageUrl": "https://picsum.photos/seed/wqa/160/120",
+      "imageHint": "certification logo"
+    },
+    {
+      "id": "cert-rohs",
+      "description": "RoHS Compliant Logo",
+      "imageUrl": "https://picsum.photos/seed/rohs/160/120",
+      "imageHint": "certification logo"
     }
   ]
 }

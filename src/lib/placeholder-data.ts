@@ -1,4 +1,4 @@
-import type { Product, Brand, Testimonial, ScienceConcept } from '@/lib/types';
+import type { Product, Brand, Testimonial, ScienceConcept, Certification } from '@/lib/types';
 import { PlaceHolderImages } from './placeholder-images';
 
 const getImageUrl = (id: string) => PlaceHolderImages.find(p => p.id === id)?.imageUrl;
@@ -8,6 +8,7 @@ export const placeholderData: {
   brands: Brand[];
   testimonials: Testimonial[];
   scienceConcepts: ScienceConcept[];
+  certifications: Certification[];
 } = {
   products: [
     {
@@ -354,6 +355,26 @@ export const placeholderData: {
         concept: 'Hydrogen-Rich Water'
       },
   ],
+  certifications: [
+    {
+      id: 'cert1',
+      title: 'ISO 9001',
+      imageId: 'cert-iso-9001'
+    },
+    {
+      id: 'cert2',
+      title: 'CE Certified',
+      imageId: 'cert-ce'
+    },
+    {
+      id: 'cert3',
+      title: 'Water Quality Association',
+      imageId: 'cert-wqa'
+    },
+    {
+      id: 'cert4',
+      title: 'RoHS Compliant',
+      imageId: 'cert-rohs'
+    }
+  ],
 };
-
-    

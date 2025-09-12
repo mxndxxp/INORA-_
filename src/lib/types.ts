@@ -37,3 +37,9 @@ export type ScienceConcept = {
   icon: keyof typeof ScienceIcons;
   concept: string;
 };
+
+export type Certification = {
+  id: string;
+  title: string;
+  imageId: string;
+};

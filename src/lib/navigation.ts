@@ -24,6 +24,7 @@ export const mainNav: NavItem[] = [
       children: [
         { title: "Why Ionora?", href: "/why-ionora" },
         { title: "Testimonials", href: "/testimonials" },
+        { title: "Certifications", href: "/certifications" },
         { title: "Blog", href: "/blog" },
       ],
     },

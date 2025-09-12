@@ -27,6 +27,7 @@ export default function Home() {
   const brands = placeholderData.brands;
   const testimonials = placeholderData.testimonials;
   const scienceConcepts = placeholderData.scienceConcepts.slice(0, 4);
+  const certifications = placeholderData.certifications;
   
   const leftBrands = brands.slice(0, 4);
   const rightBrands = brands.slice(4, 8);
@@ -336,10 +337,45 @@ export default function Home() {
           </div>
         </div>
       </AnimatedSection>
+
+      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Quality Assured</div>
+              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
+              </p>
+            </div>
+          </div>
+          <div className="mx-auto grid max-w-5xl grid-cols-2 items-center justify-center gap-8 py-12 sm:grid-cols-3 md:gap-12 lg:grid-cols-4">
+            {certifications.map((cert) => {
+              const certImage = PlaceHolderImages.find((p) => p.id === cert.imageId);
+              return (
+                <div key={cert.id} className="flex flex-col items-center justify-center gap-2">
+                  {certImage && (
+                    <Image
+                      alt={cert.title}
+                      className="aspect-[4/3] overflow-hidden rounded-lg object-contain"
+                      height="120"
+                      src={certImage.imageUrl}
+                      width="160"
+                      data-ai-hint={certImage.imageHint}
+                    />
+                  )}
+                  <p className="text-sm font-medium text-muted-foreground">{cert.title}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex justify-center">
+            <Button asChild size="lg" variant="outline">
+              <Link href="/certifications">View All Certifications <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            </Button>
+          </div>
+        </div>
+      </AnimatedSection>
     </div>
   );
 }
-
-    
-
-    
