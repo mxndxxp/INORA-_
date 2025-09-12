@@ -42,7 +42,7 @@ export function Header() {
         <div className="hidden md:flex justify-center w-1/3">
           <Link href="/" className="flex items-center gap-2 text-white">
             <Droplet className="h-8 w-8" />
-            <span className="text-3xl font-headline font-bold">IONORA</span>
+            <span className="text-3xl font-headline font-bold text-white">IONORA</span>
           </Link>
         </div>
 
@@ -60,19 +60,19 @@ export function Header() {
                 </Link>
               ))}
            </nav>
-          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+          <Button asChild variant="ghost" size="icon" className="text-red-500 hover:bg-red-500/10 hover:text-red-500">
             <Link href="/wishlist">
               <Heart className="h-5 w-5" />
               <span className="sr-only">Wishlist</span>
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+          <Button asChild variant="ghost" size="icon" className="text-foreground/70 hover:bg-white/10 hover:text-foreground">
             <Link href="/compare">
               <GitCompare className="h-5 w-5" />
               <span className="sr-only">Compare</span>
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+          <Button asChild variant="ghost" size="icon" className="text-foreground/70 hover:bg-white/10 hover:text-foreground">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5" />
               <span className="sr-only">Cart</span>
