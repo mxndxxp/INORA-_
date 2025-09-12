@@ -115,7 +115,7 @@ const fragmentShader = `
   }
 
   float fresnelSchlick(float cosTheta, float f0){
-    return f0 + (1.0 - f0) * pow(1.0 - cosTheta, 5.0);
+    return f0 + (1.0 - f0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
   }
 
   void main(){
@@ -139,7 +139,7 @@ const fragmentShader = `
 
     // base water tint based on height/depth
     float depthFactor = smoothstep(-1.5, 2.5, vHeight);
-    vec3 base = mix(vec3(0.07,0.32,0.48), vec3(0.02,0.06,0.12), depthFactor);
+    vec3 base = mix(vec3(0.1, 0.4, 0.7), vec3(0.0, 0.1, 0.2), depthFactor);
 
     // foam on crests
     float crest = smoothstep(0.35, 0.95, vHeight);
@@ -147,13 +147,13 @@ const fragmentShader = `
     float foam = crest * upness;
 
     // combine
-    vec3 color = mix(refrCol * 0.7 + base * 0.6, reflCol, fres);
+    vec3 color = mix(refrCol * 0.4 + base * 0.3, reflCol, fres);
     color = mix(color, vec3(1.0), clamp(foam*1.4, 0.0, 1.0));
     color += spec * 0.8;
 
     // fresnel-based alpha (more transparent when looking down)
-    float alpha = mix(0.85, 0.35, pow(1.0 - fres, 1.2));
-    alpha = mix(alpha, uTransparency, 0.6);
+    float alpha = mix(0.9, 0.1, pow(1.0 - fres, 2.0));
+    alpha = mix(alpha, uTransparency, 0.5);
 
     gl_FragColor = vec4(color, alpha);
   }
