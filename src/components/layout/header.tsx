@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Droplet, Heart, ShoppingCart, GitCompare, Menu } from 'lucide-react';
+import { Droplet, GitCompare, Menu, ShoppingCart } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { MobileMenu } from './mobile-menu';
 import { LikeButton } from '../ui/like-button';
 
@@ -61,7 +61,9 @@ export function Header() {
                 </Link>
               ))}
            </nav>
-          <LikeButton />
+          <Link href="/wishlist">
+            <LikeButton />
+          </Link>
           <Button asChild variant="ghost" size="icon" className="text-foreground/70 hover:bg-white/10 hover:text-foreground">
             <Link href="/compare">
               <GitCompare className="h-5 w-5" />

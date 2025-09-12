@@ -1,7 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Link from 'next/link';
 
 type LikeState = "Unliked" | "Saving" | "Liked";
 
@@ -9,18 +10,17 @@ export function LikeButton() {
   const [state, setState] = useState<LikeState>("Unliked");
   const [usedKeyboard, setUsedKeyboard] = useState(false);
 
-  const updateState = async (to: LikeState) => {
-    setState("Saving");
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setState(to);
-  };
+  // This effect will toggle the button state for demonstration
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setState(prev => prev === "Unliked" ? "Liked" : "Unliked");
+    }, 2400);
+    return () => clearInterval(interval);
+  }, []);
 
-  const handleClick = () => {
-    updateState(state === "Unliked" ? "Liked" : "Unliked");
-  };
 
   return (
-    <button
+    <div
       className={cn(
         "like-button",
         {
@@ -30,7 +30,6 @@ export function LikeButton() {
         },
         !usedKeyboard && "focus:outline-none"
       )}
-      onClick={handleClick}
       onKeyDown={(e) => {
         if (e.key === "Tab") {
           setUsedKeyboard(true);
@@ -42,6 +41,6 @@ export function LikeButton() {
       <span className="like-icon-state" aria-live="polite">
         {state}
       </span>
-    </button>
+    </div>
   );
 }
