@@ -2,21 +2,21 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Droplet, Menu, ShoppingCart } from 'lucide-react';
+import { Droplet, Menu, ShoppingCart, ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { MobileMenu } from './mobile-menu';
 import { LikeButton } from '../ui/like-button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { mainNav } from '@/lib/navigation';
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/why-ionora', label: 'Why Ionora?' },
-  { href: '/science', label: 'The Science Hub' },
-  { href: '/products', label: 'Products' },
-  { href: '/contact', label: 'Contact' },
-];
 
 export function Header() {
   const pathname = usePathname();
@@ -26,17 +26,40 @@ export function Header() {
     <header className="header-wavy">
       <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-white relative z-10">
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8 w-1/3">
-          {navLinks.slice(0, 3).map((item) => (
-            <Link key={item.href} href={item.href} className="flex flex-col items-center">
-              <span className={cn(
-                'font-bold transition-colors hover:text-foreground/80',
-                pathname === item.href ? 'text-foreground' : 'text-foreground/70'
-              )}>
-                {item.label}
-              </span>
-              {pathname === item.href && <div className="mt-1 wavy-underline" />}
-            </Link>
+        <nav className="hidden md:flex items-center gap-2 w-1/3">
+          {mainNav.slice(0, 3).map((item) => (
+            item.children ? (
+              <DropdownMenu key={item.title}>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex flex-col items-center h-auto py-2 px-3 group">
+                    <span className={cn(
+                      'font-bold transition-colors hover:text-foreground/80 flex items-center gap-1',
+                      pathname.startsWith(item.href) ? 'text-foreground' : 'text-foreground/70'
+                    )}>
+                      {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                    </span>
+                    {pathname.startsWith(item.href) && <div className="mt-1 wavy-underline" />}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56">
+                  {item.children.map((child) => (
+                    <DropdownMenuItem key={child.href} asChild>
+                      <Link href={child.href}>{child.title}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
+                <span className={cn(
+                  'font-bold transition-colors hover:text-foreground/80',
+                  pathname === item.href ? 'text-foreground' : 'text-foreground/70'
+                )}>
+                  {item.title}
+                </span>
+                {pathname === item.href && <div className="mt-1 wavy-underline" />}
+              </Link>
+            )
           ))}
         </nav>
 
@@ -48,17 +71,40 @@ export function Header() {
         </div>
 
         <div className="hidden md:flex items-center justify-end gap-4 w-1/3">
-           <nav className="flex items-center gap-8">
-             {navLinks.slice(3, 5).map((item) => (
-                <Link key={item.href} href={item.href} className="flex flex-col items-center">
+           <nav className="flex items-center gap-2">
+             {mainNav.slice(3).map((item) => (
+                item.children ? (
+                <DropdownMenu key={item.title}>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="flex flex-col items-center h-auto py-2 px-3 group">
+                      <span className={cn(
+                        'font-bold transition-colors hover:text-foreground/80 flex items-center gap-1',
+                        pathname.startsWith(item.href) ? 'text-foreground' : 'text-foreground/70'
+                      )}>
+                        {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                      </span>
+                      {pathname.startsWith(item.href) && <div className="mt-1 wavy-underline" />}
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-56">
+                    {item.children.map((child) => (
+                      <DropdownMenuItem key={child.href} asChild>
+                        <Link href={child.href}>{child.title}</Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                   <span className={cn(
                     'font-bold transition-colors hover:text-foreground/80',
                      pathname === item.href ? 'text-foreground' : 'text-foreground/70'
                   )}>
-                    {item.label}
+                    {item.title}
                   </span>
                   {pathname === item.href && <div className="mt-1 wavy-underline" />}
                 </Link>
+              )
               ))}
            </nav>
           <Link href="/wishlist">
@@ -98,7 +144,7 @@ export function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="bg-foreground/95 border-l-0 p-0 w-full max-w-sm">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                <MobileMenu navLinks={navLinks} onLinkClick={() => setMobileMenuOpen(false)} />
+                <MobileMenu navLinks={mainNav} onLinkClick={() => setMobileMenuOpen(false)} />
               </SheetContent>
             </Sheet>
           </div>
