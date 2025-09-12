@@ -98,10 +98,10 @@ export function Header() {
           <Link href="/wishlist">
             <LikeButton />
           </Link>
-          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-black/5 cart-button h-9 w-9">
+          <Button asChild variant="outline" size="sm" className="rounded-full text-black hover:bg-black/5 hover:text-black cart-button">
              <Link href="/compare">
-              <GitCompare className="h-5 w-5 cart-icon" />
-              <span className="sr-only">Compare</span>
+              <GitCompare className="h-4 w-4 mr-1 cart-icon" />
+              Compare Now
             </Link>
           </Button>
           <Button asChild variant="ghost" size="icon" className="text-black hover:bg-black/5 cart-button h-9 w-9">
