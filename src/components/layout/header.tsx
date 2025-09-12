@@ -41,7 +41,7 @@ export function Header() {
       <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-foreground relative z-10">
         <Link href="/" className="flex items-center gap-2 mr-6">
           <Droplet className="h-8 w-8 text-primary" />
-          <span className="text-3xl font-headline font-bold text-foreground">IONORA</span>
+          <span className="text-3xl font-headline font-bold text-black">IONORA</span>
         </Link>
         
 
@@ -59,13 +59,13 @@ export function Header() {
                    <Button
                     variant="ghost"
                     className={cn(
-                      "flex flex-col items-center h-auto py-2 px-3 group text-foreground hover:bg-black/5 hover:text-foreground",
+                      "flex flex-col items-center h-auto py-2 px-3 group text-black hover:bg-black/5 hover:text-black",
                       isActive && "bg-black/5"
                     )}
                   >
                     <span className={cn(
                       'font-bold transition-colors flex items-center gap-1',
-                      isActive ? 'text-foreground' : 'text-foreground/80'
+                      isActive ? 'text-black' : 'text-black/80'
                     )}>
                       {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                     </span>
@@ -83,8 +83,8 @@ export function Header() {
             ) : (
               <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                 <span className={cn(
-                  'font-bold transition-colors hover:text-foreground',
-                  isActive ? 'text-foreground' : 'text-foreground/80'
+                  'font-bold transition-colors hover:text-black',
+                  isActive ? 'text-black' : 'text-black/80'
                 )}>
                   {item.title}
                 </span>
@@ -95,19 +95,19 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center justify-end gap-3">
-          <Button asChild variant="ghost" size="icon" className="text-foreground hover:bg-black/5 h-9 w-9">
+          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-black/5 h-9 w-9">
             <Link href="/wishlist">
               <Heart className="h-5 w-5" />
               <span className="sr-only">Wishlist</span>
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-foreground hover:bg-black/5 h-9 w-9">
+          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-black/5 h-9 w-9">
              <Link href="/compare">
               <GitCompare className="h-5 w-5" />
               <span className="sr-only">Compare</span>
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-foreground hover:bg-black/5 cart-button h-9 w-9">
+          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-black/5 cart-button h-9 w-9">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
@@ -119,7 +119,7 @@ export function Header() {
         <div className="md:hidden flex-1 flex justify-end">
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-foreground hover:bg-black/5 hover:text-foreground">
+              <Button variant="ghost" size="icon" className="text-black hover:bg-black/5 hover:text-black">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -134,7 +134,7 @@ export function Header() {
       </div>
       <div className="header-wave-container">
           <svg className="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-              <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="hsl(var(--primary))"></path>
+              <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="white"></path>
           </svg>
       </div>
     </header>
