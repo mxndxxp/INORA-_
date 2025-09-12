@@ -23,7 +23,7 @@ export function Header() {
 
   return (
     <header className="header-wavy">
-       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+       <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden -z-10 rotate-180">
         <svg
           className="sea"
           version="1.1"
