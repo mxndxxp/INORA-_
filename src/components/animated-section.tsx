@@ -2,16 +2,19 @@
 
 import React, { useRef, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { Slot } from '@radix-ui/react-slot';
 
 interface AnimatedSectionProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   animation?: 'animate-scroll-in';
   delay?: number;
+  asChild?: boolean;
 }
 
-export const AnimatedSection = ({ children, className, animation, delay = 0, ...props }: AnimatedSectionProps) => {
+export const AnimatedSection = ({ children, className, animation, delay = 0, asChild = false, ...props }: AnimatedSectionProps) => {
   const ref = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const Comp = asChild ? Slot : 'section';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,17 +30,21 @@ export const AnimatedSection = ({ children, className, animation, delay = 0, ...
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
       observer.disconnect();
     };
   }, []);
 
   return (
-    <section
+    <Comp
       ref={ref}
       className={cn(
         'transition-all duration-700 ease-out',
@@ -51,6 +58,6 @@ export const AnimatedSection = ({ children, className, animation, delay = 0, ...
       {...props}
     >
       {children}
-    </section>
+    </Comp>
   );
 };

@@ -113,9 +113,9 @@ export default function Home() {
         </div>
       </section>
       
-      <AnimatedSection className="py-12 md:py-20 lg:py-24">
+      <section className="py-12 md:py-20 lg:py-24">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Featured Products</div>
               <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Discover Our Top Ionizers</h2>
@@ -123,8 +123,8 @@ export default function Home() {
                 Handpicked for performance, reliability, and cutting-edge features. Start your journey to better hydration here.
               </p>
             </div>
-          </div>
-          <div className="relative mt-12">
+          </AnimatedSection>
+          <AnimatedSection className="relative mt-12" delay={200}>
             <Carousel
               opts={{
                 align: 'start',
@@ -195,26 +195,26 @@ export default function Home() {
               <CarouselPrevious className="absolute left-[-20px] md:left-[-40px] top-1/2 -translate-y-1/2 h-12 w-12" />
               <CarouselNext className="absolute right-[-20px] md:right-[-40px] top-1/2 -translate-y-1/2 h-12 w-12" />
             </Carousel>
-          </div>
+          </AnimatedSection>
         </div>
-      </AnimatedSection>
+      </section>
       
-      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
+      <section className="py-12 md:py-20 lg:py-24 bg-secondary/50">
         <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
                     <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">The Science Hub</div>
-                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Understand the Power of Ionization</h2>
-                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-black">Understand the Power of Ionization</h2>
+                    <p className="max-w-[900px] text-black md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                         We believe in empowering our customers with knowledge. Dive into the core concepts behind water ionization.
                     </p>
                 </div>
-            </div>
+            </AnimatedSection>
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-4 py-12">
-                {scienceConcepts.map((concept) => {
+                {scienceConcepts.map((concept, index) => {
                     const Icon = ScienceIcons[concept.icon as keyof typeof ScienceIcons];
                     return (
-                        <div key={concept.id} className="grid gap-1 text-center">
+                        <AnimatedSection key={concept.id} className="grid gap-1 text-center" delay={index * 100}>
                             <div className="flex justify-center items-center mb-2">
                                 <div className="bg-background rounded-full p-4 border shadow-sm">
                                     <Icon className="h-8 w-8 text-primary" />
@@ -222,22 +222,22 @@ export default function Home() {
                             </div>
                             <h3 className="text-lg font-bold">{concept.title}</h3>
                             <p className="text-sm text-muted-foreground">{concept.description}</p>
-                        </div>
+                        </AnimatedSection>
                     );
                 })}
             </div>
-            <div className="flex justify-center">
+            <AnimatedSection className="flex justify-center">
                  <Button asChild size="lg" variant="outline">
                     <Link href="/science">Explore the Science Hub <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
-            </div>
+            </AnimatedSection>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="py-12 md:py-20 lg:py-24">
+      <section className="py-12 md:py-20 lg:py-24">
         <div className="container px-4 md:px-6">
           <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
-            <div className="flex justify-center">
+            <AnimatedSection className="flex justify-center">
                <Image
                  alt="Why Ionora"
                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
@@ -246,53 +246,65 @@ export default function Home() {
                  src="https://picsum.photos/seed/ionora-why/550/310"
                  width="550"
                />
-             </div>
+             </AnimatedSection>
             <div className="space-y-4">
-              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Why Ionora?</div>
-              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Your Guide to a Healthier Life</h2>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Choosing a water ionizer is a significant decision. At Ionora, we empower you with knowledge, choice, and support every step of the way.
-              </p>
+              <AnimatedSection>
+                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Why Ionora?</div>
+              </AnimatedSection>
+              <AnimatedSection delay={100}>
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Your Guide to a Healthier Life</h2>
+              </AnimatedSection>
+              <AnimatedSection delay={200}>
+                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Choosing a water ionizer is a significant decision. At Ionora, we empower you with knowledge, choice, and support every step of the way.
+                </p>
+              </AnimatedSection>
               <ul className="grid gap-4">
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                  <div>
-                    <h3 className="font-bold">Unparalleled Choice</h3>
-                    <p className="text-muted-foreground">Access a wide range of top-tier brands and models, all in one place.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                  <div>
-                    <h3 className="font-bold">Expert Knowledge</h3>
-                    <p className="text-muted-foreground">Our Science Hub breaks down complex topics into easy-to-understand guides.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
-                  <div>
-                    <h3 className="font-bold">Side-by-Side Comparison</h3>
-                    <p className="text-muted-foreground">Use our powerful tools to compare products and make an informed decision.</p>
-                  </div>
-                </li>
+                <AnimatedSection asChild delay={300}>
+                  <li className="flex items-start gap-4">
+                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <div>
+                      <h3 className="font-bold">Unparalleled Choice</h3>
+                      <p className="text-muted-foreground">Access a wide range of top-tier brands and models, all in one place.</p>
+                    </div>
+                  </li>
+                </AnimatedSection>
+                <AnimatedSection asChild delay={400}>
+                  <li className="flex items-start gap-4">
+                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <div>
+                      <h3 className="font-bold">Expert Knowledge</h3>
+                      <p className="text-muted-foreground">Our Science Hub breaks down complex topics into easy-to-understand guides.</p>
+                    </div>
+                  </li>
+                </AnimatedSection>
+                <AnimatedSection asChild delay={500}>
+                  <li className="flex items-start gap-4">
+                    <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <div>
+                      <h3 className="font-bold">Side-by-Side Comparison</h3>
+                      <p className="text-muted-foreground">Use our powerful tools to compare products and make an informed decision.</p>
+                    </div>
+                  </li>
+                </AnimatedSection>
               </ul>
             </div>
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-foreground">
+      <section className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-foreground">
         <RaindropAnimation />
         <div className="container px-4 md:px-6 relative">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-background">What Our Customers Say</h2>
               <p className="max-w-[900px] text-muted md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Real stories from people who have experienced the benefits of ionized water.
               </p>
             </div>
-          </div>
-          <div className="relative mt-12">
+          </AnimatedSection>
+          <AnimatedSection className="relative mt-12" delay={200}>
             <Carousel
               opts={{
                 align: 'start',
@@ -334,13 +346,13 @@ export default function Home() {
               <CarouselPrevious className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 h-12 w-12 bg-white/10 hover:bg-white/20 border-white/20 text-white" />
               <CarouselNext className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 h-12 w-12 bg-white/10 hover:bg-white/20 border-white/20 text-white" />
             </Carousel>
-          </div>
+          </AnimatedSection>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
+      <section className="py-12 md:py-20 lg:py-24 bg-secondary/50">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Quality Assured</div>
               <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
@@ -348,36 +360,40 @@ export default function Home() {
                 We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
               </p>
             </div>
-          </div>
+          </AnimatedSection>
           <div className="mx-auto grid max-w-5xl grid-cols-2 items-center justify-center gap-8 py-12 sm:grid-cols-3 md:gap-12 lg:grid-cols-4">
-            {certifications.map((cert) => {
-              const certImage = PlaceHolderImages.find((p) => p.id === cert.imageId);
+            {certifications.map((cert, index) => {
               return (
-                <div key={cert.id} className="flex flex-col items-center justify-center gap-2">
-                  {certImage && (
-                    <Image
-                      alt={cert.title}
-                      className="aspect-[4/3] overflow-hidden rounded-lg object-contain"
-                      height="120"
-                      src={certImage.imageUrl}
-                      width="160"
-                      data-ai-hint={certImage.imageHint}
-                    />
-                  )}
-                  <p className="text-sm font-medium text-muted-foreground">{cert.title}</p>
-                </div>
+                <AnimatedSection key={cert.id} className="flex flex-col items-center justify-center gap-2" delay={index * 100}>
+                  {(() => {
+                    const certImage = PlaceHolderImages.find((p) => p.id === cert.imageId);
+                    return (
+                      <>
+                        {certImage && (
+                          <Image
+                            alt={cert.title}
+                            className="aspect-[4/3] overflow-hidden rounded-lg object-contain"
+                            height="120"
+                            src={certImage.imageUrl}
+                            width="160"
+                            data-ai-hint={certImage.imageHint}
+                          />
+                        )}
+                        <p className="text-sm font-medium text-muted-foreground">{cert.title}</p>
+                      </>
+                    );
+                  })()}
+                </AnimatedSection>
               );
             })}
           </div>
-          <div className="flex justify-center">
+          <AnimatedSection className="flex justify-center">
             <Button asChild size="lg" variant="outline">
               <Link href="/certifications">View All Certifications <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
-          </div>
+          </AnimatedSection>
         </div>
-      </AnimatedSection>
+      </section>
     </div>
   );
 }
-
-    
