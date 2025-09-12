@@ -23,14 +23,14 @@ export function Header() {
 
   return (
     <header className="header-wavy">
-      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-white">
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 w-1/3">
           {navLinks.slice(0, 3).map((item) => (
             <Link key={item.href} href={item.href} className="flex flex-col items-center">
               <span className={cn(
-                'text-background font-medium transition-colors hover:text-white/80',
-                pathname === item.href && 'text-white'
+                'font-medium transition-colors hover:text-white/80',
+                pathname === item.href ? 'text-white' : 'text-gray-200'
               )}>
                 {item.label}
               </span>
@@ -51,8 +51,8 @@ export function Header() {
              {navLinks.slice(3, 5).map((item) => (
                 <Link key={item.href} href={item.href} className="flex flex-col items-center">
                   <span className={cn(
-                    'text-background font-medium transition-colors hover:text-white/80',
-                    pathname === item.href && 'text-white'
+                    'font-medium transition-colors hover:text-white/80',
+                     pathname === item.href ? 'text-white' : 'text-gray-200'
                   )}>
                     {item.label}
                   </span>
