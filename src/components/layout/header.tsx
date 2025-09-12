@@ -23,49 +23,6 @@ export function Header() {
 
   return (
     <header className="header-wavy">
-       <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden -z-10 rotate-180">
-        <svg
-          className="sea"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          x="0px"
-          y="0px"
-          width="100%"
-          height="100%"
-          viewBox="0 0 1600 900"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <defs>
-            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="800" y1="900" x2="800" y2="0">
-              <stop offset="0" style={{ stopColor: '#0071BC' }} />
-              <stop offset="1" style={{ stopColor: '#0000FF' }} />
-            </linearGradient>
-            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="800" y1="900" x2="800" y2="0">
-              <stop offset="0" style={{ stopColor: '#29ABE2' }} />
-              <stop offset="1" style={{ stopColor: '#0000FF' }} />
-            </linearGradient>
-          </defs>
-          <g>
-            <path
-              className="wave-path-dark"
-              d="M1600,300c-200,0-200-150-400-150S800,300,600,300S200,150,0,150v750h1600V300z"
-            />
-          </g>
-          <g>
-            <path
-              className="wave-path-light"
-              d="M1600,450c-200,0-200-150-400-150S800,450,600,450S200,300,0,300v600h1600V450z"
-            />
-          </g>
-          <g>
-            <path
-              className="wave-path-white"
-              d="M-200,450c200,0,200,30,400,30s200-30,400-30s200,30,400,30s200-30,400-30s200,30,400,30v450H-200V450z"
-            />
-          </g>
-        </svg>
-      </div>
       <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-white relative z-10">
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 w-1/3">
