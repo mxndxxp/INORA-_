@@ -22,23 +22,31 @@ export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const isNavItemActive = (item: (typeof mainNav)[0]) => {
+    if (item.children) {
+      return pathname.startsWith(item.href);
+    }
+    return pathname === item.href;
+  };
+
   return (
     <header className="header-wavy">
       <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-white relative z-10">
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-2 w-1/3">
-          {mainNav.slice(0, 3).map((item) => (
-            item.children ? (
+          {mainNav.slice(0, 3).map((item) => {
+            const isActive = isNavItemActive(item);
+            return item.children ? (
               <DropdownMenu key={item.title}>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="flex flex-col items-center h-auto py-2 px-3 group">
                     <span className={cn(
-                      'font-bold transition-colors hover:text-foreground/80 flex items-center gap-1',
-                      pathname.startsWith(item.href) ? 'text-foreground' : 'text-foreground/70'
+                      'font-bold transition-colors hover:text-accent-foreground flex items-center gap-1',
+                      isActive ? 'text-foreground' : 'text-foreground/70'
                     )}>
                       {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                     </span>
-                    {pathname.startsWith(item.href) && <div className="mt-1 wavy-underline" />}
+                    {isActive && <div className="mt-1 wavy-underline" />}
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56">
@@ -52,15 +60,15 @@ export function Header() {
             ) : (
               <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                 <span className={cn(
-                  'font-bold transition-colors hover:text-foreground/80',
-                  pathname === item.href ? 'text-foreground' : 'text-foreground/70'
+                  'font-bold transition-colors hover:text-accent-foreground',
+                  isActive ? 'text-foreground' : 'text-foreground/70'
                 )}>
                   {item.title}
                 </span>
-                {pathname === item.href && <div className="mt-1 wavy-underline" />}
+                {isActive && <div className="mt-1 wavy-underline" />}
               </Link>
             )
-          ))}
+          })}
         </nav>
 
         <div className="hidden md:flex justify-center w-1/3">
@@ -72,18 +80,19 @@ export function Header() {
 
         <div className="hidden md:flex items-center justify-end gap-4 w-1/3">
            <nav className="flex items-center gap-2">
-             {mainNav.slice(3).map((item) => (
-                item.children ? (
+             {mainNav.slice(3).map((item) => {
+                const isActive = isNavItemActive(item);
+                return item.children ? (
                 <DropdownMenu key={item.title}>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="flex flex-col items-center h-auto py-2 px-3 group">
                       <span className={cn(
-                        'font-bold transition-colors hover:text-foreground/80 flex items-center gap-1',
-                        pathname.startsWith(item.href) ? 'text-foreground' : 'text-foreground/70'
+                        'font-bold transition-colors hover:text-accent-foreground flex items-center gap-1',
+                        isActive ? 'text-foreground' : 'text-foreground/70'
                       )}>
                         {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                       </span>
-                      {pathname.startsWith(item.href) && <div className="mt-1 wavy-underline" />}
+                      {isActive && <div className="mt-1 wavy-underline" />}
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56">
@@ -97,15 +106,15 @@ export function Header() {
               ) : (
                 <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                   <span className={cn(
-                    'font-bold transition-colors hover:text-foreground/80',
-                     pathname === item.href ? 'text-foreground' : 'text-foreground/70'
+                    'font-bold transition-colors hover:text-accent-foreground',
+                     isActive ? 'text-foreground' : 'text-foreground/70'
                   )}>
                     {item.title}
                   </span>
-                  {pathname === item.href && <div className="mt-1 wavy-underline" />}
+                  {isActive && <div className="mt-1 wavy-underline" />}
                 </Link>
               )
-              ))}
+              })}
            </nav>
           <Link href="/wishlist">
             <LikeButton />
@@ -119,7 +128,7 @@ export function Header() {
               </div>
             </button>
           </Link>
-          <Button asChild variant="ghost" size="icon" className="text-primary hover:bg-primary/10 cart-button h-8 w-8">
+          <Button asChild variant="ghost" size="icon" className="text-accent-foreground hover:bg-primary/10 cart-button h-8 w-8">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
