@@ -10,12 +10,12 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/s
 import { MobileMenu } from './mobile-menu';
 import { LikeButton } from '../ui/like-button';
 import {
-  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { mainNav } from '@/lib/navigation';
+import { HoverDropdownMenu } from '../ui/hover-dropdown-menu';
 
 
 export function Header() {
@@ -32,19 +32,18 @@ export function Header() {
   return (
     <header className="header-wavy">
       <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-black relative z-10">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2">
-            <Droplet className="h-8 w-8 text-black" />
-            <span className="text-3xl font-headline font-bold text-black">IONORA</span>
-          </Link>
-        </div>
+        <Link href="/" className="flex items-center gap-2">
+          <Droplet className="h-8 w-8 text-black" />
+          <span className="text-3xl font-headline font-bold text-black">IONORA</span>
+        </Link>
+        
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-2">
           {mainNav.map((item) => {
             const isActive = isNavItemActive(item);
             return item.children ? (
-              <DropdownMenu key={item.title}>
+              <HoverDropdownMenu key={item.title}>
                 <DropdownMenuTrigger asChild>
                    <Button
                     variant="ghost"
@@ -69,7 +68,7 @@ export function Header() {
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </HoverDropdownMenu>
             ) : (
               <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                 <span className={cn(
