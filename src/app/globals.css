@@ -729,7 +729,7 @@
 
   .like-button.unliked .like-icon {
     opacity: 0;
-    animation: 1.2s unlike-animation both cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    animation: 1.2s unlike-animation both;
   }
 
   .like-button.saving::after {
@@ -933,19 +933,10 @@
     text-transform: uppercase;
     color: transparent;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAABkCAYAAAD5iV2dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR42u3BMQEAAADCoPVPbQo/oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAD3A0ATMAAd2+4AAAAAElFTkSuQmCC');
-    background-repeat: repeat-x;
+    background-repeat: no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: wavy-text-animate 15s linear infinite;
     background-size: cover;
-  }
-
-  @keyframes wavy-text-animate {
-    0% {
-      background-position: 0 50%;
-    }
-    100% {
-      background-position: 100% 50%;
-    }
+    background-position: center;
   }
 }
