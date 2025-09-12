@@ -316,28 +316,26 @@ export default function Home() {
                 {testimonials.map((testimonial) => {
                   const avatarImage = PlaceHolderImages.find(p => p.id === testimonial.avatarId);
                   return (
-                    <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
-                      <div className="h-full p-px rounded-lg bg-gradient-to-b from-white/20 to-transparent">
-                        <Card className="h-full bg-background/10 backdrop-blur-md border-white/20 shadow-xl">
-                          <CardContent className="p-6 text-center flex flex-col items-center">
+                    <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4 testimonial-card-wrapper">
+                      <div className="testimonial-card">
+                          <span className="testimonial-icon"><Quote className="h-10 w-10" /></span>
+                          <p className="testimonial-description">"{testimonial.quote}"</p>
+                          <div className="testimonial-content">
                             {avatarImage && 
-                              <Image
-                                alt={testimonial.name}
-                                className="rounded-full border-4 border-white/20 shadow-lg mb-4"
-                                height="80"
-                                src={avatarImage.imageUrl}
-                                width="80"
-                                data-ai-hint={avatarImage.imageHint}
-                              />
+                              <div className="testimonial-pic-wrapper">
+                                <Image
+                                  alt={testimonial.name}
+                                  className="rounded-full"
+                                  height="80"
+                                  src={avatarImage.imageUrl}
+                                  width="80"
+                                  data-ai-hint={avatarImage.imageHint}
+                                />
+                              </div>
                             }
-                            <Quote className="h-8 w-8 text-primary" />
-                            <p className="mt-4 text-base text-background/90 leading-relaxed">"{testimonial.quote}"</p>
-                            <div className="mt-6">
-                              <p className="font-bold text-background text-lg">{testimonial.name}</p>
-                              <p className="text-sm text-background/70">{testimonial.location}</p>
-                            </div>
-                          </CardContent>
-                        </Card>
+                            <h3 className="testimonial-title">{testimonial.name}</h3>
+                            <span className="testimonial-post">{testimonial.location}</span>
+                          </div>
                       </div>
                     </CarouselItem>
                   )
