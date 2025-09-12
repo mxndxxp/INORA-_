@@ -896,7 +896,7 @@
 
   [data-radix-popper-content-wrapper] > div {
     @apply border-blue-300/20;
-    --tw-bg-opacity: 0.2; /* Or any value you prefer */
+    --tw-bg-opacity: 0.1; /* Or any value you prefer */
     background-color: hsla(210, 100%, 98%, var(--tw-bg-opacity));
     backdrop-filter: blur(16px);
     position: relative;
@@ -924,5 +924,24 @@
 
   [data-radix-popper-content-wrapper] [role="menuitem"]:focus {
     @apply bg-primary/30 text-primary-foreground;
+  }
+
+  /* Animated Wavy Text */
+  .animated-wavy-text {
+    @apply bg-clip-text text-transparent;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3e%3cdefs%3e%3clinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%23ffffff;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%2364B5F6;stop-opacity:1' /%3e%3c/linearGradient%3e%3c/defs%3e%3cimage xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABkCAYAAADDhn8LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR42u3BMQEAAADCoPVPbQo/oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAD3A0ATMAAd2+4AAAAAElFTkSuQmCC' width='200' height='100' fill='url(%23g)'/%3e%3c/svg%3e");
+    background-size: 200px 100px;
+    background-repeat: repeat-x;
+    animation: wavy-text-animation 1s infinite linear;
+    text-shadow: 
+      -1px -1px 0 hsl(207, 82%, 20%),  
+       1px -1px 0 hsl(207, 82%, 20%),
+      -1px  1px 0 hsl(207, 82%, 20%),
+       1px  1px 0 hsl(207, 82%, 20%);
+  }
+
+  @keyframes wavy-text-animation {
+    0% { background-position: 0 bottom; }
+    100% { background-position: 200px bottom; }
   }
 }

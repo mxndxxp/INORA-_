@@ -19,6 +19,7 @@ export default {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
         headline: ['Space Grotesk', 'sans-serif'],
+        'cabin-condensed': ['Cabin Condensed', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {

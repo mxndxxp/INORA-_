@@ -91,7 +91,7 @@ export default function Home() {
               animation="animate-scroll-in"
             >
               <div className="space-y-4">
-                <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl xl:text-7xl/none text-white shadow-lg">
+                <h1 className="animated-wavy-text font-cabin-condensed text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5rem] xl:text-[7rem] font-bold uppercase tracking-tight">
                   Pure Water, Pure Life.
                   <br />
                   Discover Ionora.
@@ -199,17 +199,17 @@ export default function Home() {
         </div>
       </section>
       
-      <section className="py-12 md:py-20 lg:py-24 bg-secondary/50">
+      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
         <div className="container px-4 md:px-6">
-            <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
-                <div className="space-y-2">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                <AnimatedSection className="space-y-2">
                     <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">The Science Hub</div>
                     <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-black">Understand the Power of Ionization</h2>
                     <p className="max-w-[900px] text-black md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                         We believe in empowering our customers with knowledge. Dive into the core concepts behind water ionization.
                     </p>
-                </div>
-            </AnimatedSection>
+                </AnimatedSection>
+            </div>
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-4 py-12">
                 {scienceConcepts.map((concept, index) => {
                     const Icon = ScienceIcons[concept.icon as keyof typeof ScienceIcons];
@@ -232,7 +232,7 @@ export default function Home() {
                 </Button>
             </AnimatedSection>
         </div>
-      </section>
+      </AnimatedSection>
 
       <section className="py-12 md:py-20 lg:py-24">
         <div className="container px-4 md:px-6">
@@ -293,17 +293,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-foreground">
+      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-foreground">
         <RaindropAnimation />
         <div className="container px-4 md:px-6 relative">
-          <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <AnimatedSection className="space-y-2">
               <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-background">What Our Customers Say</h2>
               <p className="max-w-[900px] text-muted md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Real stories from people who have experienced the benefits of ionized water.
               </p>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
+          </div>
           <AnimatedSection className="relative mt-12" delay={200}>
             <Carousel
               opts={{
@@ -348,19 +348,19 @@ export default function Home() {
             </Carousel>
           </AnimatedSection>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="py-12 md:py-20 lg:py-24 bg-secondary/50">
+      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
         <div className="container px-4 md:px-6">
-          <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <AnimatedSection className="space-y-2">
               <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Quality Assured</div>
               <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
               </p>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
+          </div>
           <div className="mx-auto grid max-w-5xl grid-cols-2 items-center justify-center gap-8 py-12 sm:grid-cols-3 md:gap-12 lg:grid-cols-4">
             {certifications.map((cert, index) => {
               return (
@@ -393,7 +393,7 @@ export default function Home() {
             </Button>
           </AnimatedSection>
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }
