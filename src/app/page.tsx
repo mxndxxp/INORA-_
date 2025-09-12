@@ -66,7 +66,7 @@ export default function Home() {
           ></path>
         </svg>
       </div>
-      <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-primary">
         <WaterAnimation />
         {/* Left Floating Brands */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 flex-col gap-6 z-30 flex">
