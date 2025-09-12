@@ -141,10 +141,10 @@ export function Footer() {
                 <div className="col-md-12 col-lg-6">
                   <div className="footer-widget">
                     <div className="section-heading">
-                      <h3>Subscribe</h3>
+                      <h3>Contact Us</h3>
                       <span className="animate-border border-black"></span>
                     </div>
-                    <p>Don’t miss our new feeds, kindly fill the form below.</p>
+                    <p>Have a question? Send us a message.</p>
                     <form action="#">
                       <div className="form-row">
                         <div className="col dk-footer-form">
