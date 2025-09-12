@@ -139,11 +139,11 @@ export default function Home() {
               onMouseLeave={featuredProductsPlugin.current.reset}
               className="w-full"
             >
-              <CarouselContent className="-ml-8">
+              <CarouselContent className="-ml-4">
                 {featuredProducts.map((product) => {
                   const productImage = PlaceHolderImages.find((p) => p.id === product.imageId);
                   return (
-                    <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3 pl-8">
+                    <CarouselItem key={product.id} className="sm:basis-1/2 lg:basis-1/3 pl-4">
                         <div className="product-card">
                           <div className="product-card-badge">Featured</div>
                           <Link href={`/products/${product.id}`} className="product-card-tilt">
