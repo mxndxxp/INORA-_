@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-black">
         <RaindropAnimation />
         <WaterAnimation />
         
@@ -442,6 +442,8 @@ export default function Home() {
 }
 
 
+
+    
 
     
 
