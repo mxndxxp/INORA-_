@@ -53,6 +53,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+        <RaindropAnimation />
         <WaterAnimation />
         
         {/* Left Floating Brands */}
