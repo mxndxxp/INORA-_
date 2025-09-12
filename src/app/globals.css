@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 204 100% 50%;
+    --background: 204 100% 37%;
     --foreground: 224 71% 4%;
     --card: 210 100% 100%;
     --card-foreground: 224 71% 4%;
@@ -78,10 +78,10 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 36px;
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 36'%3e%3cpath fill='none' stroke='%23ffffff' stroke-width='2' d='M0 18c20-24 20 24 40 24s20-24 40-24 20 24 40 24 20-24 40-24'/%3e%3c/svg%3e");
+      height: 48px;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 48'%3e%3cpath fill='none' stroke='%23ffffff' stroke-width='2' d='M0 24c20-32 20 32 40 32s20-32 40-32 20 32 40 32 20-32 40-32'/%3e%3c/svg%3e");
       background-repeat: repeat-x;
-      background-size: 80px 36px;
+      background-size: 80px 48px;
       animation: wave 2.5s linear infinite;
   }
   
