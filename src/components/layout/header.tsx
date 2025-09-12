@@ -73,7 +73,7 @@ export function Header() {
               </div>
             </button>
           </Link>
-          <Button asChild variant="ghost" size="icon" className="text-primary hover:bg-primary/10 cart-button h-10 w-10">
+          <Button asChild variant="ghost" size="icon" className="text-primary hover:bg-primary/10 cart-button h-8 w-8">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
