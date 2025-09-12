@@ -32,7 +32,11 @@ export default function Home() {
   const leftBrands = brands.slice(0, 4);
   const rightBrands = brands.slice(4, 8);
   
-  const plugin = React.useRef(
+  const featuredProductsPlugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
+  
+  const testimonialsPlugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
 
@@ -130,9 +134,9 @@ export default function Home() {
                 align: 'start',
                 loop: true,
               }}
-              plugins={[plugin.current]}
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
+              plugins={[featuredProductsPlugin.current]}
+              onMouseEnter={featuredProductsPlugin.current.stop}
+              onMouseLeave={featuredProductsPlugin.current.reset}
               className="w-full"
             >
               <CarouselContent className="-ml-8">
@@ -310,9 +314,9 @@ export default function Home() {
                 align: 'start',
                 loop: true,
               }}
-              plugins={[plugin.current]}
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
+              plugins={[testimonialsPlugin.current]}
+              onMouseEnter={testimonialsPlugin.current.stop}
+              onMouseLeave={testimonialsPlugin.current.reset}
               className="w-full max-w-6xl mx-auto"
             >
               <CarouselContent className="-ml-4">
@@ -401,3 +405,6 @@ export default function Home() {
   );
 }
 
+
+
+    
