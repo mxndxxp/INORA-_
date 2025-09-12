@@ -100,7 +100,7 @@ const fragmentShader = `
 
   vec3 sampleSky(vec3 dir){
     float t = smoothstep(0.0, 0.6, dir.y);
-    return mix(vec3(0.4, 0.7, 1.0), vec3(0.7, 0.9, 1.0), t);
+    return mix(vec3(0.1, 0.3, 0.6), vec3(0.6, 0.8, 1.0), t);
   }
 
   float fresnelSchlick(float cosTheta, float f0){
@@ -118,21 +118,21 @@ const fragmentShader = `
     vec3 reflCol = sampleSky(R);
     vec3 refrCol = sampleSky(refr) * vec3(0.7,0.9,1.0);
 
-    float spec = pow(max(dot(reflect(-L,N), V), 0.0), 80.0) * uSpec;
+    float spec = pow(max(dot(reflect(-L,N), V), 0.0), 128.0) * uSpec;
 
     float cosTheta = max(dot(N, V), 0.0);
     float fres = fresnelSchlick(cosTheta, 0.02);
 
     float depthFactor = smoothstep(-1.5, 2.5, vHeight);
-    vec3 base = mix(vec3(0.3, 0.7, 0.9), vec3(0.05, 0.15, 0.25), depthFactor);
+    vec3 base = mix(vec3(0.07,0.32,0.48), vec3(0.02,0.06,0.12), depthFactor);
 
     float crest = smoothstep(0.35, 0.95, vHeight);
-    float upness = 1.0 - pow(max(dot(N, vec3(0.0,1.0,0.0)), 3.0), 3.0);
+    float upness = 1.0 - pow(max(dot(N, vec3(0.0,1.0,0.0)), 0.0), 3.0);
     float foam = crest * upness;
 
-    vec3 color = mix(refrCol * 0.5 + base * 0.5, reflCol, fres);
-    color = mix(color, vec3(1.0), clamp(foam*1.8, 0.0, 1.0));
-    color += spec * 1.2;
+    vec3 color = mix(refrCol * 0.7 + base * 0.6, reflCol, fres);
+    color = mix(color, vec3(1.0), clamp(foam*1.6, 0.0, 1.0));
+    color += spec * 1.5;
 
     float alpha = mix(0.9, 0.1, pow(1.0 - fres, 2.0));
     alpha = mix(alpha, uTransparency, 0.5);
