@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useRef, useEffect } from 'react';
@@ -99,19 +100,7 @@ const fragmentShader = `
 
   // procedural sky sampling by direction
   vec3 sampleSky(vec3 dir){
-    float u = 0.5 + 0.5 * dir.x;
-    float v = clamp(dir.y * 0.8 + 0.5, 0.0, 1.0);
-    // top color and horizon color
-    vec3 top = vec3(0.2, 0.6, 0.9); 
-    vec3 mid = vec3(0.7, 0.85, 1.0);
-    vec3 bot = vec3(1.0, 0.98, 0.95);
-    vec3 col = mix(bot, mix(mid, top, smoothstep(0.4,0.7,v)), smoothstep(0.0,0.3,v));
-
-    // sun highlight (pseudo)
-    vec3 sunDir = normalize(vec3(0.0, 0.95, 0.2));
-    float sun = pow(max(dot(dir, sunDir), 0.0), 200.0) * 8.0;
-    col += sun;
-    return col;
+    return vec3(0.01, 0.02, 0.03);
   }
 
   float fresnelSchlick(float cosTheta, float f0){
@@ -143,7 +132,7 @@ const fragmentShader = `
 
     // foam on crests
     float crest = smoothstep(0.35, 0.95, vHeight);
-    float upness = 1.0 - pow(max(dot(N, vec3(0.0,1.0,0.0)), 0.0), 3.0);
+    float upness = 1.0 - pow(max(dot(N, vec3(0.0,1.0,0.0)), 3.0), 3.0);
     float foam = crest * upness;
 
     // combine
