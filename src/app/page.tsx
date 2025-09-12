@@ -103,7 +103,7 @@ export default function Home() {
               animation="animate-scroll-in"
             >
               <div className="space-y-4 animated-wavy-text-container">
-                <h1 className="text-white font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight opacity-0">
+                <h1 className="font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight opacity-0">
                   Pure Water, Pure Life.
                   <br />
                   Discover Ionora.
