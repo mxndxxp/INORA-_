@@ -71,7 +71,7 @@
 /* Wavy Header Styles */
 @layer components {
   .header-wavy {
-    @apply relative w-full z-50 bg-[#2b75a1] h-24;
+    @apply relative w-full z-50 bg-[#2b75a1] h-24 text-center text-white;
   }
 
   .header-wave-container {
@@ -81,15 +81,45 @@
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: translateY(1px);
+    transform: rotate(180deg);
   }
 
   .waves {
     position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 60px;
+    width: 100%;
+    height: 15vh;
+    min-height: 100px;
+    max-height: 150px;
   }
+  
+  .parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+  }
+
 
   .wavy-underline {
     width: 100%;
@@ -201,6 +231,10 @@
 @media (max-width: 767px) {
   .floating-brand-bubble {
     @apply h-16 w-16 p-2;
+  }
+  .waves {
+    height: 40px;
+    min-height: 40px;
   }
 }
 
@@ -1134,4 +1168,3 @@
         opacity: 0;
     }
 }
-
