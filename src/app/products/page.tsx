@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useMemo } from 'react';
@@ -206,16 +207,12 @@ export default function ProductsPage() {
                                 </span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <Link href="/compare" className="push-button">
-                                  <span className="button-outer">
-                                    <span className="button-inner">
-                                      <span className="flex items-center gap-1.5">
-                                        <GitCompare size={16} />
-                                        <span>Compare</span>
-                                      </span>
-                                    </span>
-                                  </span>
-                                </Link>
+                                <Button asChild variant="outline" size="sm">
+                                  <Link href="/compare" className="flex items-center gap-1.5">
+                                    <GitCompare size={16} />
+                                    <span>Compare</span>
+                                  </Link>
+                                </Button>
                                 <button className="product-card-btn">
                                   <ShoppingBag className="product-card-icon" />
                                 </button>
