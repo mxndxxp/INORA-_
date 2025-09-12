@@ -1,8 +1,9 @@
+
 'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Droplet, Menu, ShoppingCart, ChevronDown } from 'lucide-react';
+import { Droplet, Menu, ShoppingCart, ChevronDown, Heart, GitCompare } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -24,6 +25,11 @@ export function Header() {
 
   const isNavItemActive = (item: (typeof mainNav)[0]) => {
     if (item.children) {
+      // Check if any child is active first
+      if (item.children.some(child => pathname === child.href)) {
+        return true;
+      }
+      // Fallback to checking if the path starts with the parent href
       return pathname.startsWith(item.href);
     }
     return pathname === item.href;
@@ -32,24 +38,24 @@ export function Header() {
   return (
     <header className="header-wavy">
       <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-black relative z-10">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 mr-6">
           <Droplet className="h-8 w-8 text-black" />
           <span className="text-3xl font-headline font-bold text-black">IONORA</span>
         </Link>
         
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2">
+        <nav className="hidden md:flex items-center gap-1 flex-1">
           {mainNav.map((item) => {
             const isActive = isNavItemActive(item);
             return item.children ? (
-              <HoverDropdownMenu key={item.title}>
+              <HoverDropdownMenu key={item.title} onLinkClick={() => {}}>
                 <DropdownMenuTrigger asChild>
                    <Button
                     variant="ghost"
                     className={cn(
                       "flex flex-col items-center h-auto py-2 px-3 group",
-                      isActive && "bg-blue-900/50"
+                      isActive && "bg-blue-900/10"
                     )}
                   >
                     <span className={cn(
@@ -83,20 +89,20 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:flex items-center justify-end gap-4">
-          <Link href="/wishlist">
-            <LikeButton />
-          </Link>
-          <Link href="/compare">
-            <button className="push-button">
-              <div className="button-outer">
-                <div className="button-inner">
-                  <span>Compare Now</span>
-                </div>
-              </div>
-            </button>
-          </Link>
-          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-white/10 cart-button h-8 w-8">
+        <div className="hidden md:flex items-center justify-end gap-3">
+          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-white/10 h-9 w-9">
+            <Link href="/wishlist">
+              <Heart className="h-5 w-5" />
+              <span className="sr-only">Wishlist</span>
+            </Link>
+          </Button>
+          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-white/10 h-9 w-9">
+             <Link href="/compare">
+              <GitCompare className="h-5 w-5" />
+              <span className="sr-only">Compare</span>
+            </Link>
+          </Button>
+          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-white/10 cart-button h-9 w-9">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
