@@ -39,10 +39,16 @@ export function Header() {
             return item.children ? (
               <DropdownMenu key={item.title}>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="flex flex-col items-center h-auto py-2 px-3 group">
+                   <Button
+                    variant="ghost"
+                    className={cn(
+                      "flex flex-col items-center h-auto py-2 px-3 group",
+                      isActive && "bg-blue-900/50"
+                    )}
+                  >
                     <span className={cn(
-                      'font-bold transition-colors hover:text-accent-foreground flex items-center gap-1',
-                      isActive ? 'text-foreground' : 'text-foreground/70'
+                      'font-bold transition-colors hover:text-white flex items-center gap-1',
+                      isActive ? 'text-white' : 'text-white/80'
                     )}>
                       {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                     </span>
@@ -60,8 +66,8 @@ export function Header() {
             ) : (
               <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                 <span className={cn(
-                  'font-bold transition-colors hover:text-accent-foreground',
-                  isActive ? 'text-foreground' : 'text-foreground/70'
+                  'font-bold transition-colors hover:text-white',
+                  isActive ? 'text-white' : 'text-white/80'
                 )}>
                   {item.title}
                 </span>
@@ -85,10 +91,16 @@ export function Header() {
                 return item.children ? (
                 <DropdownMenu key={item.title}>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="flex flex-col items-center h-auto py-2 px-3 group">
+                     <Button
+                      variant="ghost"
+                      className={cn(
+                        "flex flex-col items-center h-auto py-2 px-3 group",
+                        isActive && "bg-blue-900/50"
+                      )}
+                    >
                       <span className={cn(
-                        'font-bold transition-colors hover:text-accent-foreground flex items-center gap-1',
-                        isActive ? 'text-foreground' : 'text-foreground/70'
+                        'font-bold transition-colors hover:text-white flex items-center gap-1',
+                        isActive ? 'text-white' : 'text-white/80'
                       )}>
                         {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                       </span>
@@ -106,8 +118,8 @@ export function Header() {
               ) : (
                 <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                   <span className={cn(
-                    'font-bold transition-colors hover:text-accent-foreground',
-                     isActive ? 'text-foreground' : 'text-foreground/70'
+                    'font-bold transition-colors hover:text-white',
+                     isActive ? 'text-white' : 'text-white/80'
                   )}>
                     {item.title}
                   </span>
@@ -128,7 +140,7 @@ export function Header() {
               </div>
             </button>
           </Link>
-          <Button asChild variant="ghost" size="icon" className="text-accent-foreground hover:bg-primary/10 cart-button h-8 w-8">
+          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 cart-button h-8 w-8">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
