@@ -32,9 +32,16 @@ export function Header() {
   return (
     <header className="header-wavy">
       <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-black relative z-10">
+        <div className="flex items-center gap-6">
+          <Link href="/" className="flex items-center gap-2">
+            <Droplet className="h-8 w-8 text-black" />
+            <span className="text-3xl font-headline font-bold text-black">IONORA</span>
+          </Link>
+        </div>
+
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2 w-1/3">
-          {mainNav.slice(0, 3).map((item) => {
+        <nav className="hidden md:flex items-center gap-2">
+          {mainNav.map((item) => {
             const isActive = isNavItemActive(item);
             return item.children ? (
               <DropdownMenu key={item.title}>
@@ -77,57 +84,7 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:flex justify-center w-1/3">
-          <Link href="/" className="flex items-center gap-2">
-            <Droplet className="h-8 w-8 text-black" />
-            <span className="text-3xl font-headline font-bold text-black">IONORA</span>
-          </Link>
-        </div>
-
-        <div className="hidden md:flex items-center justify-end gap-4 w-1/3">
-           <nav className="flex items-center gap-2">
-             {mainNav.slice(3).map((item) => {
-                const isActive = isNavItemActive(item);
-                return item.children ? (
-                <DropdownMenu key={item.title}>
-                  <DropdownMenuTrigger asChild>
-                     <Button
-                      variant="ghost"
-                      className={cn(
-                        "flex flex-col items-center h-auto py-2 px-3 group",
-                        isActive && "bg-blue-900/50"
-                      )}
-                    >
-                      <span className={cn(
-                        'font-bold transition-colors hover:text-black flex items-center gap-1',
-                        isActive ? 'text-black' : 'text-black/80'
-                      )}>
-                        {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
-                      </span>
-                      {isActive && <div className="mt-1 wavy-underline" style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%23000000' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e")` }} />}
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-56">
-                    {item.children.map((child) => (
-                      <DropdownMenuItem key={child.href} asChild>
-                        <Link href={child.href}>{child.title}</Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
-                  <span className={cn(
-                    'font-bold transition-colors hover:text-black',
-                     isActive ? 'text-black' : 'text-black/80'
-                  )}>
-                    {item.title}
-                  </span>
-                  {isActive && <div className="mt-1 wavy-underline" style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%23000000' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e")` }} />}
-                </Link>
-              )
-              })}
-           </nav>
+        <div className="hidden md:flex items-center justify-end gap-4">
           <Link href="/wishlist">
             <LikeButton />
           </Link>
@@ -149,26 +106,20 @@ export function Header() {
         </div>
         
         {/* Mobile Navigation Trigger */}
-        <div className="md:hidden flex-1">
-           <Link href="/" className="flex items-center gap-2 text-black">
-            <Droplet className="h-7 w-7" />
-            <span className="text-2xl font-headline font-bold">IONORA</span>
-          </Link>
+        <div className="md:hidden flex-1 flex justify-end">
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-black hover:bg-white/10 hover:text-black">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="bg-foreground/95 border-l-0 p-0 w-full max-w-sm">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              <MobileMenu navLinks={mainNav} onLinkClick={() => setMobileMenuOpen(false)} />
+            </SheetContent>
+          </Sheet>
         </div>
-        <div className="md:hidden">
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-black hover:bg-white/10 hover:text-black">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="bg-foreground/95 border-l-0 p-0 w-full max-w-sm">
-                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                <MobileMenu navLinks={mainNav} onLinkClick={() => setMobileMenuOpen(false)} />
-              </SheetContent>
-            </Sheet>
-          </div>
 
       </div>
       <div className="header-wave-container">
