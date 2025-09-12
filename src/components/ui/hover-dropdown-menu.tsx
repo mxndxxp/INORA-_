@@ -25,7 +25,7 @@ export function HoverDropdownMenu({ children }: HoverDropdownMenuProps) {
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => {
       setIsOpen(false);
-    }, 100);
+    }, 300); // Increased delay
   };
 
   useEffect(() => {
@@ -54,6 +54,7 @@ export function HoverDropdownMenu({ children }: HoverDropdownMenuProps) {
         clearTimeout(timeoutId);
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [triggerRef, contentRef]);
 
   const childrenArray = React.Children.toArray(children);
