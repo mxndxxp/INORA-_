@@ -747,4 +747,18 @@
     45% { transform: scale(3.25); opacity: 0; }
     to { transform: scale(1); opacity: 0; }
   }
+
+  /* Cart Icon Animation */
+  .cart-button:hover .cart-icon {
+    animation: cart-jiggle 0.5s ease-in-out;
+  }
+
+  @keyframes cart-jiggle {
+    0% { transform: rotate(0); }
+    20% { transform: rotate(-6deg); }
+    40% { transform: rotate(6deg); }
+    60% { transform: rotate(-4deg); }
+    80% { transform: rotate(4deg); }
+    100% { transform: rotate(0); }
+  }
 }

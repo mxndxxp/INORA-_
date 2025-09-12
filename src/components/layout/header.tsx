@@ -70,9 +70,9 @@ export function Header() {
               <span className="sr-only">Compare</span>
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-foreground/70 hover:bg-white/10 hover:text-foreground">
+          <Button asChild variant="ghost" size="icon" className="text-primary hover:bg-primary/10 cart-button">
             <Link href="/cart">
-              <ShoppingCart className="h-5 w-5" />
+              <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
             </Link>
           </Button>
