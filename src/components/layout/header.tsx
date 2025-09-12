@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Droplet, GitCompare, Menu, ShoppingCart } from 'lucide-react';
+import { Droplet, Menu, ShoppingCart } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -64,10 +64,9 @@ export function Header() {
           <Link href="/wishlist">
             <LikeButton />
           </Link>
-          <Button asChild variant="ghost" size="icon" className="text-foreground/70 hover:bg-white/10 hover:text-foreground">
+          <Button asChild className="metallic-button">
             <Link href="/compare">
-              <GitCompare className="h-5 w-5" />
-              <span className="sr-only">Compare</span>
+              Compare Now
             </Link>
           </Button>
           <Button asChild variant="ghost" size="icon" className="text-primary hover:bg-primary/10 cart-button">
