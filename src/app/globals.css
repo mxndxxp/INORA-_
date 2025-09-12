@@ -895,9 +895,9 @@
   }
 
   [data-radix-popper-content-wrapper] > div {
-    @apply bg-background/80 backdrop-blur-lg border-blue-300/20;
-    --tw-bg-opacity: 0.8; /* Or any value you prefer */
-    background-color: hsl(var(--primary) / var(--tw-bg-opacity));
+    @apply border-blue-300/20;
+    --tw-bg-opacity: 0.5; /* Or any value you prefer */
+    background-color: hsla(210, 100%, 98%, var(--tw-bg-opacity));
     backdrop-filter: blur(16px);
     position: relative;
     overflow: visible !important;
@@ -926,4 +926,3 @@
     @apply bg-primary/30 text-primary-foreground;
   }
 }
-
