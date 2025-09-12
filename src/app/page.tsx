@@ -96,7 +96,7 @@ export default function Home() {
                   <br />
                   Discover Ionora.
                 </h1>
-                <p className="max-w-[600px] text-gray-200 md:text-xl">
+                <p className="mx-auto max-w-[600px] text-gray-200 md:text-xl">
                   India's premier marketplace for water ionizers. Explore top brands, understand the science, and find the perfect match for your healthy lifestyle.
                 </p>
               </div>
