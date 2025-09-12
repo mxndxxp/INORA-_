@@ -100,7 +100,8 @@ const fragmentShader = `
 
   // procedural sky sampling by direction
   vec3 sampleSky(vec3 dir){
-    return vec3(0.01, 0.02, 0.03);
+    float t = smoothstep(0.0, 0.6, dir.y);
+    return mix(vec3(0.1, 0.2, 0.4), vec3(0.4, 0.7, 1.0), t);
   }
 
   float fresnelSchlick(float cosTheta, float f0){
