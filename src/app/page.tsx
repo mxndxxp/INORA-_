@@ -253,7 +253,9 @@ export default function Home() {
              </AnimatedSection>
             <div className="space-y-4">
               <AnimatedSection>
-                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Why Ionora?</div>
+                <Link href="/why-ionora">
+                  <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm transition-colors hover:bg-secondary">Why Ionora?</div>
+                </Link>
               </AnimatedSection>
               <AnimatedSection delay={100}>
                 <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Your Guide to a Healthier Life</h2>
