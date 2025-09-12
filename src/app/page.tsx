@@ -245,9 +245,9 @@ export default function Home() {
                <Image
                  alt="Why Ionora"
                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                 data-ai-hint="happy family drinking water"
+                 data-ai-hint="water ionizer machine"
                  height="310"
-                 src="https://picsum.photos/seed/ionora-why/550/310"
+                 src="https://i.postimg.cc/cCf9hWQS/Gemini-Generated-Image-hapcq1hapcq1hapc.png"
                  width="550"
                />
              </AnimatedSection>
