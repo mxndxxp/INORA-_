@@ -6,12 +6,12 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "./dropdo
 
 interface HoverDropdownMenuProps {
   children: React.ReactNode;
-  onLinkClick: () => void;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
-export function HoverDropdownMenu({ children, onLinkClick }: HoverDropdownMenuProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isClickOpen, setIsClickOpen] = useState(false);
+export function HoverDropdownMenu({ children, open, onOpenChange }: HoverDropdownMenuProps) {
+  const [isHovering, setIsHovering] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   let timeoutId: NodeJS.Timeout | null = null;
@@ -21,38 +21,30 @@ export function HoverDropdownMenu({ children, onLinkClick }: HoverDropdownMenuPr
       clearTimeout(timeoutId);
       timeoutId = null;
     }
-    setIsOpen(true);
+    setIsHovering(true);
   };
 
   const handleClose = () => {
-    if (!isClickOpen) {
-        timeoutId = setTimeout(() => {
-            setIsOpen(false);
-        }, 300);
-    }
+    timeoutId = setTimeout(() => {
+        setIsHovering(false);
+    }, 300);
   };
 
   const handleClick = () => {
-    const wasClickOpen = isClickOpen;
-    setIsClickOpen(!wasClickOpen);
-    setIsOpen(!wasClickOpen);
-  };
-
-  const handleContentClick = (event: React.MouseEvent) => {
-    const target = event.target as HTMLElement;
-    if (target.closest('a[href]')) {
-        onLinkClick();
-        setIsClickOpen(false);
-        setIsOpen(false);
-    }
+    onOpenChange(!open);
   };
   
-  const handleOpenChange = (open: boolean) => {
-    if (!open) {
-        setIsClickOpen(false);
+  const handleOpenChange = (isOpen: boolean) => {
+    if (isHovering || isOpen) {
+        onOpenChange(true);
+    } else {
+        onOpenChange(false);
     }
-    setIsOpen(open);
   }
+
+  useEffect(() => {
+    handleOpenChange(open);
+  }, [isHovering]);
 
   useEffect(() => {
     const trigger = triggerRef.current;
@@ -81,7 +73,7 @@ export function HoverDropdownMenu({ children, onLinkClick }: HoverDropdownMenuPr
       }
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [triggerRef, contentRef, isClickOpen]);
+  }, [triggerRef, contentRef]);
 
   const childrenArray = React.Children.toArray(children);
   const trigger = childrenArray.find(
@@ -92,9 +84,9 @@ export function HoverDropdownMenu({ children, onLinkClick }: HoverDropdownMenuPr
   );
 
   return (
-    <DropdownMenu open={isOpen} onOpenChange={handleOpenChange}>
-      {trigger && React.cloneElement(trigger as React.ReactElement, { ref: triggerRef, onClick: handleClick, 'aria-expanded': isOpen })}
-      {content && React.cloneElement(content as React.ReactElement, { ref: contentRef, onClick: handleContentClick })}
+    <DropdownMenu open={open} onOpenChange={handleOpenChange}>
+      {trigger && React.cloneElement(trigger as React.ReactElement, { ref: triggerRef, onClick: handleClick, 'aria-expanded': open })}
+      {content && React.cloneElement(content as React.ReactElement, { ref: contentRef })}
     </DropdownMenu>
   );
 }

@@ -22,6 +22,7 @@ import { HoverDropdownMenu } from '../ui/hover-dropdown-menu';
 export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   const isNavItemActive = (item: (typeof mainNav)[0]) => {
     if (item.children) {
@@ -49,7 +50,11 @@ export function Header() {
           {mainNav.map((item) => {
             const isActive = isNavItemActive(item);
             return item.children ? (
-              <HoverDropdownMenu key={item.title} onLinkClick={() => {}}>
+              <HoverDropdownMenu 
+                key={item.title} 
+                open={openMenu === item.title}
+                onOpenChange={(isOpen) => setOpenMenu(isOpen ? item.title : null)}
+              >
                 <DropdownMenuTrigger asChild>
                    <Button
                     variant="ghost"
@@ -62,7 +67,7 @@ export function Header() {
                       'font-bold transition-colors hover:text-black flex items-center gap-1',
                       isActive ? 'text-black' : 'text-black/80'
                     )}>
-                      {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                      {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                     </span>
                     {isActive && <div className="mt-1 wavy-underline" style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%23000000' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e")` }} />}
                   </Button>
