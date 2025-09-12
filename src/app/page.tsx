@@ -1,3 +1,6 @@
+
+"use client";
+import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -16,6 +19,7 @@ import {
 } from '@/components/ui/carousel';
 import { WaterAnimation } from '@/components/water-animation';
 import { RaindropAnimation } from '@/components/raindrop-animation';
+import Autoplay from "embla-carousel-autoplay";
 
 
 export default function Home() {
@@ -26,6 +30,10 @@ export default function Home() {
   
   const leftBrands = brands.slice(0, 4);
   const rightBrands = brands.slice(4, 8);
+  
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  );
 
 
   return (
@@ -121,6 +129,9 @@ export default function Home() {
                 align: 'start',
                 loop: true,
               }}
+              plugins={[plugin.current]}
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
               className="w-full"
             >
               <CarouselContent className="-ml-8">
