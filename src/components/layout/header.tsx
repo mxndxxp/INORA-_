@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Droplet, Heart, ShoppingCart, GitCompare, Menu } from 'lucide-react';
 import { usePathname } from 'next/navigation';
@@ -18,104 +18,17 @@ const navLinks = [
 ];
 
 export function Header() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [ripples, setRipples] = useState<{ x: number; y: number; radius: number; alpha: number; speed: number }[]>([]);
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    const navElement = canvas.parentElement;
-    if(!navElement) return;
-
-    let animationFrameId: number;
-
-    const resizeCanvas = () => {
-      const rect = navElement.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
-      ctx.scale(dpr, dpr);
-    };
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      setRipples((prevRipples) => {
-        const updated = prevRipples
-          .map((r) => ({
-            ...r,
-            radius: r.radius + r.speed,
-            alpha: r.alpha - 0.015,
-          }))
-          .filter((r) => r.alpha > 0);
-
-        updated.forEach((r) => {
-          ctx.beginPath();
-          ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
-          const gradient = ctx.createRadialGradient(r.x, r.y, 0, r.x, r.y, r.radius);
-          gradient.addColorStop(0, `rgba(100, 181, 246, ${r.alpha * 0.5})`);
-          gradient.addColorStop(1, `rgba(100, 181, 246, 0)`);
-          ctx.fillStyle = gradient;
-          ctx.fill();
-        });
-
-        return updated;
-      });
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    resizeCanvas();
-    animate();
-
-    window.addEventListener('resize', resizeCanvas);
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
-  const addRipple = (e: React.MouseEvent<HTMLElement>, strong = false) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    setRipples((prev) => [
-      ...prev,
-      {
-        x,
-        y,
-        radius: 0,
-        alpha: strong ? 1 : 0.7,
-        speed: strong ? 1.2 : 0.6,
-      },
-    ]);
-  };
-
   return (
-    <header className="fixed top-0 left-0 w-full z-50 flex justify-center items-center h-20 bg-foreground/80 backdrop-blur-md">
-      <div className="container flex justify-between items-center px-4 md:px-6">
+    <header className="header-wavy">
+      <div className="container flex justify-between items-center px-4 md:px-6 h-20">
         <Link href="/" className="flex items-center gap-2 text-white">
           <Droplet className="h-7 w-7 text-primary" />
           <span className="text-2xl font-headline font-bold">IONORA</span>
         </Link>
-        <nav
-          className="hidden md:flex items-center justify-center relative p-2"
-          onMouseMove={(e) => addRipple(e)}
-          onClick={(e) => addRipple(e, true)}
-        >
-          <canvas
-            ref={canvasRef}
-            className="absolute top-0 left-0 w-full h-full pointer-events-none mix-blend-lighten opacity-70"
-          />
+        <nav className="hidden md:flex items-center justify-center relative p-2">
           <ul className="flex gap-1 items-center">
             {navLinks.map((item) => (
               <li key={item.href}>
@@ -133,26 +46,26 @@ export function Header() {
           </ul>
         </nav>
         <div className="flex items-center gap-2">
-           <div className="hidden md:flex items-center gap-1">
-             <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
-                <Link href="/wishlist">
-                    <Heart className="h-5 w-5" />
-                    <span className="sr-only">Wishlist</span>
-                </Link>
-             </Button>
-             <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
-                <Link href="/compare">
-                    <GitCompare className="h-5 w-5" />
-                    <span className="sr-only">Compare</span>
-                </Link>
-             </Button>
-             <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
-                <Link href="/cart">
-                    <ShoppingCart className="h-5 w-5" />
-                    <span className="sr-only">Cart</span>
-                </Link>
-             </Button>
-           </div>
+          <div className="hidden md:flex items-center gap-1">
+            <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+              <Link href="/wishlist">
+                <Heart className="h-5 w-5" />
+                <span className="sr-only">Wishlist</span>
+              </Link>
+            </Button>
+            <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+              <Link href="/compare">
+                <GitCompare className="h-5 w-5" />
+                <span className="sr-only">Compare</span>
+              </Link>
+            </Button>
+            <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+              <Link href="/cart">
+                <ShoppingCart className="h-5 w-5" />
+                <span className="sr-only">Cart</span>
+              </Link>
+            </Button>
+          </div>
           <div className="md:hidden">
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -168,6 +81,11 @@ export function Header() {
             </Sheet>
           </div>
         </div>
+      </div>
+      <div className="header-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M985.66,92.83c-74.8,0-149.59-24.92-224.39-49.84S537.88-6.85,463.08,8.17c-74.8,15.01-149.6,64.85-224.39,84.87C163.9,113.06,89.1,97.1,14.3,81.15,9.53,80.15,4.77,79.08,0,78V0H1200V27.35c-4.76,1.08-9.53,2.15-14.3,3.15-74.8,15.95-149.6,31.91-224.39,62.33C1135.26,89.21,1060.46,92.83,985.66,92.83Z" className="header-wave-fill"></path>
+        </svg>
       </div>
     </header>
   );

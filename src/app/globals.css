@@ -64,7 +64,27 @@
   }
   body {
     @apply bg-background text-foreground;
-    /*background: linear-gradient(135deg,  rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 50%,rgba(209,209,209,1) 50%,rgba(254,254,254,1) 100%) center/cover no-repeat;*/
+  }
+}
+
+/* Wavy Header Styles */
+@layer components {
+  .header-wavy {
+    @apply fixed top-0 left-0 w-full z-50 bg-foreground;
+    position: relative;
+  }
+
+  .header-wave {
+    @apply absolute -bottom-px left-0 w-full overflow-hidden leading-none;
+    height: 80px;
+  }
+  .header-wave svg {
+    @apply relative block;
+    width: calc(200% + 1.3px);
+    height: 100px;
+  }
+  .header-wave-fill {
+    fill: hsl(var(--background));
   }
 }
 
