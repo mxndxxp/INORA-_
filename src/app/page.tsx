@@ -205,7 +205,7 @@ export default function Home() {
                 <AnimatedSection className="space-y-2">
                     <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">The Science Hub</div>
                     <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Understand the Power of Ionization</h2>
-                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                         We believe in empowering our customers with knowledge. Dive into the core concepts behind water ionization.
                     </p>
                 </AnimatedSection>

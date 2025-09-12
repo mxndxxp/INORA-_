@@ -928,29 +928,29 @@
 
   /* Animated Wavy Text */
   .animated-wavy-text {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAABkCAYAAADDhn8LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR42u3BMQEAAADCoPVPbQo/oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAD3A0ATMAAd2+4AAAAAElFTkSuQmCC");
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.1);
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAABkCAYAAAD5iV2dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR42u3BMQEAAADCoPVPbQo/oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAD3A0ATMAAd2+4AAAAAElFTkSuQmCC');
+    background-repeat: repeat-x;
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent;
-    text-shadow: 
-      -1px -1px 0 hsl(207, 82%, 20%),  
-       1px -1px 0 hsl(207, 82%, 20%),
-      -1px  1px 0 hsl(207, 82%, 20%),
-       1px  1px 0 hsl(207, 82%, 20%);
-    animation: 
-      wavy-text-scroll 2s infinite linear,
-      wavy-text-fill 8s infinite linear alternate;
-    background-size: 200px 100px;
-    background-repeat: repeat-x;
+    animation: wavy-text-animate 15s linear infinite;
   }
 
-  @keyframes wavy-text-scroll {
-    from { background-position-x: 0; }
-    to { background-position-x: 200px; }
-  }
-
-  @keyframes wavy-text-fill {
-    from { background-size: 200px 0px; }
-    to { background-size: 200px 200px; }
+  @keyframes wavy-text-animate {
+    0% {
+      background-position: left 0px top 80px;
+    }
+    40% {
+      background-position: left 800px top -50px;
+    }
+    80% {
+      background-position: left 1800px top -50px;
+    }
+    100% {
+      background-position: left 2400px top 80px;
+    }
   }
 }
