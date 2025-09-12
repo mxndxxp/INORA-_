@@ -38,10 +38,10 @@ export function Header() {
 
   return (
     <header className="header-wavy">
-      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-black relative z-10">
+      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-white relative z-10">
         <Link href="/" className="flex items-center gap-2 mr-6">
-          <Droplet className="h-8 w-8 text-black" />
-          <span className="text-3xl font-headline font-bold text-black">IONORA</span>
+          <Droplet className="h-8 w-8 text-white" />
+          <span className="text-3xl font-headline font-bold text-white">IONORA</span>
         </Link>
         
 
@@ -59,17 +59,17 @@ export function Header() {
                    <Button
                     variant="ghost"
                     className={cn(
-                      "flex flex-col items-center h-auto py-2 px-3 group",
-                      isActive && "bg-blue-900/10"
+                      "flex flex-col items-center h-auto py-2 px-3 group text-white hover:bg-white/10 hover:text-white",
+                      isActive && "bg-black/10"
                     )}
                   >
                     <span className={cn(
-                      'font-bold transition-colors hover:text-black flex items-center gap-1',
-                      isActive ? 'text-black' : 'text-black/80'
+                      'font-bold transition-colors flex items-center gap-1',
+                      isActive ? 'text-white' : 'text-white/80'
                     )}>
                       {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                     </span>
-                    {isActive && <div className="mt-1 wavy-underline" style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%23000000' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e")` }} />}
+                    {isActive && <div className="mt-1 wavy-underline" />}
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56">
@@ -83,31 +83,31 @@ export function Header() {
             ) : (
               <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                 <span className={cn(
-                  'font-bold transition-colors hover:text-black',
-                  isActive ? 'text-black' : 'text-black/80'
+                  'font-bold transition-colors hover:text-white',
+                  isActive ? 'text-white' : 'text-white/80'
                 )}>
                   {item.title}
                 </span>
-                {isActive && <div className="mt-1 wavy-underline" style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%23000000' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e")` }} />}
+                {isActive && <div className="mt-1 wavy-underline" />}
               </Link>
             )
           })}
         </nav>
 
         <div className="hidden md:flex items-center justify-end gap-3">
-          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-white/10 h-9 w-9">
+          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 h-9 w-9">
             <Link href="/wishlist">
               <Heart className="h-5 w-5" />
               <span className="sr-only">Wishlist</span>
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-white/10 h-9 w-9">
+          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 h-9 w-9">
              <Link href="/compare">
               <GitCompare className="h-5 w-5" />
               <span className="sr-only">Compare</span>
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-white/10 cart-button h-9 w-9">
+          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 cart-button h-9 w-9">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
@@ -119,7 +119,7 @@ export function Header() {
         <div className="md:hidden flex-1 flex justify-end">
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-black hover:bg-white/10 hover:text-black">
+              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -133,10 +133,20 @@ export function Header() {
 
       </div>
       <div className="header-wave-container">
-          <svg className="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#89ddff" fillOpacity="1" d="M0,192L80,176C160,160,320,128,480,138.7C640,149,800,203,960,208C1120,213,1280,171,1360,149.3L1440,128L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+          <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
+              <defs>
+                  <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+              </defs>
+              <g className="parallax">
+                  <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                  <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                  <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                  <use xlinkHref="#gentle-wave" x="48" y="7" fill="#fff" />
+              </g>
+              <path fill="#2b75a1" d="M-2.25,20.3C18.75,34.3,55.25,28.3,152.25,28.3C249.25,28.3,204.25-15.7,301.25-15.7C398.25-15.7,353.25,28.3,450.25,28.3C547.25,28.3,497.25-12.7,594.25-12.7C691.25-12.7,645.25,28.3,742.25,28.3C839.25,28.3,792.25-15.7,889.25-15.7C986.25-15.7,941.25,28.3,1038.25,28.3C1135.25,28.3,1090.25-15.7,1187.25-15.7C1284.25-15.7,1239.25,28.3,1336.25,28.3C1433.25,28.3,1388.25-15.7,1485.25-15.7L1485.25,84.3L-2.25,84.3Z" />
           </svg>
       </div>
     </header>
   );
 }
+
