@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/carousel';
 import { WaterAnimation } from '@/components/water-animation';
 import Autoplay from "embla-carousel-autoplay";
+import { RaindropAnimation } from '@/components/raindrop-animation';
 
 
 export default function Home() {
@@ -52,7 +53,6 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
-        <WaterAnimation />
         
         {/* Left Floating Brands */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 flex-col gap-6 z-30 flex">
@@ -332,6 +332,7 @@ export default function Home() {
       </AnimatedSection>
 
       <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-foreground">
+        <RaindropAnimation />
         <div className="container px-4 md:px-6 relative">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <AnimatedSection className="space-y-2">
