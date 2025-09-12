@@ -979,7 +979,7 @@
   }
   
   .slomo-rain .drop{
-    background-color: white;
+    background-color: hsl(var(--primary));
     width: 3px;
     height: 100px;
     position: absolute;
@@ -1016,7 +1016,7 @@
     right: 0px;
     bottom: 0px;
     border-radius: 50%;
-    border: solid white 3px;
+    border: solid hsl(var(--primary)) 3px;
     animation-name: spread;
     animation-duration: var(--duration);
     animation-delay: var(--delay);
@@ -1055,7 +1055,7 @@
     right: 35%;
     border-radius: 8px;
     clip-path: polygon(7% 100%, 5% 95%, 3% 80%, 11% 50%, 17% 38%, 23% 44%, 30% 53%, 37% 28%, 40% 29%, 45% 43%, 51% 53%, 59% 36%, 64% 22%, 67% 23%, 70% 34%, 72% 46%, 79% 37%, 83% 37%, 93% 61%, 96% 76%, 96% 94%, 94% 100%);
-    background-color: white;
+    background-color: hsl(var(--primary));
     transform-origin: bottom;
     animation-name: splash;
     animation-duration: var(--duration);
@@ -1094,7 +1094,7 @@
   .slomo-rain .particles > div{
     position: absolute;	
     border-radius: 100%;
-    background-color: white;
+    background-color: hsl(var(--primary));
     animation-duration: var(--duration);
     animation-delay: var(--delay);
     animation-iteration-count: infinite;
