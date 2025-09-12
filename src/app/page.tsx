@@ -316,26 +316,28 @@ export default function Home() {
                 {testimonials.map((testimonial) => {
                   const avatarImage = PlaceHolderImages.find(p => p.id === testimonial.avatarId);
                   return (
-                    <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4 testimonial-card-wrapper">
-                      <div className="testimonial-card">
-                          <span className="testimonial-icon"><Quote className="h-10 w-10" /></span>
-                          <p className="testimonial-description">"{testimonial.quote}"</p>
-                          <div className="testimonial-content">
-                            {avatarImage && 
-                              <div className="testimonial-pic-wrapper">
-                                <Image
-                                  alt={testimonial.name}
-                                  className="rounded-full"
-                                  height="80"
-                                  src={avatarImage.imageUrl}
-                                  width="80"
-                                  data-ai-hint={avatarImage.imageHint}
-                                />
-                              </div>
-                            }
-                            <h3 className="testimonial-title">{testimonial.name}</h3>
-                            <span className="testimonial-post">{testimonial.location}</span>
-                          </div>
+                    <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
+                      <div className="testimonial-card-wrapper">
+                        <div className="testimonial-card">
+                            <span className="testimonial-icon"><Quote className="h-10 w-10" /></span>
+                            <p className="testimonial-description">"{testimonial.quote}"</p>
+                            <div className="testimonial-content">
+                              {avatarImage && 
+                                <div className="testimonial-pic-wrapper">
+                                  <Image
+                                    alt={testimonial.name}
+                                    className="rounded-full"
+                                    height="80"
+                                    src={avatarImage.imageUrl}
+                                    width="80"
+                                    data-ai-hint={avatarImage.imageHint}
+                                  />
+                                </div>
+                              }
+                              <h3 className="testimonial-title">{testimonial.name}</h3>
+                              <span className="testimonial-post">{testimonial.location}</span>
+                            </div>
+                        </div>
                       </div>
                     </CarouselItem>
                   )
