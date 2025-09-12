@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/carousel';
 import { WaterAnimation } from '@/components/water-animation';
 import Autoplay from "embla-carousel-autoplay";
-import { RaindropAnimation } from '@/components/raindrop-animation';
+import { SlomoRainAnimation } from '@/components/slomo-rain-animation';
 
 
 export default function Home() {
@@ -331,13 +331,14 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-foreground">
-        <RaindropAnimation />
-        <div className="container px-4 md:px-6 relative">
+      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-black">
+        <SlomoRainAnimation />
+        <div className="absolute inset-0 bg-black/70 z-10" />
+        <div className="container px-4 md:px-6 relative z-20">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <AnimatedSection className="space-y-2">
-              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-background">What Our Customers Say</h2>
-              <p className="max-w-[900px] text-muted md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-white">What Our Customers Say</h2>
+              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Real stories from people who have experienced the benefits of ionized water.
               </p>
             </AnimatedSection>
@@ -375,8 +376,8 @@ export default function Home() {
                                   />
                                 </div>
                               }
-                              <h3 className="testimonial-title">{testimonial.name}</h3>
-                              <span className="testimonial-post">{testimonial.location}</span>
+                              <h3 className="testimonial-title !text-white">{testimonial.name}</h3>
+                              <span className="testimonial-post !text-white/80">{testimonial.location}</span>
                             </div>
                         </div>
                       </div>
