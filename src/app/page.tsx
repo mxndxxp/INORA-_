@@ -204,8 +204,8 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
                     <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">The Science Hub</div>
-                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-black">Understand the Power of Ionization</h2>
-                    <p className="max-w-[900px] text-black md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Understand the Power of Ionization</h2>
+                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                         We believe in empowering our customers with knowledge. Dive into the core concepts behind water ionization.
                     </p>
                 </div>
@@ -220,7 +220,7 @@ export default function Home() {
                                     <Icon className="h-8 w-8 text-primary" />
                                 </div>
                             </div>
-                            <h3 className="text-lg font-bold text-black">{concept.title}</h3>
+                            <h3 className="text-lg font-bold">{concept.title}</h3>
                             <p className="text-sm text-muted-foreground">{concept.description}</p>
                         </div>
                     );
@@ -379,3 +379,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
