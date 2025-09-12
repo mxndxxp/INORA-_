@@ -32,7 +32,7 @@ export default function Home() {
   const rightBrands = brands.slice(4, 8);
   
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 1000, stopOnInteraction: true })
   );
 
 
@@ -339,5 +339,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
