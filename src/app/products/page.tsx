@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ShoppingBag, Search, Droplet, Zap, Gauge, Star, Heart } from 'lucide-react';
+import { ShoppingBag, Search, Droplet, Zap, Gauge, Star, Heart, GitCompare } from 'lucide-react';
 import Link from 'next/link';
 import { placeholderData } from '@/lib/placeholder-data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -205,10 +205,21 @@ export default function ProductsPage() {
                                   &#8377;{product.price.toLocaleString('en-IN')}
                                 </span>
                               </div>
-                              <button className="product-card-btn">
-                                <span>Add to Cart</span>
-                                <ShoppingBag className="product-card-icon" />
-                              </button>
+                              <div className="flex items-center gap-2">
+                                <Link href="/compare" className="push-button">
+                                  <span className="button-outer">
+                                    <span className="button-inner">
+                                      <span className="flex items-center gap-1.5">
+                                        <GitCompare size={16} />
+                                        <span>Compare</span>
+                                      </span>
+                                    </span>
+                                  </span>
+                                </Link>
+                                <button className="product-card-btn">
+                                  <ShoppingBag className="product-card-icon" />
+                                </button>
+                              </div>
                             </div>
                             <div className="product-card-meta">
                               <div className="product-card-rating">

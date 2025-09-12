@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 207 100% 37%;
+    --background: 207 100% 98%;
     --foreground: 224 71% 4%;
     --card: 210 100% 100%;
     --card-foreground: 224 71% 4%;
@@ -81,14 +81,14 @@
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: rotate(180deg) translateY(1px);
+    transform: translateY(1px);
   }
 
   .waves {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 100px;
+    height: 60px;
   }
 
   .wavy-underline {
@@ -706,11 +706,11 @@
   .push-button {
     all: unset;
     cursor: pointer;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
     position: relative;
     border-radius: 999vw;
-    background-color: hsl(var(--primary) / 0.75);
-    box-shadow: -0.15em -0.15em 0.15em -0.075em hsla(var(--primary) / 0.25), 0.0375em 0.0375em 0.0675em 0 hsla(var(--primary) / 0.1);
+    background-color: hsl(var(--accent) / 0.85);
+    box-shadow: -0.15em -0.15em 0.15em -0.075em hsla(var(--accent) / 0.3), 0.0375em 0.0375em 0.0675em 0 hsla(var(--accent) / 0.15);
   }
 
   .push-button::after {
@@ -722,9 +722,9 @@
     top: -0.15em;
     left: -0.15em;
     border-radius: inherit;
-    background: linear-gradient(-135deg, hsla(var(--primary) / 0.5), transparent 20%, transparent 100%);
+    background: linear-gradient(-135deg, hsla(var(--accent) / 0.6), transparent 20%, transparent 100%);
     filter: blur(0.0125em);
-    opacity: 0.25;
+    opacity: 0.3;
     mix-blend-mode: multiply;
   }
 
@@ -734,11 +734,11 @@
     border-radius: inherit;
     transition: box-shadow 300ms ease;
     will-change: box-shadow;
-    box-shadow: 0 0.05em 0.05em -0.01em hsl(var(--primary)), 0 0.01em 0.01em -0.01em hsla(var(--primary) / 0.5), 0.15em 0.3em 0.1em -0.01em hsla(var(--primary) / 0.25);
+    box-shadow: 0 0.05em 0.05em -0.01em hsl(var(--accent)), 0 0.01em 0.01em -0.01em hsla(var(--accent) / 0.6), 0.15em 0.3em 0.1em -0.01em hsla(var(--accent) / 0.3);
   }
 
   .push-button:hover .button-outer {
-    box-shadow: 0 0 0 0 hsl(var(--primary)), 0 0 0 0 hsla(var(--primary) / 0.5), 0 0 0 0 hsla(var(--primary) / 0.25);
+    box-shadow: 0 0 0 0 hsl(var(--accent)), 0 0 0 0 hsla(var(--accent) / 0.6), 0 0 0 0 hsla(var(--accent) / 0.3);
   }
 
   .push-button .button-inner {
@@ -747,17 +747,17 @@
     border-radius: inherit;
     padding: 0.5em 1em;
     font-size: 0.875rem;
-    background-image: linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary) / 0.6));
+    background-image: linear-gradient(135deg, hsl(var(--accent) / 0.9), hsl(var(--accent) / 0.7));
     transition: box-shadow 300ms ease, clip-path 250ms ease, background-image 250ms ease, transform 250ms ease;
     will-change: box-shadow, clip-path, background-image, transform;
     overflow: clip;
     clip-path: inset(0 0 0 0 round 999vw);
-    box-shadow: 0 0 0 0 inset hsla(var(--primary) / 0.1), -0.05em -0.05em 0.05em 0 inset hsla(var(--primary) / 0.25), 0 0 0 0 inset hsla(var(--primary) / 0.1), 0 0 0.05em 0.2em inset hsla(0, 0%, 100% / 0.25), 0.025em 0.05em 0.1em 0 inset hsla(0, 0%, 100% / 1), 0.12em 0.12em 0.12em inset hsla(0, 0%, 100% / 0.25), -0.075em -0.25em 0.25em 0.1em inset hsla(var(--primary) / 0.25);
+    box-shadow: 0 0 0 0 inset hsla(var(--accent) / 0.15), -0.05em -0.05em 0.05em 0 inset hsla(var(--accent) / 0.3), 0 0 0 0 inset hsla(var(--accent) / 0.15), 0 0 0.05em 0.2em inset hsla(0, 0%, 100% / 0.3), 0.025em 0.05em 0.1em 0 inset hsla(0, 0%, 100% / 1), 0.12em 0.12em 0.12em inset hsla(0, 0%, 100% / 0.3), -0.075em -0.25em 0.25em 0.1em inset hsla(var(--accent) / 0.3);
   }
 
   .push-button:hover .button-inner {
     clip-path: inset(clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 999vw);
-    box-shadow: 0.1em 0.15em 0.05em 0 inset hsla(var(--primary) / 0.75), -0.025em -0.03em 0.05em 0.025em inset hsla(var(--primary) / 0.5), 0.25em 0.25em 0.2em 0 inset hsla(var(--primary) / 0.5), 0 0 0.05em 0.5em inset hsla(0, 0%, 100% / 0.15), 0 0 0 0 inset hsla(0, 0%, 100% / 1), 0.12em 0.12em 0.12em inset hsla(0, 0%, 100% / 0.25), -0.075em -0.12em 0.2em 0.1em inset hsla(var(--primary) / 0.25);
+    box-shadow: 0.1em 0.15em 0.05em 0 inset hsla(var(--accent) / 0.8), -0.025em -0.03em 0.05em 0.025em inset hsla(var(--accent) / 0.6), 0.25em 0.25em 0.2em 0 inset hsla(var(--accent) / 0.6), 0 0 0.05em 0.5em inset hsla(0, 0%, 100% / 0.2), 0 0 0 0 inset hsla(0, 0%, 100% / 1), 0.12em 0.12em 0.12em inset hsla(0, 0%, 100% / 0.3), -0.075em -0.12em 0.2em 0.1em inset hsla(var(--accent) / 0.3);
   }
 
   .push-button .button-inner span {
@@ -765,11 +765,11 @@
     z-index: 4;
     letter-spacing: -0.05em;
     font-weight: 500;
-    color: hsl(var(--primary-foreground));
+    color: hsl(var(--accent-foreground));
     transition: transform 250ms ease;
     display: block;
     will-change: transform;
-    text-shadow: hsla(var(--primary-foreground) / 0.1) 0 0 0.1em;
+    text-shadow: hsla(var(--accent-foreground) / 0.2) 0 0 0.1em;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -1152,4 +1152,66 @@
     }
   }
 
+}
+
+.raindrop-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.raindrop {
+    position: absolute;
+    bottom: 100%;
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+    animation: fall linear infinite;
+}
+
+.splash, .ripple {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    animation: splash-and-ripple ease-out forwards;
+}
+
+.splash {
+    width: 10px;
+    height: 5px;
+}
+
+.ripple {
+    width: 20px;
+    height: 10px;
+    opacity: 0;
+}
+
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes splash-and-ripple {
+    0% {
+        transform: translateX(-50%) scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(-50%) scale(1.5);
+        opacity: 0;
+    }
 }
