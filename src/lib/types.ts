@@ -6,6 +6,7 @@ export type Product = {
   brand: string;
   price: number;
   imageId: string;
+  imageGallery?: string[];
   description: string;
   specs: {
     phRange: string;

@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, CheckCircle, Quote, ShoppingBag, Star } from 'lucide-react';
+import { ArrowRight, CheckCircle, Quote, ShoppingBag, Star, Droplet, Zap, Gauge } from 'lucide-react';
 import Link from 'next/link';
 import { AnimatedSection } from '@/components/animated-section';
 import { ScienceIcons } from '@/components/science-icons';
@@ -40,6 +40,15 @@ export default function Home() {
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
 
+  const [activeImage, setActiveImage] = React.useState<Record<string, string>>({});
+
+  const handleThumbnailHover = (productId: string, imageId: string) => {
+    const mainImage = PlaceHolderImages.find((p) => p.id === imageId);
+    if(mainImage) {
+        setActiveImage(prev => ({ ...prev, [productId]: mainImage.imageUrl }));
+    }
+  };
+
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
@@ -47,7 +56,7 @@ export default function Home() {
         <WaterAnimation />
         
         {/* Left Floating Brands */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 flex flex-col gap-6 z-30">
+        <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 flex-col gap-6 z-30 flex">
           {leftBrands.map((brand, index) => {
             const delay = index * 150;
             return (
@@ -68,7 +77,7 @@ export default function Home() {
         </div>
 
         {/* Right Floating Brands */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 flex flex-col gap-6 z-30">
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 flex-col gap-6 z-30 flex">
           {rightBrands.map((brand, index) => {
             const delay = (index * 150) + 600;
             return (
@@ -142,32 +151,56 @@ export default function Home() {
               <CarouselContent className="-ml-4">
                 {featuredProducts.map((product) => {
                   const productImage = PlaceHolderImages.find((p) => p.id === product.imageId);
+                  const mainImageUrl = activeImage[product.id] || (productImage ? productImage.imageUrl : '');
+
                   return (
                     <CarouselItem key={product.id} className="sm:basis-1/2 lg:basis-1/3 pl-4">
                         <div className="product-card">
                           <div className="product-card-badge">Featured</div>
                           <Link href={`/products/${product.id}`} className="product-card-tilt">
                             <div className="product-card-img">
-                              {productImage && (
+                              {mainImageUrl && (
                                 <Image
                                   alt={product.name}
-                                  src={productImage.imageUrl}
+                                  src={mainImageUrl}
                                   fill
                                   style={{objectFit: 'cover'}}
-                                  data-ai-hint={productImage.imageHint}
+                                  data-ai-hint={productImage?.imageHint || 'water ionizer'}
                                 />
                               )}
                             </div>
                           </Link>
                           <div className="product-card-info">
+                            <div className="flex gap-2 mb-2">
+                                {product.imageGallery?.slice(0, 4).map((imgId) => {
+                                    const thumb = PlaceHolderImages.find(p => p.id === imgId);
+                                    if(!thumb) return null;
+                                    return (
+                                        <div key={imgId} className="w-1/4 h-16 relative rounded-md overflow-hidden border-2 border-transparent hover:border-primary transition-all" onMouseEnter={() => handleThumbnailHover(product.id, imgId)}>
+                                            <Image src={thumb.imageUrl} alt={`${product.name} thumbnail`} fill style={{objectFit: 'cover'}} data-ai-hint={thumb.imageHint} />
+                                        </div>
+                                    )
+                                })}
+                            </div>
+
                             <div className="product-card-cat">{product.brand}</div>
                             <h2 className="product-card-title">{product.name}</h2>
-                            <p className="product-card-desc">{product.description}</p>
-                            <div className="product-card-feats">
-                              <span className="product-card-feat">{product.specs.plates} Plates</span>
-                              <span className="product-card-feat">pH {product.specs.phRange}</span>
-                              <span className="product-card-feat">{product.specs.orpRange} ORP</span>
+                            
+                            <div className="grid grid-cols-3 gap-2 text-center my-4">
+                                <div className="flex flex-col items-center">
+                                    <Zap className="w-6 h-6 text-primary mb-1"/>
+                                    <span className="text-xs font-semibold text-muted-foreground">{product.specs.plates} Plates</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Gauge className="w-6 h-6 text-primary mb-1"/>
+                                    <span className="text-xs font-semibold text-muted-foreground">{product.specs.orpRange} ORP</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Droplet className="w-6 h-6 text-primary mb-1"/>
+                                    <span className="text-xs font-semibold text-muted-foreground">pH {product.specs.phRange}</span>
+                                </div>
                             </div>
+                            
                             <div className="product-card-bottom">
                               <div className="product-card-price">
                                 <span className="product-card-new">
