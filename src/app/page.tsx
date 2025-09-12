@@ -23,12 +23,59 @@ export default function Home() {
   const brands = placeholderData.brands;
   const testimonials = placeholderData.testimonials;
   const scienceConcepts = placeholderData.scienceConcepts.slice(0, 4);
+  
+  const leftBrands = brands.slice(0, 4);
+  const rightBrands = brands.slice(4, 8);
+
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full pb-12 lg:pb-12 overflow-hidden">
+      <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
         <WaterAnimation />
-        <div className="container px-4 md:px-6 relative z-10">
+        
+        {/* Left Floating Brands */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 hidden lg:flex flex-col gap-6 z-10">
+          {leftBrands.map((brand, index) => {
+            const delay = index * 150;
+            return (
+              <Link href={`/products?brand=${encodeURIComponent(brand.name)}`} key={brand.id} className="floating-brand-bubble" style={{ animationDelay: `${delay}ms` }}>
+                  {brand.logoUrl && (
+                    <Image
+                      alt={`${brand.name} logo`}
+                      src={brand.logoUrl}
+                      width={80}
+                      height={80}
+                      className="object-contain"
+                      data-ai-hint={`${brand.name} logo`}
+                    />
+                  )}
+              </Link>
+            )
+          })}
+        </div>
+
+        {/* Right Floating Brands */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 hidden lg:flex flex-col gap-6 z-10">
+          {rightBrands.map((brand, index) => {
+            const delay = (index * 150) + 600;
+            return (
+              <Link href={`/products?brand=${encodeURIComponent(brand.name)}`} key={brand.id} className="floating-brand-bubble" style={{ animationDelay: `${delay}ms` }}>
+                  {brand.logoUrl && (
+                    <Image
+                      alt={`${brand.name} logo`}
+                      src={brand.logoUrl}
+                      width={80}
+                      height={80}
+                      className="object-contain"
+                      data-ai-hint={`${brand.name} logo`}
+                    />
+                  )}
+              </Link>
+            )
+          })}
+        </div>
+
+        <div className="container px-4 md:px-6 relative z-20">
           <div className="flex flex-col items-center justify-center space-y-8 text-center pt-16 md:pt-24 lg:pt-32">
             <AnimatedSection
               className="flex flex-col justify-center items-center space-y-4"
@@ -53,45 +100,6 @@ export default function Home() {
                 </Button>
               </div>
             </AnimatedSection>
-            
-            <AnimatedSection className="w-full max-w-7xl pt-8" animation="animate-scroll-in" delay={200}>
-               <h3 className="text-3xl font-bold tracking-wide text-white shadow-sm">Trusted by the Best Brands</h3>
-                 <div className="relative mt-8">
-                   <Carousel
-                     opts={{
-                       align: "start",
-                       loop: true,
-                     }}
-                     className="w-full"
-                   >
-                     <CarouselContent className="-ml-12">
-                       {brands.map((brand) => (
-                         <CarouselItem key={brand.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 pl-12">
-                           <div className="p-1 flex justify-center">
-                              <Link href={`/products?brand=${encodeURIComponent(brand.name)}`} className="block w-full">
-                                 {brand.logoUrl && (
-                                   <div className="bg-white/90 p-3 rounded-lg shadow-lg hover:bg-white transition-colors">
-                                     <Image
-                                       alt={brand.name}
-                                       className="aspect-[3/2] overflow-hidden rounded-lg object-contain object-center opacity-80 group-hover:opacity-100 transition-opacity"
-                                       data-ai-hint={`${brand.name} logo`}
-                                       height="100"
-                                       src={brand.logoUrl}
-                                       width="150"
-                                     />
-                                   </div>
-                                 )}
-                               </Link>
-                           </div>
-                         </CarouselItem>
-                       ))}
-                     </CarouselContent>
-                     <CarouselPrevious className="absolute left-[-20px] md:left-[-60px] top-1/2 -translate-y-1/2 h-10 w-10 bg-white/50 hover:bg-white/80 border-none text-white" />
-                     <CarouselNext className="absolute right-[-20px] md:right-[-60px] top-1/2 -translate-y-1/2 h-10 w-10 bg-white/50 hover:bg-white/80 border-none text-white" />
-                   </Carousel>
-                 </div>
-            </AnimatedSection>
-
           </div>
         </div>
       </section>
