@@ -97,15 +97,24 @@ const fragmentShader = `
   precision highp float;
   uniform float uTransparency; uniform float uSpec; uniform vec3 uLightDir; uniform float uTime; uniform vec3 uCameraPos;
   varying vec3 vWorldPos; varying vec3 vNormal; varying float vHeight; varying vec3 vViewDir;
-  
-  // Adjusted sky color for a richer blue
+
+  // procedural sky sampling by direction
   vec3 sampleSky(vec3 dir){
-    float t = smoothstep(0.0, 0.5, dir.y);
-    return mix(vec3(0.1, 0.2, 0.5), vec3(0.6, 0.8, 1.0), t);
+    float u = 0.5 + 0.5 * dir.x;
+    float v = clamp(dir.y * 0.8 + 0.5, 0.0, 1.0); // top color and horizon color
+    vec3 top = vec3(0.06, 0.55, 0.78);
+    vec3 mid = vec3(0.08, 0.45, 0.62);
+    vec3 bot = vec3(0.02, 0.08, 0.18);
+    vec3 col = mix(bot, mix(mid, top, smoothstep(0.0,1.0,v)), smoothstep(-0.2,0.9,v));
+    // sun highlight (pseudo)
+    vec3 sunDir = normalize(vec3(0.0, 0.95, 0.2));
+    float sun = pow(max(dot(dir, sunDir), 0.0), 200.0) * 6.0;
+    col += sun;
+    return col;
   }
 
   float fresnelSchlick(float cosTheta, float f0){
-    return f0 + (1.0 - f0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
+    return f0 + (1.0 - f0) * pow(1.0 - cosTheta, 5.0);
   }
 
   void main(){
@@ -113,32 +122,37 @@ const fragmentShader = `
     vec3 V = normalize(vViewDir);
     vec3 L = normalize(uLightDir);
 
+    // reflection vector and refraction vector
     vec3 R = reflect(-V, N);
-    vec3 refr = refract(-V, N, 0.98); // Slightly adjusted refraction index
+    vec3 refr = refract(-V, N, 0.95); // small eta for subtle refraction
 
     vec3 reflCol = sampleSky(R);
-    vec3 refrCol = sampleSky(refr) * vec3(0.6, 0.8, 1.0); // Deeper blue for refraction
+    vec3 refrCol = sampleSky(refr) * vec3(0.6,0.85,0.95);
 
-    // Increase specular highlight intensity
-    float spec = pow(max(dot(reflect(-L,N), V), 0.0), 128.0) * uSpec * 1.5;
+    // specular
+    float spec = pow(max(dot(reflect(-L,N), V), 0.0), 64.0) * uSpec;
 
+    // fresnel for mix
     float cosTheta = max(dot(N, V), 0.0);
-    float fres = fresnelSchlick(cosTheta, 0.04); // Slightly increased base fresnel
+    float fres = fresnelSchlick(cosTheta, 0.02);
 
-    // More vibrant color mapping based on height
-    float depthFactor = smoothstep(-1.0, 2.0, vHeight);
-    vec3 base = mix(vec3(0.05, 0.25, 0.45), vec3(0.2, 0.5, 0.8), depthFactor);
+    // base water tint based on height/depth
+    float depthFactor = smoothstep(-1.5, 2.5, vHeight);
+    vec3 base = mix(vec3(0.07,0.32,0.48), vec3(0.02,0.06,0.12), depthFactor);
 
-    float crest = smoothstep(0.3, 0.8, vHeight);
+    // foam on crests
+    float crest = smoothstep(0.35, 0.95, vHeight);
     float upness = 1.0 - pow(max(dot(N, vec3(0.0,1.0,0.0)), 0.0), 3.0);
     float foam = crest * upness;
 
-    vec3 color = mix(refrCol * 0.8 + base * 0.4, reflCol, fres);
-    color = mix(color, vec3(0.9, 0.95, 1.0), clamp(foam*1.8, 0.0, 1.0)); // Brighter foam
-    color += spec;
+    // combine
+    vec3 color = mix(refrCol * 0.7 + base * 0.6, reflCol, fres);
+    color = mix(color, vec3(1.0), clamp(foam*1.4, 0.0, 1.0));
+    color += spec * 0.8;
 
-    float alpha = mix(0.95, 0.2, pow(1.0 - fres, 2.0));
-    alpha = mix(alpha, uTransparency, 0.5);
+    // fresnel-based alpha (more transparent when looking down)
+    float alpha = mix(0.85, 0.35, pow(1.0 - fres, 1.2));
+    alpha = mix(alpha, uTransparency, 0.6);
 
     gl_FragColor = vec4(color, alpha);
   }
@@ -172,12 +186,12 @@ export function WaterAnimation() {
     const mat = new THREE.ShaderMaterial({
       uniforms: {
         uTime: { value: 0 },
-        uAmp: { value: 0.55 }, // Increased amplitude
-        uWl: { value: 4.5 },
+        uAmp: { value: 0.45 },
+        uWl: { value: 4.0 },
         uSpeed: { value: 0.8 },
-        uChop: { value: 1.2 }, // Increased choppiness
-        uTransparency: { value: 0.85 }, // Slightly less transparent
-        uSpec: { value: 1.2 }, // Brighter specular
+        uChop: { value: 0.6 },
+        uTransparency: { value: 0.78 },
+        uSpec: { value: 0.9 },
         uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
         uCameraPos: { value: new THREE.Vector3() },
         uLightDir: { value: new THREE.Vector3(0.5, 0.8, 0.2) },
@@ -278,3 +292,5 @@ export function WaterAnimation() {
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full -z-10" />;
 }
+
+    
