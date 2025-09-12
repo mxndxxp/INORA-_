@@ -102,14 +102,14 @@ const fragmentShader = `
     float u = 0.5 + 0.5 * dir.x;
     float v = clamp(dir.y * 0.8 + 0.5, 0.0, 1.0);
     // top color and horizon color
-    vec3 top = vec3(0.2, 0.5, 0.9);
-    vec3 mid = vec3(0.7, 0.8, 0.9);
-    vec3 bot = vec3(1.0, 0.95, 0.85);
+    vec3 top = vec3(0.2, 0.6, 0.9); 
+    vec3 mid = vec3(0.7, 0.85, 1.0);
+    vec3 bot = vec3(1.0, 0.98, 0.95);
     vec3 col = mix(bot, mix(mid, top, smoothstep(0.4,0.7,v)), smoothstep(0.0,0.3,v));
 
     // sun highlight (pseudo)
     vec3 sunDir = normalize(vec3(0.0, 0.95, 0.2));
-    float sun = pow(max(dot(dir, sunDir), 0.0), 200.0) * 6.0;
+    float sun = pow(max(dot(dir, sunDir), 0.0), 200.0) * 8.0;
     col += sun;
     return col;
   }
@@ -128,10 +128,10 @@ const fragmentShader = `
     vec3 refr = refract(-V, N, 0.95); // small eta for subtle refraction
 
     vec3 reflCol = sampleSky(R);
-    vec3 refrCol = sampleSky(refr) * vec3(0.6,0.85,0.95);
+    vec3 refrCol = sampleSky(refr) * vec3(0.7,0.9,1.0);
 
     // specular
-    float spec = pow(max(dot(reflect(-L,N), V), 0.0), 64.0) * uSpec;
+    float spec = pow(max(dot(reflect(-L,N), V), 0.0), 80.0) * uSpec;
 
     // fresnel for mix
     float cosTheta = max(dot(N, V), 0.0);
@@ -139,7 +139,7 @@ const fragmentShader = `
 
     // base water tint based on height/depth
     float depthFactor = smoothstep(-1.5, 2.5, vHeight);
-    vec3 base = mix(vec3(0.1, 0.4, 0.7), vec3(0.0, 0.1, 0.2), depthFactor);
+    vec3 base = mix(vec3(0.3, 0.7, 0.9), vec3(0.05, 0.15, 0.25), depthFactor);
 
     // foam on crests
     float crest = smoothstep(0.35, 0.95, vHeight);
@@ -147,9 +147,9 @@ const fragmentShader = `
     float foam = crest * upness;
 
     // combine
-    vec3 color = mix(refrCol * 0.4 + base * 0.3, reflCol, fres);
-    color = mix(color, vec3(1.0), clamp(foam*1.4, 0.0, 1.0));
-    color += spec * 0.8;
+    vec3 color = mix(refrCol * 0.5 + base * 0.5, reflCol, fres);
+    color = mix(color, vec3(1.0), clamp(foam*1.8, 0.0, 1.0));
+    color += spec * 1.2;
 
     // fresnel-based alpha (more transparent when looking down)
     float alpha = mix(0.9, 0.1, pow(1.0 - fres, 2.0));
@@ -193,7 +193,7 @@ export function WaterAnimation() {
         uSpeed: { value: 0.8 },
         uChop: { value: 0.6 },
         uTransparency: { value: 0.78 },
-        uSpec: { value: 0.9 },
+        uSpec: { value: 1.2 },
         uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
         uCameraPos: { value: new THREE.Vector3() },
         uLightDir: { value: new THREE.Vector3(0.5, 0.8, 0.2) },
