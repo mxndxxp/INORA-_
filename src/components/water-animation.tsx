@@ -97,10 +97,11 @@ const fragmentShader = `
   precision highp float;
   uniform float uTransparency; uniform float uSpec; uniform vec3 uLightDir; uniform float uTime; uniform vec3 uCameraPos;
   varying vec3 vWorldPos; varying vec3 vNormal; varying float vHeight; varying vec3 vViewDir;
-
+  
+  // Adjusted sky color for a richer blue
   vec3 sampleSky(vec3 dir){
-    float t = smoothstep(0.0, 0.6, dir.y);
-    return mix(vec3(0.1, 0.3, 0.6), vec3(0.6, 0.8, 1.0), t);
+    float t = smoothstep(0.0, 0.5, dir.y);
+    return mix(vec3(0.1, 0.2, 0.5), vec3(0.6, 0.8, 1.0), t);
   }
 
   float fresnelSchlick(float cosTheta, float f0){
@@ -113,28 +114,30 @@ const fragmentShader = `
     vec3 L = normalize(uLightDir);
 
     vec3 R = reflect(-V, N);
-    vec3 refr = refract(-V, N, 0.95); 
+    vec3 refr = refract(-V, N, 0.98); // Slightly adjusted refraction index
 
     vec3 reflCol = sampleSky(R);
-    vec3 refrCol = sampleSky(refr) * vec3(0.7,0.9,1.0);
+    vec3 refrCol = sampleSky(refr) * vec3(0.6, 0.8, 1.0); // Deeper blue for refraction
 
-    float spec = pow(max(dot(reflect(-L,N), V), 0.0), 128.0) * uSpec;
+    // Increase specular highlight intensity
+    float spec = pow(max(dot(reflect(-L,N), V), 0.0), 128.0) * uSpec * 1.5;
 
     float cosTheta = max(dot(N, V), 0.0);
-    float fres = fresnelSchlick(cosTheta, 0.02);
+    float fres = fresnelSchlick(cosTheta, 0.04); // Slightly increased base fresnel
 
-    float depthFactor = smoothstep(-1.5, 2.5, vHeight);
-    vec3 base = mix(vec3(0.07,0.32,0.48), vec3(0.02,0.06,0.12), depthFactor);
+    // More vibrant color mapping based on height
+    float depthFactor = smoothstep(-1.0, 2.0, vHeight);
+    vec3 base = mix(vec3(0.05, 0.25, 0.45), vec3(0.2, 0.5, 0.8), depthFactor);
 
-    float crest = smoothstep(0.35, 0.95, vHeight);
+    float crest = smoothstep(0.3, 0.8, vHeight);
     float upness = 1.0 - pow(max(dot(N, vec3(0.0,1.0,0.0)), 0.0), 3.0);
     float foam = crest * upness;
 
-    vec3 color = mix(refrCol * 0.7 + base * 0.6, reflCol, fres);
-    color = mix(color, vec3(1.0), clamp(foam*1.6, 0.0, 1.0));
-    color += spec * 1.5;
+    vec3 color = mix(refrCol * 0.8 + base * 0.4, reflCol, fres);
+    color = mix(color, vec3(0.9, 0.95, 1.0), clamp(foam*1.8, 0.0, 1.0)); // Brighter foam
+    color += spec;
 
-    float alpha = mix(0.9, 0.1, pow(1.0 - fres, 2.0));
+    float alpha = mix(0.95, 0.2, pow(1.0 - fres, 2.0));
     alpha = mix(alpha, uTransparency, 0.5);
 
     gl_FragColor = vec4(color, alpha);
@@ -169,12 +172,12 @@ export function WaterAnimation() {
     const mat = new THREE.ShaderMaterial({
       uniforms: {
         uTime: { value: 0 },
-        uAmp: { value: 0.45 },
-        uWl: { value: 4.0 },
+        uAmp: { value: 0.55 }, // Increased amplitude
+        uWl: { value: 4.5 },
         uSpeed: { value: 0.8 },
-        uChop: { value: 0.6 },
-        uTransparency: { value: 0.78 },
-        uSpec: { value: 0.9 },
+        uChop: { value: 1.2 }, // Increased choppiness
+        uTransparency: { value: 0.85 }, // Slightly less transparent
+        uSpec: { value: 1.2 }, // Brighter specular
         uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
         uCameraPos: { value: new THREE.Vector3() },
         uLightDir: { value: new THREE.Vector3(0.5, 0.8, 0.2) },
