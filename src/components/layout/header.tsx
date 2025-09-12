@@ -133,17 +133,8 @@ export function Header() {
 
       </div>
       <div className="header-wave-container">
-          <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
-          <defs>
-          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-          </defs>
-          <g className="parallax">
-          <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-          <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-          <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-          <use xlinkHref="#gentle-wave" x="48" y="7" fill="#89ddff" />
-          </g>
+          <svg className="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#89ddff" fillOpacity="1" d="M0,192L80,176C160,160,320,128,480,138.7C640,149,800,203,960,208C1120,213,1280,171,1360,149.3L1440,128L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
           </svg>
       </div>
     </header>
