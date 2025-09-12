@@ -102,11 +102,21 @@ export default function Home() {
               className="flex flex-col justify-center items-center space-y-4"
               animation="animate-scroll-in"
             >
-              <div className="space-y-4">
-                <h1 className="text-white font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight">
+              <div className="space-y-4 animated-wavy-text-container">
+                <h1 className="text-white font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight opacity-0">
                   Pure Water, Pure Life.
                   <br />
                   Discover Ionora.
+                </h1>
+                <h1 className="animated-wavy-text stroked font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight">
+                    Pure Water, Pure Life.
+                    <br />
+                    Discover Ionora.
+                </h1>
+                <h1 className="animated-wavy-text filled font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight">
+                    Pure Water, Pure Life.
+                    <br />
+                    Discover Ionora.
                 </h1>
                 <p className="mx-auto max-w-[600px] text-gray-200 md:text-xl">
                   India's premier marketplace for water ionizers. Explore top brands, understand the science, and find the perfect match for your healthy lifestyle.
