@@ -70,8 +70,7 @@
 /* Wavy Header Styles */
 @layer components {
   .header-wavy {
-    @apply relative w-full z-50;
-    background-color: #0077be; /* Deep sky blue */
+    @apply relative w-full z-50 bg-transparent h-24;
   }
 
   .header-wave-border {
@@ -84,6 +83,23 @@
       background-repeat: repeat-x;
       background-size: 50px 8px;
       animation: wave 2s linear infinite;
+  }
+
+  .wave-path-dark {
+    fill: url(#SVGID_1_);
+    animation: darkwaves 7s linear infinite;
+  }
+  .wave-path-light {
+    fill: url(#SVGID_2_);
+    animation: lightwaves 5s linear infinite;
+  }
+  .wave-path-white {
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 4;
+    stroke-miterlimit: 10;
+    opacity: 0.76;
+    animation: whitewaves 6s alternate ease infinite;
   }
   
   .wavy-underline {
@@ -99,6 +115,20 @@
     from { background-position-x: 0; }
     to { background-position-x: -50px; }
   }
+
+  @keyframes darkwaves {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-800px); }
+  }
+  @keyframes lightwaves {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-800px); }
+  }
+  @keyframes whitewaves {
+    0% { transform: translateX(0px); }
+    100% { transform: translateX(-800px); }
+  }
+
 }
 
 /* Product Card Styles */
