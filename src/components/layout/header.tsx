@@ -29,8 +29,8 @@ export function Header() {
           {navLinks.slice(0, 3).map((item) => (
             <Link key={item.href} href={item.href} className="flex flex-col items-center">
               <span className={cn(
-                'font-medium transition-colors hover:text-white/80',
-                pathname === item.href ? 'text-white' : 'text-gray-200'
+                'font-bold transition-colors hover:text-foreground/80',
+                pathname === item.href ? 'text-foreground' : 'text-foreground/70'
               )}>
                 {item.label}
               </span>
@@ -51,8 +51,8 @@ export function Header() {
              {navLinks.slice(3, 5).map((item) => (
                 <Link key={item.href} href={item.href} className="flex flex-col items-center">
                   <span className={cn(
-                    'font-medium transition-colors hover:text-white/80',
-                     pathname === item.href ? 'text-white' : 'text-gray-200'
+                    'font-bold transition-colors hover:text-foreground/80',
+                     pathname === item.href ? 'text-foreground' : 'text-foreground/70'
                   )}>
                     {item.label}
                   </span>
