@@ -95,12 +95,9 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center justify-end gap-3">
-          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-black/5 h-9 w-9">
-            <Link href="/wishlist">
-              <Heart className="h-5 w-5" />
-              <span className="sr-only">Wishlist</span>
-            </Link>
-          </Button>
+          <Link href="/wishlist">
+            <LikeButton />
+          </Link>
           <Button asChild variant="ghost" size="icon" className="text-black hover:bg-black/5 h-9 w-9">
              <Link href="/compare">
               <GitCompare className="h-5 w-5" />
