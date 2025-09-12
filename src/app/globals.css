@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 204 100% 37%;
+    --background: 207 100% 37%;
     --foreground: 224 71% 4%;
     --card: 210 100% 100%;
     --card-foreground: 224 71% 4%;
@@ -73,30 +73,65 @@
     @apply relative w-full z-50 bg-[#0071bc] h-24;
   }
 
-  .header-wave-border {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 48px;
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 48'%3e%3cpath fill='none' stroke='%23ffffff' stroke-width='2' d='M0 24c20-32 20 32 40 32s20-32 40-32 20 32 40 32 20-32 40-32'/%3e%3c/svg%3e");
-      background-repeat: repeat-x;
-      background-size: 80px 48px;
-      animation: wave 2.5s linear infinite;
+  .header-wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Adjust height as needed */
+    overflow: hidden;
   }
-  
+
+  .waves {
+    position:relative;
+    width: 100%;
+    height:15vh;
+    margin-bottom:-7px; /*Fix for safari gap*/
+    min-height:100px;
+    max-height:150px;
+  }
+
+  .parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+
+  @keyframes move-forever {
+    0% {
+      transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+  }
+
   .wavy-underline {
     width: 100%;
     height: 4px;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%2389ddff' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e");
     background-repeat: repeat-x;
     background-size: 20px 4px;
-    animation: wave 1s linear infinite;
+    animation: wave-underline-anim 1s linear infinite;
   }
 
-  @keyframes wave {
+  @keyframes wave-underline-anim {
     from { background-position-x: 0; }
-    to { background-position-x: -80px; }
+    to { background-position-x: -20px; }
   }
 
 }
