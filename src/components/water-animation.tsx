@@ -102,9 +102,9 @@ const fragmentShader = `
     float u = 0.5 + 0.5 * dir.x;
     float v = clamp(dir.y * 0.8 + 0.5, 0.0, 1.0);
     // top color and horizon color
-    vec3 top = vec3(0.06, 0.55, 0.78);
-    vec3 mid = vec3(0.08, 0.45, 0.62);
-    vec3 bot = vec3(0.02, 0.08, 0.18);
+    vec3 top = vec3(0.0, 0.75, 1.0); // deep sky blue
+    vec3 mid = vec3(0.0, 0.75, 1.0); // deep sky blue
+    vec3 bot = vec3(0.0, 0.75, 1.0); // deep sky blue
     vec3 col = mix(bot, mix(mid, top, smoothstep(0.0,1.0,v)), smoothstep(-0.2,0.9,v));
 
     // sun highlight (pseudo)
