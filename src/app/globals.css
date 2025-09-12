@@ -896,7 +896,7 @@
 
   [data-radix-popper-content-wrapper] > div {
     @apply border-blue-300/20;
-    --tw-bg-opacity: 0.85; /* Or any value you prefer */
+    --tw-bg-opacity: 0.5; /* Or any value you prefer */
     background-color: hsla(210, 100%, 98%, var(--tw-bg-opacity));
     backdrop-filter: blur(16px);
     position: relative;
