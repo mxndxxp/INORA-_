@@ -31,7 +31,7 @@ export function Header() {
 
   return (
     <header className="header-wavy">
-      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-white relative z-10">
+      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-black relative z-10">
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-2 w-1/3">
           {mainNav.slice(0, 3).map((item) => {
@@ -47,12 +47,12 @@ export function Header() {
                     )}
                   >
                     <span className={cn(
-                      'font-bold transition-colors hover:text-white flex items-center gap-1',
-                      isActive ? 'text-white' : 'text-white/80'
+                      'font-bold transition-colors hover:text-black flex items-center gap-1',
+                      isActive ? 'text-black' : 'text-black/80'
                     )}>
                       {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                     </span>
-                    {isActive && <div className="mt-1 wavy-underline" />}
+                    {isActive && <div className="mt-1 wavy-underline" style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%23000000' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e")` }} />}
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56">
@@ -66,12 +66,12 @@ export function Header() {
             ) : (
               <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                 <span className={cn(
-                  'font-bold transition-colors hover:text-white',
-                  isActive ? 'text-white' : 'text-white/80'
+                  'font-bold transition-colors hover:text-black',
+                  isActive ? 'text-black' : 'text-black/80'
                 )}>
                   {item.title}
                 </span>
-                {isActive && <div className="mt-1 wavy-underline" />}
+                {isActive && <div className="mt-1 wavy-underline" style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%23000000' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e")` }} />}
               </Link>
             )
           })}
@@ -79,8 +79,8 @@ export function Header() {
 
         <div className="hidden md:flex justify-center w-1/3">
           <Link href="/" className="flex items-center gap-2">
-            <Droplet className="h-8 w-8 text-white" />
-            <span className="text-3xl font-headline font-bold text-white">IONORA</span>
+            <Droplet className="h-8 w-8 text-black" />
+            <span className="text-3xl font-headline font-bold text-black">IONORA</span>
           </Link>
         </div>
 
@@ -99,12 +99,12 @@ export function Header() {
                       )}
                     >
                       <span className={cn(
-                        'font-bold transition-colors hover:text-white flex items-center gap-1',
-                        isActive ? 'text-white' : 'text-white/80'
+                        'font-bold transition-colors hover:text-black flex items-center gap-1',
+                        isActive ? 'text-black' : 'text-black/80'
                       )}>
                         {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                       </span>
-                      {isActive && <div className="mt-1 wavy-underline" />}
+                      {isActive && <div className="mt-1 wavy-underline" style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%23000000' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e")` }} />}
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56">
@@ -118,12 +118,12 @@ export function Header() {
               ) : (
                 <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                   <span className={cn(
-                    'font-bold transition-colors hover:text-white',
-                     isActive ? 'text-white' : 'text-white/80'
+                    'font-bold transition-colors hover:text-black',
+                     isActive ? 'text-black' : 'text-black/80'
                   )}>
                     {item.title}
                   </span>
-                  {isActive && <div className="mt-1 wavy-underline" />}
+                  {isActive && <div className="mt-1 wavy-underline" style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%23000000' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e")` }} />}
                 </Link>
               )
               })}
@@ -140,7 +140,7 @@ export function Header() {
               </div>
             </button>
           </Link>
-          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 cart-button h-8 w-8">
+          <Button asChild variant="ghost" size="icon" className="text-black hover:bg-white/10 cart-button h-8 w-8">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
@@ -150,7 +150,7 @@ export function Header() {
         
         {/* Mobile Navigation Trigger */}
         <div className="md:hidden flex-1">
-           <Link href="/" className="flex items-center gap-2 text-white">
+           <Link href="/" className="flex items-center gap-2 text-black">
             <Droplet className="h-7 w-7" />
             <span className="text-2xl font-headline font-bold">IONORA</span>
           </Link>
@@ -158,7 +158,7 @@ export function Header() {
         <div className="md:hidden">
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+                <Button variant="ghost" size="icon" className="text-black hover:bg-white/10 hover:text-black">
                   <Menu className="h-6 w-6" />
                   <span className="sr-only">Open menu</span>
                 </Button>
