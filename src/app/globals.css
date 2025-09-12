@@ -70,8 +70,7 @@
 /* Wavy Header Styles */
 @layer components {
   .header-wavy {
-    @apply fixed top-0 left-0 w-full z-50 bg-foreground;
-    position: relative;
+    @apply relative w-full z-50 bg-foreground;
   }
 
   .header-wave {
@@ -85,6 +84,20 @@
   }
   .header-wave-fill {
     fill: hsl(var(--background));
+  }
+  
+  .wavy-underline {
+    width: 100%;
+    height: 4px;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3e%3cpath fill='none' stroke='%2389ddff' stroke-width='1.5' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3e%3c/svg%3e");
+    background-repeat: repeat-x;
+    background-size: 20px 4px;
+    animation: wave 1s linear infinite;
+  }
+
+  @keyframes wave {
+    from { background-position-x: 0; }
+    to { background-position-x: -20px; }
   }
 }
 
