@@ -26,10 +26,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-[100dvh]">
-      <section className="relative w-full pt-16 pb-12 md:pt-24 lg:pt-32 lg:pb-12 overflow-hidden">
+      <section className="relative w-full pb-12 lg:pb-12 overflow-hidden">
         <WaterAnimation />
         <div className="container px-4 md:px-6 relative z-10">
-          <div className="flex flex-col items-center justify-center space-y-8 text-center">
+          <div className="flex flex-col items-center justify-center space-y-8 text-center pt-16 md:pt-24 lg:pt-32">
             <AnimatedSection
               className="flex flex-col justify-center items-center space-y-4"
               animation="animate-scroll-in"
