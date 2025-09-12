@@ -41,13 +41,13 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex justify-center w-1/3">
-          <Link href="/" className="flex items-center gap-2 text-white">
-            <Droplet className="h-8 w-8" />
+          <Link href="/" className="flex items-center gap-2">
+            <Droplet className="h-8 w-8 text-white" />
             <span className="text-3xl font-headline font-bold text-white">IONORA</span>
           </Link>
         </div>
 
-        <div className="hidden md:flex items-center justify-end gap-1 w-1/3">
+        <div className="hidden md:flex items-center justify-end gap-2 w-1/3">
            <nav className="flex items-center gap-8">
              {navLinks.slice(3, 5).map((item) => (
                 <Link key={item.href} href={item.href} className="flex flex-col items-center">
