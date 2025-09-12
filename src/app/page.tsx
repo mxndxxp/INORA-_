@@ -66,8 +66,11 @@ export default function Home() {
           ></path>
         </svg>
       </div>
-      <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-primary">
-        <WaterAnimation />
+      <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-primary z-10"></div>
+        <div className="absolute inset-0 z-20">
+          <WaterAnimation />
+        </div>
         {/* Left Floating Brands */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 flex-col gap-6 z-30 flex">
           {leftBrands.map((brand, index) => {
@@ -110,7 +113,7 @@ export default function Home() {
           })}
         </div>
 
-        <div className="container px-4 md:px-6 relative z-20">
+        <div className="container px-4 md:px-6 relative z-30">
           <div className="flex flex-col items-center justify-center space-y-8 text-center pt-16 md:pt-24 lg:pt-32">
             <AnimatedSection
               className="flex flex-col justify-center items-center space-y-4"

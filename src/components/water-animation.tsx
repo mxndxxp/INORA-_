@@ -290,7 +290,7 @@ export function WaterAnimation() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full -z-10" />;
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
 }
 
     
