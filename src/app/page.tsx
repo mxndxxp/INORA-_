@@ -33,7 +33,7 @@ export default function Home() {
   const rightBrands = brands.slice(4, 8);
   
   const plugin = React.useRef(
-    Autoplay({ delay: 1000, stopOnInteraction: true })
+    Autoplay({ delay: 2000, stopOnInteraction: true })
   );
 
 
@@ -310,6 +310,9 @@ export default function Home() {
                 align: 'start',
                 loop: true,
               }}
+              plugins={[plugin.current]}
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
               className="w-full max-w-6xl mx-auto"
             >
               <CarouselContent className="-ml-4">
@@ -357,7 +360,7 @@ export default function Home() {
               <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Quality Assured</div>
               <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
+                We are committed to the. The customer support was excellent!highest standards of quality and safety. Our products are backed by leading industry certifications.
               </p>
             </AnimatedSection>
           </div>
@@ -397,3 +400,4 @@ export default function Home() {
     </div>
   );
 }
+
