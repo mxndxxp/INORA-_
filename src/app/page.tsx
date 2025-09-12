@@ -91,7 +91,7 @@ export default function Home() {
               animation="animate-scroll-in"
             >
               <div className="space-y-4">
-                <h1 className="animated-wavy-text font-cabin-condensed text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5rem] xl:text-[7rem] font-bold uppercase tracking-tight">
+                <h1 className="text-white font-cabin-condensed text-[8vw] sm:text-[7vw] md:text-[6vw] lg:text-[5rem] xl:text-[7rem] font-bold uppercase tracking-tight">
                   Pure Water, Pure Life.
                   <br />
                   Discover Ionora.
@@ -113,7 +113,7 @@ export default function Home() {
         </div>
       </section>
       
-      <section className="py-12 md:py-20 lg:py-24">
+      <AnimatedSection className="py-12 md:py-20 lg:py-24">
         <div className="container px-4 md:px-6">
           <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
@@ -197,7 +197,7 @@ export default function Home() {
             </Carousel>
           </AnimatedSection>
         </div>
-      </section>
+      </AnimatedSection>
       
       <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
         <div className="container px-4 md:px-6">
@@ -234,7 +234,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <section className="py-12 md:py-20 lg:py-24">
+      <AnimatedSection className="py-12 md:py-20 lg:py-24">
         <div className="container px-4 md:px-6">
           <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
             <AnimatedSection className="flex justify-center">
@@ -291,7 +291,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-foreground">
         <RaindropAnimation />
