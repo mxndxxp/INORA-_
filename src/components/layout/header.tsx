@@ -103,11 +103,7 @@ export function Header() {
           </div>
 
       </div>
-      <div className="header-wave">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M985.66,92.83c-74.8,0-149.59-24.92-224.39-49.84S537.88-6.85,463.08,8.17c-74.8,15.01-149.6,64.85-224.39,84.87C163.9,113.06,89.1,97.1,14.3,81.15,9.53,80.15,4.77,79.08,0,78V0H1200V27.35c-4.76,1.08-9.53,2.15-14.3,3.15-74.8,15.95-149.6,31.91-224.39,62.33C1135.26,89.21,1060.46,92.83,985.66,92.83Z" className="header-wave-fill"></path>
-        </svg>
-      </div>
+      <div className="header-wave-border"></div>
     </header>
   );
 }
