@@ -56,12 +56,12 @@ export default function Home() {
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 700 40"
+          viewBox="0 0 1200 40"
           preserveAspectRatio="none"
           className="w-full h-10"
         >
           <path
-            d="M0,20 C100,40 150,0 250,20 C350,40 400,0 500,20 C600,40 650,0 700,20 V40 H0 Z"
+            d="M0,20 C300,40 400,0 600,20 C800,40 900,0 1200,20 V40 H0 Z"
             fill="hsl(var(--primary))"
           ></path>
         </svg>
