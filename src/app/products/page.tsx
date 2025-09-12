@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Heart, ShoppingCart, Search } from 'lucide-react';
+import { ShoppingBag, Search, Droplet, Zap, Gauge, Star, Heart } from 'lucide-react';
 import Link from 'next/link';
 import { placeholderData } from '@/lib/placeholder-data';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -166,41 +166,63 @@ export default function ProductsPage() {
                   {filteredProducts.map((product) => {
                     const productImage = PlaceHolderImages.find(p => p.id === product.imageId);
                     return (
-                      <Card key={product.id} className="group overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <CardHeader className="p-0">
-                          <Link href={`/products/${product.id}`} className="block relative overflow-hidden">
-                            {productImage && (
-                              <Image
-                                alt={product.name}
-                                className="aspect-video w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                                height="250"
-                                src={productImage.imageUrl}
-                                width="400"
-                                data-ai-hint={productImage.imageHint}
-                              />
-                            )}
+                        <div key={product.id} className="product-card">
+                          <Link href={`/products/${product.id}`} className="product-card-tilt">
+                            <div className="product-card-img">
+                              {productImage && (
+                                <Image
+                                  alt={product.name}
+                                  src={productImage.imageUrl}
+                                  fill
+                                  style={{objectFit: 'cover'}}
+                                  data-ai-hint={productImage.imageHint}
+                                />
+                              )}
+                            </div>
                           </Link>
-                        </CardHeader>
-                        <CardContent className="p-4 flex flex-col flex-grow">
-                          <p className="text-sm text-muted-foreground">{product.brand}</p>
-                          <CardTitle className="text-lg font-bold mt-1 mb-2 flex-grow">
-                              <Link href={`/products/${product.id}`} className="hover:text-primary transition-colors">{product.name}</Link>
-                          </CardTitle>
-                          <div className="flex items-center justify-between mt-auto pt-2">
-                            <span className="text-2xl font-bold">&#8377;{product.price.toLocaleString('en-IN')}</span>
-                            <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              <Button variant="ghost" size="icon" className="rounded-full">
-                                <Heart className="h-5 w-5" />
-                                <span className="sr-only">Add to Wishlist</span>
-                              </Button>
-                              <Button size="icon" className="rounded-full">
-                                <ShoppingCart className="h-5 w-5" />
-                                <span className="sr-only">Add to Cart</span>
-                              </Button>
+                          <div className="product-card-info">
+                             <div className="product-card-cat">{product.brand}</div>
+                            <h2 className="product-card-title">{product.name}</h2>
+                            
+                            <div className="grid grid-cols-3 gap-2 text-center my-4">
+                                <div className="flex flex-col items-center">
+                                    <Zap className="w-6 h-6 text-primary mb-1"/>
+                                    <span className="text-xs font-semibold text-muted-foreground">{product.specs.plates} Plates</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Gauge className="w-6 h-6 text-primary mb-1"/>
+                                    <span className="text-xs font-semibold text-muted-foreground">{product.specs.orpRange} ORP</span>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Droplet className="w-6 h-6 text-primary mb-1"/>
+                                    <span className="text-xs font-semibold text-muted-foreground">pH {product.specs.phRange}</span>
+                                </div>
+                            </div>
+                            
+                            <div className="product-card-bottom">
+                              <div className="product-card-price">
+                                <span className="product-card-new">
+                                  &#8377;{product.price.toLocaleString('en-IN')}
+                                </span>
+                              </div>
+                              <button className="product-card-btn">
+                                <span>Add to Cart</span>
+                                <ShoppingBag className="product-card-icon" />
+                              </button>
+                            </div>
+                            <div className="product-card-meta">
+                              <div className="product-card-rating">
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <Star fill="#FFD700" stroke="#FFD700" strokeWidth={0.5} width={16} height={16} />
+                                <span className="product-card-rcount">45 Reviews</span>
+                              </div>
+                              <div className="product-card-stock">In Stock</div>
                             </div>
                           </div>
-                        </CardContent>
-                      </Card>
+                        </div>
                     )
                   })}
                 </div>
