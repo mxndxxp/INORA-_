@@ -190,7 +190,7 @@ export function WaterAnimation() {
         uTime: { value: 0 },
         uAmp: { value: 0.45 },
         uWl: { value: 4.0 },
-        uSpeed: { value: 0.8 },
+        uSpeed: { value: 1.5 },
         uChop: { value: 0.6 },
         uTransparency: { value: 0.78 },
         uSpec: { value: 1.2 },
