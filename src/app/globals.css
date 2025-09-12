@@ -933,7 +933,7 @@
     @apply pb-24;
   }
   .testimonial-card {
-    @apply bg-card/80 backdrop-blur-sm rounded-xl shadow-xl relative text-center border-t border-white/20;
+    @apply bg-transparent backdrop-blur-none rounded-xl shadow-none relative text-center border-none;
     padding: 30px;
     margin: 0 15px;
   }
@@ -943,7 +943,7 @@
   }
 
   .testimonial-description {
-    @apply text-base text-card-foreground/90 leading-relaxed text-center mb-8;
+    @apply text-base text-background/90 leading-relaxed text-center mb-8;
   }
 
   .testimonial-content {
@@ -956,11 +956,11 @@
   }
 
   .testimonial-title {
-    @apply text-lg font-bold text-card-foreground mt-4;
+    @apply text-lg font-bold text-background mt-4;
   }
 
   .testimonial-post {
-    @apply block text-sm text-card-foreground/80;
+    @apply block text-sm text-background/80;
   }
 
   @media (max-width: 767px) {
@@ -972,3 +972,5 @@
     }
   }
 }
+
+    
