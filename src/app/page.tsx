@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-[100dvh]">
       <section className="relative w-full min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden">
-        
+        <WaterAnimation />
         {/* Left Floating Brands */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 flex-col gap-6 z-30 flex">
           {leftBrands.map((brand, index) => {
