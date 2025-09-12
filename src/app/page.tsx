@@ -33,7 +33,7 @@ export default function Home() {
   const rightBrands = brands.slice(4, 8);
   
   const featuredProductsPlugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 4000, stopOnInteraction: true })
   );
   
   const testimonialsPlugin = React.useRef(
