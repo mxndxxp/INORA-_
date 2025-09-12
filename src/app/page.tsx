@@ -43,7 +43,7 @@ export default function Home() {
         <WaterAnimation />
         
         {/* Left Floating Brands */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 hidden lg:flex flex-col gap-6 z-10">
+        <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 hidden md:flex flex-col gap-6 z-10">
           {leftBrands.map((brand, index) => {
             const delay = index * 150;
             return (
@@ -64,7 +64,7 @@ export default function Home() {
         </div>
 
         {/* Right Floating Brands */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 hidden lg:flex flex-col gap-6 z-10">
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 hidden md:flex flex-col gap-6 z-10">
           {rightBrands.map((brand, index) => {
             const delay = (index * 150) + 600;
             return (

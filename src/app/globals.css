@@ -623,11 +623,6 @@
     animation-fill-mode: backwards;
   }
 
-  .raindrop-container .waves > div:nth-child(2) {
-    animation-delay: calc(var(--delay) + 0.3s);
-    animation-timing-function: linear;
-  }
-
   .raindrop-container .splash {
     position: absolute;
     top: 10%; bottom: 50%; left: 35%; right: 35%;
