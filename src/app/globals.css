@@ -75,12 +75,11 @@
 
   .header-wave-container {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100px; /* Adjust height as needed */
     overflow: hidden;
-    transform: rotate(180deg);
   }
 
   .waves {
@@ -649,4 +648,104 @@
     60% { transform: translate(30px, -80px) scale(1); }
     100% { transform: translate(50px, 0px) scale(0.1); }
   }
+
+  /* Like Button Animation */
+  .like-button {
+    @apply relative cursor-pointer w-10 h-10;
+    background: transparent;
+    border-radius: 50%;
+    transition: background-color 0.25s ease;
+  }
+  .like-button.focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+
+  .like-button .like-icon {
+    @apply absolute top-0 right-0 bottom-0 left-0 bg-contain bg-no-repeat bg-center;
+  }
+  
+  .like-button.unliked .like-icon {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewbox='0 0 100 100'><path fill='none' stroke='hsl(207, 82%, 68%)' stroke-width='5' d='M50,88.87 C76.67,70.46 90,53.9 90,39.17 C90,17.08 63.12,3.84 50,27.63 C38.875,3.85 10,17.08 10,39.17 C10,53.9 23.33,70.46 50,88.87 Z'/></svg>");
+  }
+  
+  .like-button.liked .like-icon {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewbox='0 0 100 100'><path fill='hsl(207, 82%, 68%)' d='M50,88.87 C76.67,70.46 90,53.9 90,39.17 C90,17.08 63.12,3.84 50,27.63 C38.875,3.85 10,17.08 10,39.17 C10,53.9 23.33,70.46 50,88.87 Z'/></svg>");
+  }
+
+  .like-button .like-icon-state {
+    @apply sr-only;
+  }
+
+  .like-button.liked .like-icon {
+    transform: scale(0);
+    opacity: 0;
+    animation: 1.2s like-animation both cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+
+  .like-button.unliked .like-icon {
+    opacity: 0;
+    animation: 1.2s unlike-animation both cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+
+  .like-button.saving::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    border: .15em solid hsl(var(--primary) / 0.5);
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    animation: spin-animation 400ms infinite linear;
+  }
+  
+  .like-button::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 50%;
+    border: 1px solid hsl(var(--primary) / 0.75);
+    transform: scale(0);
+  }
+  
+  .like-button.liked::before {
+    animation: 1.2s bg-ring-animation both;
+  }
+
+  @keyframes like-animation {
+    0% { transform: scale(0); }
+    15% { transform: scale(1.25); }
+    32% { transform: scale(0.95); }
+    50% { transform: scale(1); opacity: 1; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes unlike-animation {
+    0% { transform: scale(0); }
+    15% { transform: scale(1.1); }
+    30% { transform: scale(0.98); }
+    45% { transform: scale(1); opacity: 1; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes spin-animation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes bg-ring-animation {
+    0% { transform: scale(0); opacity: 0; }
+    10% { transform: scale(1.5); opacity: 0.25; }
+    15% { transform: scale(2); opacity: 0.15; }
+    45% { transform: scale(3.25); opacity: 0; }
+    to { transform: scale(1); opacity: 0; }
+  }
 }
+

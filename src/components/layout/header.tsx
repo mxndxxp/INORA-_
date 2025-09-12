@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { MobileMenu } from './mobile-menu';
+import { LikeButton } from '../ui/like-button';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -60,12 +61,7 @@ export function Header() {
                 </Link>
               ))}
            </nav>
-          <Button asChild variant="ghost" size="icon" className="text-red-500 hover:bg-red-500/10 hover:text-red-500">
-            <Link href="/wishlist">
-              <Heart className="h-5 w-5" />
-              <span className="sr-only">Wishlist</span>
-            </Link>
-          </Button>
+          <LikeButton />
           <Button asChild variant="ghost" size="icon" className="text-foreground/70 hover:bg-white/10 hover:text-foreground">
             <Link href="/compare">
               <GitCompare className="h-5 w-5" />
@@ -103,7 +99,7 @@ export function Header() {
           </div>
 
       </div>
-      <div className="header-wave-container">
+      <div className="header-wave-container" style={{transform: 'rotate(180deg)'}}>
           <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
           viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
           <defs>
