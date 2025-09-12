@@ -38,10 +38,10 @@ export function Header() {
 
   return (
     <header className="header-wavy">
-      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-white relative z-10">
+      <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between text-foreground relative z-10">
         <Link href="/" className="flex items-center gap-2 mr-6">
-          <Droplet className="h-8 w-8 text-white" />
-          <span className="text-3xl font-headline font-bold text-white">IONORA</span>
+          <Droplet className="h-8 w-8 text-primary" />
+          <span className="text-3xl font-headline font-bold text-foreground">IONORA</span>
         </Link>
         
 
@@ -59,13 +59,13 @@ export function Header() {
                    <Button
                     variant="ghost"
                     className={cn(
-                      "flex flex-col items-center h-auto py-2 px-3 group text-white hover:bg-white/10 hover:text-white",
-                      isActive && "bg-black/10"
+                      "flex flex-col items-center h-auto py-2 px-3 group text-foreground hover:bg-black/5 hover:text-foreground",
+                      isActive && "bg-black/5"
                     )}
                   >
                     <span className={cn(
                       'font-bold transition-colors flex items-center gap-1',
-                      isActive ? 'text-white' : 'text-white/80'
+                      isActive ? 'text-foreground' : 'text-foreground/80'
                     )}>
                       {item.title} <ChevronDown className="h-4 w-4 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                     </span>
@@ -83,8 +83,8 @@ export function Header() {
             ) : (
               <Link key={item.href} href={item.href} className="flex flex-col items-center p-3">
                 <span className={cn(
-                  'font-bold transition-colors hover:text-white',
-                  isActive ? 'text-white' : 'text-white/80'
+                  'font-bold transition-colors hover:text-foreground',
+                  isActive ? 'text-foreground' : 'text-foreground/80'
                 )}>
                   {item.title}
                 </span>
@@ -95,19 +95,19 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center justify-end gap-3">
-          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 h-9 w-9">
+          <Button asChild variant="ghost" size="icon" className="text-foreground hover:bg-black/5 h-9 w-9">
             <Link href="/wishlist">
               <Heart className="h-5 w-5" />
               <span className="sr-only">Wishlist</span>
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 h-9 w-9">
+          <Button asChild variant="ghost" size="icon" className="text-foreground hover:bg-black/5 h-9 w-9">
              <Link href="/compare">
               <GitCompare className="h-5 w-5" />
               <span className="sr-only">Compare</span>
             </Link>
           </Button>
-          <Button asChild variant="ghost" size="icon" className="text-white hover:bg-white/10 cart-button h-9 w-9">
+          <Button asChild variant="ghost" size="icon" className="text-foreground hover:bg-black/5 cart-button h-9 w-9">
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5 cart-icon" />
               <span className="sr-only">Cart</span>
@@ -119,7 +119,7 @@ export function Header() {
         <div className="md:hidden flex-1 flex justify-end">
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+              <Button variant="ghost" size="icon" className="text-foreground hover:bg-black/5 hover:text-foreground">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
