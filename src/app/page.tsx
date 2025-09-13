@@ -93,17 +93,17 @@ export default function Home() {
               animation="animate-scroll-in"
             >
               <div className="space-y-4 animated-wavy-text-container">
-                <h1 className="font-cabin-condensed text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[3.5rem] font-bold uppercase tracking-tight opacity-0">
+                <h1 className="font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight opacity-0">
                   Pure Water, Pure Life.
                   <br />
                   Discover Ionora.
                 </h1>
-                <h1 className="animated-wavy-text stroked font-cabin-condensed text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[3.5rem] font-bold uppercase tracking-tight">
+                <h1 className="animated-wavy-text stroked font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight">
                     Pure Water, Pure Life.
                     <br />
                     Discover Ionora.
                 </h1>
-                <h1 className="animated-wavy-text filled font-cabin-condensed text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[3.5rem] font-bold uppercase tracking-tight">
+                <h1 className="animated-wavy-text filled font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight">
                     Pure Water, Pure Life.
                     <br />
                     Discover Ionora.
