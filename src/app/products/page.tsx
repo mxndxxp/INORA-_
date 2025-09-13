@@ -92,7 +92,7 @@ export default function ProductsPage() {
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
               Our Products
             </h1>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+            <p className="mx-auto max-w-[700px] text-foreground md:text-xl">
               Explore our curated selection of the world's best water ionizers.
             </p>
           </div>
