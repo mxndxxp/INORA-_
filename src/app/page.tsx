@@ -22,7 +22,6 @@ import Autoplay from "embla-carousel-autoplay";
 import { SlomoRainAnimation } from '@/components/slomo-rain-animation';
 import { BrandBubble } from '@/components/brand-bubble';
 import { BubblesAnimation } from '@/components/bubbles-animation';
-import { CloudAnimation } from '@/components/cloud-animation';
 
 
 export default function Home() {
@@ -79,7 +78,7 @@ export default function Home() {
             <BrandBubble brand={brands[3]} style={{ animationDelay: '450ms' }} />
         </div>
 
-        <div className="absolute top-1/2 -translate-y-12 right-4 md:right-8 lg:right-16 flex-col gap-6 z-40 flex">
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 flex-col gap-6 z-40 flex">
             <BrandBubble brand={brands[4]} style={{ animationDelay: '600ms' }} />
             <BrandBubble brand={brands[5]} style={{ animationDelay: '750ms' }} />
             <BrandBubble brand={brands[6]} style={{ animationDelay: '900ms' }} />
@@ -400,47 +399,44 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <section className="relative overflow-hidden bg-sky-100">
-        <CloudAnimation />
-        <div className="relative z-10 py-12 md:py-20 lg:py-24">
-            <div className="container px-4 md:px-6">
-                <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                    <AnimatedSection className="space-y-2">
-                        <div className="inline-block rounded-lg bg-background/70 px-3 py-1 text-sm">Quality Assured</div>
-                        <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
-                        <p className="max-w-[900px] text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                            We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
-                        </p>
-                    </AnimatedSection>
-                </div>
-                <div className="mx-auto grid max-w-5xl grid-cols-2 items-center justify-center gap-8 py-12 sm:grid-cols-3 md:gap-12 lg:grid-cols-4">
-                    {certifications.map((cert, index) => {
-                        const certImage = PlaceHolderImages.find((p) => p.id === cert.imageId);
-                        return (
-                            <AnimatedSection key={cert.id} className="flex flex-col items-center justify-center gap-2" delay={index * 100}>
-                                {certImage && (
-                                    <div className="bg-white/50 backdrop-blur-sm p-4 rounded-lg shadow-md border border-white/20">
-                                        <Image
-                                            alt={cert.title}
-                                            className="aspect-[4/3] overflow-hidden rounded-lg object-contain"
-                                            height="100"
-                                            src={certImage.imageUrl}
-                                            width="140"
-                                            data-ai-hint={certImage.imageHint}
-                                        />
-                                    </div>
-                                )}
-                                <p className="text-sm font-medium text-foreground/80 mt-2">{cert.title}</p>
-                            </AnimatedSection>
-                        );
-                    })}
-                </div>
-                <AnimatedSection className="flex justify-center">
-                    <Button asChild size="lg" variant="outline" className="bg-white/50 backdrop-blur-sm border-gray-300/50">
-                        <Link href="/certifications">View All Certifications <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                    </Button>
+      <section className="py-12 md:py-20 lg:py-24 bg-secondary/50">
+        <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                <AnimatedSection className="space-y-2">
+                    <div className="inline-block rounded-lg bg-background/70 px-3 py-1 text-sm">Quality Assured</div>
+                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
+                    <p className="max-w-[900px] text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                        We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
+                    </p>
                 </AnimatedSection>
             </div>
+            <div className="mx-auto grid max-w-5xl grid-cols-2 items-center justify-center gap-8 py-12 sm:grid-cols-3 md:gap-12 lg:grid-cols-4">
+                {certifications.map((cert, index) => {
+                    const certImage = PlaceHolderImages.find((p) => p.id === cert.imageId);
+                    return (
+                        <AnimatedSection key={cert.id} className="flex flex-col items-center justify-center gap-2" delay={index * 100}>
+                            {certImage && (
+                                <div className="bg-white/50 backdrop-blur-sm p-4 rounded-lg shadow-md border border-white/20">
+                                    <Image
+                                        alt={cert.title}
+                                        className="aspect-[4/3] overflow-hidden rounded-lg object-contain"
+                                        height="100"
+                                        src={certImage.imageUrl}
+                                        width="140"
+                                        data-ai-hint={certImage.imageHint}
+                                    />
+                                </div>
+                            )}
+                            <p className="text-sm font-medium text-foreground/80 mt-2">{cert.title}</p>
+                        </AnimatedSection>
+                    );
+                })}
+            </div>
+            <AnimatedSection className="flex justify-center">
+                <Button asChild size="lg" variant="outline" className="bg-white/50 backdrop-blur-sm border-gray-300/50">
+                    <Link href="/certifications">View All Certifications <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                </Button>
+            </AnimatedSection>
         </div>
       </section>
     </div>
@@ -461,4 +457,5 @@ export default function Home() {
     
 
     
+
 
