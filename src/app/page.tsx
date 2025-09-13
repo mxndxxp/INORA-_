@@ -249,7 +249,7 @@ export default function Home() {
                   <AnimatedSection className="space-y-2">
                       <div className="inline-block rounded-lg bg-white/10 px-3 py-1 text-sm">The Science Hub</div>
                       <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Understand the Power of Ionization</h2>
-                      <p className="max-w-[900px] text-blue-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                      <p className="max-w-[900px] text-blue-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                           We believe in empowering our customers with knowledge. Dive into the core concepts behind water ionization.
                       </p>
                   </AnimatedSection>
@@ -260,12 +260,12 @@ export default function Home() {
                       return (
                           <AnimatedSection key={concept.id} className="grid gap-1 text-center" delay={index * 100}>
                               <div className="flex justify-center items-center mb-2">
-                                  <div className="bg-white/10 backdrop-blur-sm rounded-full p-4 border border-white/20 shadow-sm">
-                                      <Icon className="h-8 w-8 text-primary" />
+                                  <div className="bg-blue-400/20 backdrop-blur-sm rounded-full p-4 border border-white/20 shadow-sm">
+                                      <Icon className="h-8 w-8 text-blue-300" />
                                   </div>
                               </div>
                               <h3 className="text-lg font-bold">{concept.title}</h3>
-                              <p className="text-sm text-blue-200">{concept.description}</p>
+                              <p className="text-sm text-blue-300">{concept.description}</p>
                           </AnimatedSection>
                       );
                   })}
