@@ -241,7 +241,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
       
-      <section className="relative overflow-hidden bg-sky-100 text-sky-900">
+      <section className="relative overflow-hidden bg-sky-100">
         <BubblesAnimation />
         <div className="relative z-10 py-12 md:py-20 lg:py-24">
           <div className="container px-4 md:px-6">
@@ -368,27 +368,25 @@ export default function Home() {
                   const avatarImage = PlaceHolderImages.find(p => p.id === testimonial.avatarId);
                   return (
                     <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
-                      <div className="testimonial-card-wrapper">
-                        <div className="testimonial-card">
-                            <span className="testimonial-icon"><Quote className="h-10 w-10" /></span>
-                            <p className="testimonial-description">"{testimonial.quote}"</p>
-                            <div className="testimonial-content">
-                              {avatarImage && 
-                                <div className="testimonial-pic-wrapper">
-                                  <Image
-                                    alt={testimonial.name}
-                                    className="rounded-full"
-                                    height="80"
-                                    src={avatarImage.imageUrl}
-                                    width="80"
-                                    data-ai-hint={avatarImage.imageHint}
-                                  />
-                                </div>
-                              }
-                              <h3 className="testimonial-title !text-white">{testimonial.name}</h3>
-                              <span className="testimonial-post !text-white/80">{testimonial.location}</span>
-                            </div>
-                        </div>
+                      <div className="h-full p-6 flex flex-col items-center text-center bg-background/10 backdrop-blur-sm rounded-xl border border-white/10">
+                          <Quote className="h-10 w-10 text-primary mb-4" />
+                          <p className="text-white/90 mb-6 flex-grow">"{testimonial.quote}"</p>
+                          <div className="mt-auto">
+                            {avatarImage && 
+                              <div className="mx-auto mb-3">
+                                <Image
+                                  alt={testimonial.name}
+                                  className="rounded-full border-2 border-primary/50"
+                                  height="80"
+                                  src={avatarImage.imageUrl}
+                                  width="80"
+                                  data-ai-hint={avatarImage.imageHint}
+                                />
+                              </div>
+                            }
+                            <h3 className="font-bold text-lg text-white">{testimonial.name}</h3>
+                            <span className="text-sm text-white/70">{testimonial.location}</span>
+                          </div>
                       </div>
                     </CarouselItem>
                   )
@@ -450,3 +448,6 @@ export default function Home() {
 
     
 
+
+
+    

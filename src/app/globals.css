@@ -754,57 +754,6 @@
     @apply bg-primary/30 text-primary-foreground;
   }
 
-  /* Testimonial Card New Styles */
-  .testimonial-card-wrapper {
-    @apply pb-24;
-  }
-  .testimonial-card {
-    background-color: transparent;
-    opacity: 1;
-    @apply backdrop-blur-none rounded-xl shadow-none relative text-center border-none;
-    padding: 30px;
-    margin: 0 15px;
-  }
-  
-  .testimonial-icon {
-    @apply inline-block text-primary mb-5 opacity-80;
-  }
-
-  .testimonial-description {
-    @apply text-base leading-relaxed text-center mb-8;
-    color: hsl(var(--primary));
-    text-shadow:
-      0 0 5px hsl(var(--primary) / 0.7),
-      0 0 10px hsl(var(--primary) / 0.7),
-      0 0 20px hsl(var(--primary) / 0.5);
-  }
-
-  .testimonial-content {
-    @apply w-full left-0;
-  }
-
-  .testimonial-pic-wrapper {
-    @apply inline-block border-2 border-white/30 rounded-full overflow-hidden z-10 relative;
-    box-shadow: 0 0 2px 2px hsl(var(--primary) / 0.5);
-  }
-
-  .testimonial-title {
-    @apply text-lg font-bold text-background mt-4;
-  }
-
-  .testimonial-post {
-    @apply block text-sm text-background/80;
-  }
-
-  @media (max-width: 767px) {
-    .testimonial-card {
-      @apply text-left;
-    }
-    .testimonial-description {
-      @apply text-left;
-    }
-  }
-
   /* Slomo Rain Animation */
   .slomo-rain-container{
     position: absolute;
@@ -1175,3 +1124,5 @@
   }
 
 }
+
+    
