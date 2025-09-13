@@ -408,7 +408,7 @@ export default function Home() {
                     <AnimatedSection className="space-y-2">
                         <div className="inline-block rounded-lg bg-background/70 px-3 py-1 text-sm">Quality Assured</div>
                         <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
-                        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                        <p className="max-w-[900px] text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                             We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
                         </p>
                     </AnimatedSection>
@@ -461,3 +461,4 @@ export default function Home() {
     
 
     
+
