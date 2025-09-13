@@ -78,7 +78,7 @@ export default function Home() {
             <BrandBubble brand={brands[3]} style={{ animationDelay: '450ms' }} />
         </div>
 
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 flex-col gap-6 z-40 flex">
+        <div className="absolute top-1/2 -translate-y-12 right-4 md:right-8 lg:right-16 flex-col gap-6 z-40 flex">
             <BrandBubble brand={brands[4]} style={{ animationDelay: '600ms' }} />
             <BrandBubble brand={brands[5]} style={{ animationDelay: '750ms' }} />
             <BrandBubble brand={brands[6]} style={{ animationDelay: '900ms' }} />
@@ -347,7 +347,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <AnimatedSection className="space-y-2">
               <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-white">What Our Customers Say</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Real stories from people who have experienced the benefits of ionized water.
               </p>
             </AnimatedSection>
@@ -400,13 +400,6 @@ export default function Home() {
       </AnimatedSection>
 
       <section className="relative overflow-hidden bg-sky-100">
-        <div className="clouds-container">
-            <div className="cloud cloud-x1"><div className="cloud-base"></div></div>
-            <div className="cloud cloud-x2"><div className="cloud-base"></div></div>
-            <div className="cloud cloud-x3"><div className="cloud-base"></div></div>
-            <div className="cloud cloud-x4"><div className="cloud-base"></div></div>
-            <div className="cloud cloud-x5"><div className="cloud-base"></div></div>
-        </div>
         <div className="relative z-10 py-12 md:py-20 lg:py-24">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -454,6 +447,8 @@ export default function Home() {
     
 
 
+
+    
 
     
 
