@@ -340,7 +340,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-black">
+      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-blue-950">
         <SlomoRainAnimation />
         <div className="absolute inset-0 bg-black/70 z-10" />
         <div className="container px-4 md:px-6 relative z-20">
@@ -368,9 +368,9 @@ export default function Home() {
                   const avatarImage = PlaceHolderImages.find(p => p.id === testimonial.avatarId);
                   return (
                     <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
-                      <div className="h-full p-6 flex flex-col items-center text-center bg-background/10 backdrop-blur-sm rounded-xl border border-white/10">
+                      <div className="h-full p-6 flex flex-col items-center text-center">
                           <Quote className="h-10 w-10 text-primary mb-4" />
-                          <p className="text-white/90 mb-6 flex-grow">"{testimonial.quote}"</p>
+                          <p className="text-white mb-6 flex-grow">"{testimonial.quote}"</p>
                           <div className="mt-auto">
                             {avatarImage && 
                               <div className="mx-auto mb-3">
@@ -449,6 +449,8 @@ export default function Home() {
     
 
 
+
+    
 
     
 
