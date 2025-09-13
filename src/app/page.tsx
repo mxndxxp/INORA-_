@@ -399,50 +399,55 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <AnimatedSection className="space-y-2">
-              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Quality Assured</div>
-              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                We are committed to the. The customer support was excellent!highest standards of quality and safety. Our products are backed by leading industry certifications.
-              </p>
-            </AnimatedSection>
-          </div>
-          <div className="mx-auto grid max-w-5xl grid-cols-2 items-center justify-center gap-8 py-12 sm:grid-cols-3 md:gap-12 lg:grid-cols-4">
-            {certifications.map((cert, index) => {
-              return (
-                <AnimatedSection key={cert.id} className="flex flex-col items-center justify-center gap-2" delay={index * 100}>
-                  {(() => {
-                    const certImage = PlaceHolderImages.find((p) => p.id === cert.imageId);
-                    return (
-                      <>
-                        {certImage && (
-                          <Image
-                            alt={cert.title}
-                            className="aspect-[4/3] overflow-hidden rounded-lg object-contain"
-                            height="120"
-                            src={certImage.imageUrl}
-                            width="160"
-                            data-ai-hint={certImage.imageHint}
-                          />
-                        )}
-                        <p className="text-sm font-medium text-muted-foreground">{cert.title}</p>
-                      </>
-                    );
-                  })()}
-                </AnimatedSection>
-              );
-            })}
-          </div>
-          <AnimatedSection className="flex justify-center">
-            <Button asChild size="lg" variant="outline">
-              <Link href="/certifications">View All Certifications <ArrowRight className="ml-2 h-4 w-4" /></Link>
-            </Button>
-          </AnimatedSection>
+      <section className="relative overflow-hidden bg-sky-100">
+        <div className="clouds-container">
+            <div className="cloud cloud-x1"><div className="cloud-base"></div></div>
+            <div className="cloud cloud-x2"><div className="cloud-base"></div></div>
+            <div className="cloud cloud-x3"><div className="cloud-base"></div></div>
+            <div className="cloud cloud-x4"><div className="cloud-base"></div></div>
+            <div className="cloud cloud-x5"><div className="cloud-base"></div></div>
         </div>
-      </AnimatedSection>
+        <div className="relative z-10 py-12 md:py-20 lg:py-24">
+            <div className="container px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                    <AnimatedSection className="space-y-2">
+                        <div className="inline-block rounded-lg bg-background/70 px-3 py-1 text-sm">Quality Assured</div>
+                        <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
+                        <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                            We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
+                        </p>
+                    </AnimatedSection>
+                </div>
+                <div className="mx-auto grid max-w-5xl grid-cols-2 items-center justify-center gap-8 py-12 sm:grid-cols-3 md:gap-12 lg:grid-cols-4">
+                    {certifications.map((cert, index) => {
+                        const certImage = PlaceHolderImages.find((p) => p.id === cert.imageId);
+                        return (
+                            <AnimatedSection key={cert.id} className="flex flex-col items-center justify-center gap-2" delay={index * 100}>
+                                {certImage && (
+                                    <div className="bg-white/50 backdrop-blur-sm p-4 rounded-lg shadow-md border border-white/20">
+                                        <Image
+                                            alt={cert.title}
+                                            className="aspect-[4/3] overflow-hidden rounded-lg object-contain"
+                                            height="100"
+                                            src={certImage.imageUrl}
+                                            width="140"
+                                            data-ai-hint={certImage.imageHint}
+                                        />
+                                    </div>
+                                )}
+                                <p className="text-sm font-medium text-foreground/80 mt-2">{cert.title}</p>
+                            </AnimatedSection>
+                        );
+                    })}
+                </div>
+                <AnimatedSection className="flex justify-center">
+                    <Button asChild size="lg" variant="outline" className="bg-white/50 backdrop-blur-sm border-gray-300/50">
+                        <Link href="/certifications">View All Certifications <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                    </Button>
+                </AnimatedSection>
+            </div>
+        </div>
+      </section>
     </div>
   );
 
