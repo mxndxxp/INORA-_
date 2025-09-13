@@ -131,7 +131,7 @@ export default function Home() {
             <div className="space-y-2">
                <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Featured Products</div>
               <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Discover Our Top Ionizers</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="max-w-[900px] text-white md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Handpicked for performance, reliability, and cutting-edge features. Start your journey to better hydration here.
               </p>
             </div>
