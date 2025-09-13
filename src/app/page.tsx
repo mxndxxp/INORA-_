@@ -21,6 +21,7 @@ import { WaterAnimation } from '@/components/water-animation';
 import Autoplay from "embla-carousel-autoplay";
 import { SlomoRainAnimation } from '@/components/slomo-rain-animation';
 import { BrandBubble } from '@/components/brand-bubble';
+import { BubblesAnimation } from '@/components/bubbles-animation';
 
 
 export default function Home() {
@@ -70,7 +71,6 @@ export default function Home() {
           <WaterAnimation />
         </div>
         
-        {/* Floating Brand Bubbles - Left */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 flex-col gap-6 z-40 flex">
             <BrandBubble brand={brands[0]} style={{ animationDelay: '0ms' }} />
             <BrandBubble brand={brands[1]} style={{ animationDelay: '150ms' }} />
@@ -78,7 +78,6 @@ export default function Home() {
             <BrandBubble brand={brands[3]} style={{ animationDelay: '450ms' }} />
         </div>
 
-        {/* Floating Brand Bubbles - Right */}
         <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 flex-col gap-6 z-40 flex">
             <BrandBubble brand={brands[4]} style={{ animationDelay: '600ms' }} />
             <BrandBubble brand={brands[5]} style={{ animationDelay: '750ms' }} />
@@ -242,40 +241,43 @@ export default function Home() {
         </div>
       </AnimatedSection>
       
-      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/50">
-        <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <AnimatedSection className="space-y-2">
-                    <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">The Science Hub</div>
-                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Understand the Power of Ionization</h2>
-                    <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                        We believe in empowering our customers with knowledge. Dive into the core concepts behind water ionization.
-                    </p>
-                </AnimatedSection>
-            </div>
-            <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-4 py-12">
-                {scienceConcepts.map((concept, index) => {
-                    const Icon = ScienceIcons[concept.icon as keyof typeof ScienceIcons];
-                    return (
-                        <AnimatedSection key={concept.id} className="grid gap-1 text-center" delay={index * 100}>
-                            <div className="flex justify-center items-center mb-2">
-                                <div className="bg-background rounded-full p-4 border shadow-sm">
-                                    <Icon className="h-8 w-8 text-primary" />
-                                </div>
-                            </div>
-                            <h3 className="text-lg font-bold">{concept.title}</h3>
-                            <p className="text-sm text-muted-foreground">{concept.description}</p>
-                        </AnimatedSection>
-                    );
-                })}
-            </div>
-            <AnimatedSection className="flex justify-center">
-                 <Button asChild size="lg" variant="outline">
-                    <Link href="/science">Explore the Science Hub <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-            </AnimatedSection>
+      <section className="relative overflow-hidden bg-blue-950 text-white">
+        <BubblesAnimation />
+        <div className="relative z-10 py-12 md:py-20 lg:py-24">
+          <div className="container px-4 md:px-6">
+              <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                  <AnimatedSection className="space-y-2">
+                      <div className="inline-block rounded-lg bg-white/10 px-3 py-1 text-sm">The Science Hub</div>
+                      <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Understand the Power of Ionization</h2>
+                      <p className="max-w-[900px] text-blue-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                          We believe in empowering our customers with knowledge. Dive into the core concepts behind water ionization.
+                      </p>
+                  </AnimatedSection>
+              </div>
+              <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-4 py-12">
+                  {scienceConcepts.map((concept, index) => {
+                      const Icon = ScienceIcons[concept.icon as keyof typeof ScienceIcons];
+                      return (
+                          <AnimatedSection key={concept.id} className="grid gap-1 text-center" delay={index * 100}>
+                              <div className="flex justify-center items-center mb-2">
+                                  <div className="bg-white/10 backdrop-blur-sm rounded-full p-4 border border-white/20 shadow-sm">
+                                      <Icon className="h-8 w-8 text-primary" />
+                                  </div>
+                              </div>
+                              <h3 className="text-lg font-bold">{concept.title}</h3>
+                              <p className="text-sm text-blue-200">{concept.description}</p>
+                          </AnimatedSection>
+                      );
+                  })}
+              </div>
+              <AnimatedSection className="flex justify-center">
+                  <Button asChild size="lg" variant="outline" className="bg-transparent border-white/50 hover:bg-white/10">
+                      <Link href="/science">Explore the Science Hub <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                  </Button>
+              </AnimatedSection>
+          </div>
         </div>
-      </AnimatedSection>
+      </section>
 
       <AnimatedSection className="py-12 md:py-20 lg:py-24">
         <div className="container px-4 md:px-6">
