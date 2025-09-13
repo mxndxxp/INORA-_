@@ -341,14 +341,16 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-12 md:py20 lg:py-24 relative bg-gradient-to-b from-primary to-blue-950">
-        <SlomoRainAnimation />
-        <div className="absolute inset-0 bg-black/70 z-10" />
+      <AnimatedSection className="py-12 md:py20 lg:py-24 relative" style={{
+          backgroundImage: `url('https://i.postimg.cc/hP7LPh4q/o11z-9te6-210409.jpg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}>
         <div className="container px-4 md:px-6 relative z-20">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <AnimatedSection className="space-y-2">
-              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-white">What Our Customers Say</h2>
-              <p className="max-w-[900px] text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-primary text-glow">What Our Customers Say</h2>
+              <p className="max-w-[900px] text-primary/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-glow">
                 Real stories from people who have experienced the benefits of ionized water.
               </p>
             </AnimatedSection>
@@ -371,7 +373,7 @@ export default function Home() {
                     <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
                       <div className="h-full p-6 flex flex-col items-center text-center">
                           <Quote className="h-10 w-10 text-primary mb-4" />
-                          <p className="text-white text-glow mb-6 flex-grow">"{testimonial.quote}"</p>
+                          <p className="text-primary text-glow mb-6 flex-grow">"{testimonial.quote}"</p>
                           <div className="mt-auto">
                             {avatarImage && 
                               <div className="mx-auto mb-3">
@@ -385,8 +387,8 @@ export default function Home() {
                                 />
                               </div>
                             }
-                            <h3 className="font-bold text-lg text-white">{testimonial.name}</h3>
-                            <span className="text-sm text-white/70">{testimonial.location}</span>
+                            <h3 className="font-bold text-lg text-primary text-glow">{testimonial.name}</h3>
+                            <span className="text-sm text-primary/70 text-glow">{testimonial.location}</span>
                           </div>
                       </div>
                     </CarouselItem>
