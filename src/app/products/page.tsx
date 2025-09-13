@@ -81,7 +81,12 @@ export default function ProductsPage() {
 
   return (
     <div className="bg-background">
-      <section className="py-24 md:py-32 lg:py-40">
+      <section 
+        className="py-24 md:py-32 lg:py-40"
+        style={{
+          backgroundImage: `repeating-linear-gradient(45deg, hsl(var(--primary)), hsl(var(--primary)) 20px, hsl(var(--background)) 20px, hsl(var(--background)) 40px)`
+        }}
+      >
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
