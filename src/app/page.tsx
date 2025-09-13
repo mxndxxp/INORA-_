@@ -22,6 +22,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { SlomoRainAnimation } from '@/components/slomo-rain-animation';
 import { BrandBubble } from '@/components/brand-bubble';
 import { BubblesAnimation } from '@/components/bubbles-animation';
+import { CloudAnimation } from '@/components/cloud-animation';
 
 
 export default function Home() {
@@ -400,6 +401,7 @@ export default function Home() {
       </AnimatedSection>
 
       <section className="relative overflow-hidden bg-sky-100">
+        <CloudAnimation />
         <div className="relative z-10 py-12 md:py-20 lg:py-24">
             <div className="container px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
