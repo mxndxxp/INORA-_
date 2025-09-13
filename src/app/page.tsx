@@ -20,6 +20,7 @@ import {
 import { WaterAnimation } from '@/components/water-animation';
 import Autoplay from "embla-carousel-autoplay";
 import { SlomoRainAnimation } from '@/components/slomo-rain-animation';
+import { BrandBubble } from '@/components/brand-bubble';
 
 
 export default function Home() {
@@ -28,9 +29,6 @@ export default function Home() {
   const testimonials = placeholderData.testimonials;
   const scienceConcepts = placeholderData.scienceConcepts.slice(0, 4);
   const certifications = placeholderData.certifications;
-  
-  const leftBrands = brands.slice(0, 4);
-  const rightBrands = brands.slice(4, 8);
   
   const featuredProductsPlugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -71,46 +69,21 @@ export default function Home() {
         <div className="absolute inset-0 z-20">
           <WaterAnimation />
         </div>
-        {/* Left Floating Brands */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 flex-col gap-6 z-30 flex">
-          {leftBrands.map((brand, index) => {
-            const delay = index * 150;
-            return (
-              <Link href={`/products?brand=${encodeURIComponent(brand.name)}`} key={brand.id} className="floating-brand-bubble" style={{ animationDelay: `${delay}ms` }}>
-                  {brand.logoUrl && (
-                    <Image
-                      alt={`${brand.name} logo`}
-                      src={brand.logoUrl}
-                      width={80}
-                      height={80}
-                      className="object-contain"
-                      data-ai-hint={`${brand.name} logo`}
-                    />
-                  )}
-              </Link>
-            )
-          })}
+        
+        {/* Floating Brand Bubbles - Left */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-16 flex-col gap-6 z-40 flex">
+            <BrandBubble brand={brands[0]} style={{ animationDelay: '0ms' }} />
+            <BrandBubble brand={brands[1]} style={{ animationDelay: '150ms' }} />
+            <BrandBubble brand={brands[2]} style={{ animationDelay: '300ms' }} />
+            <BrandBubble brand={brands[3]} style={{ animationDelay: '450ms' }} />
         </div>
 
-        {/* Right Floating Brands */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 flex-col gap-6 z-30 flex">
-          {rightBrands.map((brand, index) => {
-            const delay = (index * 150) + 600;
-            return (
-              <Link href={`/products?brand=${encodeURIComponent(brand.name)}`} key={brand.id} className="floating-brand-bubble" style={{ animationDelay: `${delay}ms` }}>
-                  {brand.logoUrl && (
-                    <Image
-                      alt={`${brand.name} logo`}
-                      src={brand.logoUrl}
-                      width={80}
-                      height={80}
-                      className="object-contain"
-                      data-ai-hint={`${brand.name} logo`}
-                    />
-                  )}
-              </Link>
-            )
-          })}
+        {/* Floating Brand Bubbles - Right */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-16 flex-col gap-6 z-40 flex">
+            <BrandBubble brand={brands[4]} style={{ animationDelay: '600ms' }} />
+            <BrandBubble brand={brands[5]} style={{ animationDelay: '750ms' }} />
+            <BrandBubble brand={brands[6]} style={{ animationDelay: '900ms' }} />
+            <BrandBubble brand={brands[7]} style={{ animationDelay: '1050ms' }} />
         </div>
 
         <div className="container px-4 md:px-6 relative z-30">
@@ -120,22 +93,22 @@ export default function Home() {
               animation="animate-scroll-in"
             >
               <div className="space-y-4 animated-wavy-text-container">
-                <h1 className="font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight opacity-0">
+                <h1 className="font-cabin-condensed text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[3.5rem] font-bold uppercase tracking-tight opacity-0">
                   Pure Water, Pure Life.
                   <br />
                   Discover Ionora.
                 </h1>
-                <h1 className="animated-wavy-text stroked font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight">
+                <h1 className="animated-wavy-text stroked font-cabin-condensed text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[3.5rem] font-bold uppercase tracking-tight">
                     Pure Water, Pure Life.
                     <br />
                     Discover Ionora.
                 </h1>
-                <h1 className="animated-wavy-text filled font-cabin-condensed text-[7vw] sm:text-[6vw] md:text-[5vw] lg:text-[4rem] xl:text-[6rem] font-bold uppercase tracking-tight">
+                <h1 className="animated-wavy-text filled font-cabin-condensed text-[5vw] sm:text-[4vw] md:text-[3.5vw] lg:text-[2.5rem] xl:text-[3.5rem] font-bold uppercase tracking-tight">
                     Pure Water, Pure Life.
                     <br />
                     Discover Ionora.
                 </h1>
-                <p className="mx-auto max-w-[600px] text-gray-200 md:text-xl">
+                <p className="mx-auto max-w-[500px] text-gray-200 md:text-base">
                   India's premier marketplace for water ionizers. Explore top brands, understand the science, and find the perfect match for your healthy lifestyle.
                 </p>
               </div>
