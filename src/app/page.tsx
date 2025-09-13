@@ -125,7 +125,7 @@ export default function Home() {
         </div>
       </section>
       
-      <AnimatedSection className="py-12 md:py-20 lg:py-24">
+      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-gradient-to-b from-primary to-background">
         <div className="container px-4 md:px-6">
           <AnimatedSection className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
