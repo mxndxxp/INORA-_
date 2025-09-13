@@ -1140,21 +1140,21 @@
     margin: 33px 0 0 0;
     width: 54px;
     height: 5px;
-    background: #f7e7eb;
+    background: #cce7ff;
   }
   .cloud.tiny { transform: scale(.5); }
   .cloud.small { transform: scale(1); }
   .cloud.normal { transform: scale(2); }
   .cloud.large { transform: scale(4); }
   .cloud div {
-    box-shadow: inset -2px -3px 0 0 #f7e7eb;
+    box-shadow: inset -2px -3px 0 0 #cce7ff;
     position: absolute;
     border-radius: 50%;
     width: 12px;
     height: 12px;
     left: -3px;
     bottom: 0;
-    background: #fafbf0;
+    background: #e6f3ff;
     z-index: 10;
   }
   .cloud div:first-child + div {
@@ -1189,11 +1189,3 @@
   .cloud-11 { animation-duration: 96s; margin-left: 73%; }
   .cloud-12 { animation-duration: 83s; margin-left: 51%; }
 }
-
-    
-
-    
-
-    
-
-    

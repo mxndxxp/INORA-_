@@ -22,6 +22,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { SlomoRainAnimation } from '@/components/slomo-rain-animation';
 import { BrandBubble } from '@/components/brand-bubble';
 import { BubblesAnimation } from '@/components/bubbles-animation';
+import { CloudAnimation } from '@/components/cloud-animation';
 
 
 export default function Home() {
@@ -399,13 +400,14 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <section className="py-12 md:py-20 lg:py-24 bg-secondary/50">
-        <div className="container px-4 md:px-6">
+      <section className="relative overflow-hidden py-12 md:py-20 lg:py-24 bg-sky-600">
+        <CloudAnimation />
+        <div className="relative z-10 container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <AnimatedSection className="space-y-2">
                     <div className="inline-block rounded-lg bg-background/70 px-3 py-1 text-sm">Quality Assured</div>
-                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Certifications</h2>
-                    <p className="max-w-[900px] text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-white">Our Certifications</h2>
+                    <p className="max-w-[900px] text-white/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                         We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
                     </p>
                 </AnimatedSection>
@@ -427,13 +429,13 @@ export default function Home() {
                                     />
                                 </div>
                             )}
-                            <p className="text-sm font-medium text-foreground/80 mt-2">{cert.title}</p>
+                            <p className="text-sm font-medium text-white mt-2">{cert.title}</p>
                         </AnimatedSection>
                     );
                 })}
             </div>
             <AnimatedSection className="flex justify-center">
-                <Button asChild size="lg" variant="outline" className="bg-white/50 backdrop-blur-sm border-gray-300/50">
+                <Button asChild size="lg" variant="outline" className="bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30">
                     <Link href="/certifications">View All Certifications <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
             </AnimatedSection>
@@ -441,21 +443,3 @@ export default function Home() {
       </section>
     </div>
   );
-
-    
-
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-
