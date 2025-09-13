@@ -340,7 +340,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-blue-950">
+      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-gradient-to-b from-primary to-blue-950">
         <SlomoRainAnimation />
         <div className="absolute inset-0 bg-black/70 z-10" />
         <div className="container px-4 md:px-6 relative z-20">
