@@ -341,7 +341,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="py-12 md:py20 lg:py-24 relative overflow-hidden bg-gradient-to-b from-primary to-blue-950">
+      <AnimatedSection className="py-12 md:py20 lg:py-24 relative bg-gradient-to-b from-primary to-blue-950">
         <SlomoRainAnimation />
         <div className="absolute inset-0 bg-black/70 z-10" />
         <div className="container px-4 md:px-6 relative z-20">
@@ -407,7 +407,7 @@ export default function Home() {
                 <AnimatedSection className="space-y-2">
                     <div className="inline-block rounded-lg bg-background/70 px-3 py-1 text-sm">Quality Assured</div>
                     <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-white">Our Certifications</h2>
-                    <p className="max-w-[900px] text-white/90 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    <p className="max-w-[900px] text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                         We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
                     </p>
                 </AnimatedSection>
@@ -443,3 +443,5 @@ export default function Home() {
       </section>
     </div>
   );
+
+    

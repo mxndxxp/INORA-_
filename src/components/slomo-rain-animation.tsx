@@ -3,7 +3,7 @@
 import React from 'react';
 
 export function SlomoRainAnimation() {
-  const rains = Array.from({ length: 9 });
+  const rains = Array.from({ length: 15 });
 
   return (
     <div className="slomo-rain-container" aria-hidden="true">
@@ -26,3 +26,5 @@ export function SlomoRainAnimation() {
     </div>
   );
 }
+
+    
