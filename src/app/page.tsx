@@ -372,7 +372,7 @@ export default function Home() {
                     <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3 pl-4">
                       <div className="h-full p-6 flex flex-col items-center text-center">
                           <Quote className="h-10 w-10 text-foreground mb-4" />
-                          <p className="text-foreground mb-6 flex-grow">"{testimonial.quote}"</p>
+                          <p className="text-foreground font-bold mb-6 flex-grow">"{testimonial.quote}"</p>
                           <div className="mt-auto">
                             {avatarImage && 
                               <div className="mx-auto mb-3">
@@ -446,4 +446,5 @@ export default function Home() {
   );
 
     
+
 
