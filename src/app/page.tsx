@@ -441,7 +441,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <AnimatedSection className="space-y-2">
                     <div className="inline-block rounded-lg bg-background/70 px-3 py-1 text-sm">Quality Assured</div>
-                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-white">Our Certifications</h2>
+                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-yellow-400">Our Certifications</h2>
                     <p className="max-w-[900px] text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                         We are committed to the highest standards of quality and safety. Our products are backed by leading industry certifications.
                     </p>
@@ -480,6 +480,7 @@ export default function Home() {
   );
 
     
+
 
 
 
