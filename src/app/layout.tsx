@@ -4,6 +4,8 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { ComparisonProvider } from '@/hooks/use-comparison';
+import { ComparisonBar } from '@/components/comparison-bar';
 
 export const metadata: Metadata = {
   title: 'IONORA: Water Ionizer Marketplace',
@@ -26,10 +28,13 @@ export default function RootLayout({
         />
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <Toaster />
+        <ComparisonProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <ComparisonBar />
+          <Toaster />
+        </ComparisonProvider>
       </body>
     </html>
   );

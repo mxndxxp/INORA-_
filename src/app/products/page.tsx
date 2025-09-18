@@ -14,10 +14,15 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { useSearchParams } from 'next/navigation';
+import { useComparison } from '@/hooks/use-comparison';
+import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 export default function ProductsPage() {
   const searchParams = useSearchParams();
   const brandQuery = searchParams.get('brand');
+  const { comparisonList, addToComparison, removeFromComparison } = useComparison();
+  const { toast } = useToast();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedBrands, setSelectedBrands] = useState<string[]>(brandQuery ? [brandQuery] : []);
@@ -76,6 +81,31 @@ export default function ProductsPage() {
   
   const handlePriceChange = (value: number[]) => {
     setPriceRange(value as [number, number]);
+  };
+
+  const handleCompareClick = (productId: string) => {
+    const isAdded = comparisonList.includes(productId);
+    if (isAdded) {
+      removeFromComparison(productId);
+      toast({
+        title: "Removed from Compare",
+        description: "Product removed from your comparison list.",
+      });
+    } else {
+      if (comparisonList.length >= 4) {
+        toast({
+          variant: "destructive",
+          title: "Comparison Limit Reached",
+          description: "You can only compare up to 4 products at a time.",
+        });
+      } else {
+        addToComparison(productId);
+        toast({
+          title: "Added to Compare",
+          description: "Product added to your comparison list.",
+        });
+      }
+    }
   };
 
 
@@ -171,6 +201,7 @@ export default function ProductsPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
                   {filteredProducts.map((product) => {
                     const productImage = PlaceHolderImages.find(p => p.id === product.imageId);
+                    const isAddedToCompare = comparisonList.includes(product.id);
                     return (
                         <div key={product.id} className="product-card">
                           <Link href={`/products/${product.id}`} className="product-card-tilt">
@@ -212,11 +243,14 @@ export default function ProductsPage() {
                                 </span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <Button asChild variant="outline" size="sm">
-                                  <Link href="/compare" className="flex items-center gap-1.5">
-                                    <GitCompare size={16} />
-                                    <span>Compare</span>
-                                  </Link>
+                                <Button 
+                                    variant="outline" 
+                                    size="sm" 
+                                    className={cn("flex items-center gap-1.5", isAddedToCompare && "border-primary text-primary")}
+                                    onClick={() => handleCompareClick(product.id)}
+                                >
+                                  <GitCompare size={16} />
+                                  <span>{isAddedToCompare ? 'Added' : 'Compare'}</span>
                                 </Button>
                                 <button className="product-card-btn">
                                   <ShoppingBag className="product-card-icon" />

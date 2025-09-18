@@ -22,6 +22,9 @@ import Autoplay from "embla-carousel-autoplay";
 import { BrandBubble } from '@/components/brand-bubble';
 import { BubblesAnimation } from '@/components/bubbles-animation';
 import { CloudAnimation } from '@/components/cloud-animation';
+import { useComparison } from '@/hooks/use-comparison';
+import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 
 
 export default function Home() {
@@ -30,6 +33,8 @@ export default function Home() {
   const testimonials = placeholderData.testimonials;
   const scienceConcepts = placeholderData.scienceConcepts.slice(0, 4);
   const certifications = placeholderData.certifications;
+  const { comparisonList, addToComparison, removeFromComparison } = useComparison();
+  const { toast } = useToast();
   
   const featuredProductsPlugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
@@ -45,6 +50,31 @@ export default function Home() {
     const mainImage = PlaceHolderImages.find((p) => p.id === imageId);
     if(mainImage) {
         setActiveImage(prev => ({ ...prev, [productId]: mainImage.imageUrl }));
+    }
+  };
+  
+  const handleCompareClick = (productId: string) => {
+    const isAdded = comparisonList.includes(productId);
+    if (isAdded) {
+      removeFromComparison(productId);
+      toast({
+        title: "Removed from Compare",
+        description: "Product removed from your comparison list.",
+      });
+    } else {
+      if (comparisonList.length >= 4) {
+        toast({
+          variant: "destructive",
+          title: "Comparison Limit Reached",
+          description: "You can only compare up to 4 products at a time.",
+        });
+      } else {
+        addToComparison(productId);
+        toast({
+          title: "Added to Compare",
+          description: "Product added to your comparison list.",
+        });
+      }
     }
   };
 
@@ -150,6 +180,7 @@ export default function Home() {
                 {featuredProducts.map((product) => {
                   const productImage = PlaceHolderImages.find((p) => p.id === product.imageId);
                   const mainImageUrl = activeImage[product.id] || (productImage ? productImage.imageUrl : '');
+                  const isAddedToCompare = comparisonList.includes(product.id);
 
                   return (
                     <CarouselItem key={product.id} className="sm:basis-1/2 lg:basis-1/3 pl-4">
@@ -206,11 +237,14 @@ export default function Home() {
                                 </span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <Button asChild variant="outline" size="sm">
-                                  <Link href="/compare" className="flex items-center gap-1.5">
-                                    <GitCompare size={16} />
-                                    <span>Compare</span>
-                                  </Link>
+                                <Button 
+                                    variant="outline" 
+                                    size="sm" 
+                                    className={cn("flex items-center gap-1.5", isAddedToCompare && "border-primary text-primary")}
+                                    onClick={() => handleCompareClick(product.id)}
+                                >
+                                  <GitCompare size={16} />
+                                  <span>{isAddedToCompare ? 'Added' : 'Compare'}</span>
                                 </Button>
                                 <button className="product-card-btn">
                                   <ShoppingBag className="product-card-icon" />
@@ -446,5 +480,6 @@ export default function Home() {
   );
 
     
+
 
 
