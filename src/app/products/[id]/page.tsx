@@ -1,7 +1,8 @@
 import { placeholderData } from "@/lib/placeholder-data";
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const product = placeholderData.products.find(p => p.id === params.id);
+export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const product = placeholderData.products.find(p => p.id === id);
 
   if (!product) {
     return <div>Product not found</div>;

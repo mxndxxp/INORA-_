@@ -9,9 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-export default function AffiliateDashboardPage({ params }: { params: { id: string } }) {
+function AffiliateDashboardPageClient({ affiliateId }: { affiliateId: string }) {
   const { toast } = useToast();
-  const affiliateId = params.id;
   const products = placeholderData.products;
 
   const copyToClipboard = (text: string) => {
@@ -82,4 +81,10 @@ export default function AffiliateDashboardPage({ params }: { params: { id: strin
       </Card>
     </div>
   );
+}
+
+
+export default async function AffiliateDashboardPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  return <AffiliateDashboardPageClient affiliateId={id} />;
 }
