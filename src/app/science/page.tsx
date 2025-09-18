@@ -9,28 +9,28 @@ export default function SciencePage() {
     <div className="bg-background">
       <section className="py-24 md:py-32 lg:py-40">
         <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center space-y-4 text-center">
+          <AnimatedSection className="flex flex-col items-center space-y-4 text-center">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
               The Science of Water Ionization
             </h1>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
               Unlock the science behind water ionization. We break down complex topics into simple, understandable explanations to empower your health decisions.
             </p>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/30">
+      <section className="py-12 md:py-20 lg:py-24 bg-secondary/30">
         <div className="container px-4 md:px-6">
           <div className="max-w-4xl mx-auto space-y-12">
-            <div className="space-y-4">
+            <AnimatedSection className="space-y-4">
                 <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">What is a Water Ionizer?</h2>
                 <p className="text-lg text-foreground/80 leading-relaxed">
                     A water ionizer is an appliance that uses electrolysis to raise the pH level of drinking water, separating the incoming water stream into alkaline and acidic components. The alkaline water is intended for drinking and cooking, while the acidic water has various uses for cleaning and skincare. Water ionizers have been used in Japan and other parts of Asia for over 40 years and are certified by the Korean and Japanese Ministries of Health as approved medical devices.
                 </p>
-            </div>
+            </AnimatedSection>
 
-            <div className="space-y-4">
+            <AnimatedSection className="space-y-4" delay={150}>
                 <h3 className="text-2xl font-headline font-bold">How It Works: A Two-Step Process</h3>
                 <Card>
                     <CardContent className="p-6 grid md:grid-cols-2 gap-6">
@@ -48,9 +48,9 @@ export default function SciencePage() {
                         </div>
                     </CardContent>
                 </Card>
-            </div>
+            </AnimatedSection>
 
-            <div className="space-y-4">
+            <AnimatedSection className="space-y-4" delay={300}>
                 <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Understanding pH and ORP</h2>
                 <div className="space-y-6">
                     <div>
@@ -66,9 +66,9 @@ export default function SciencePage() {
                         </p>
                     </div>
                 </div>
-            </div>
+            </AnimatedSection>
             
-            <div className="space-y-4">
+            <AnimatedSection className="space-y-4" delay={450}>
                 <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Free Radicals, Oxidation, and Your Health</h2>
                  <div className="space-y-6">
                     <div>
@@ -90,9 +90,9 @@ export default function SciencePage() {
                         </p>
                     </div>
                 </div>
-            </div>
+            </AnimatedSection>
 
-            <div className="space-y-4">
+            <AnimatedSection className="space-y-4" delay={600}>
                 <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">The Power of Antioxidants & Micro-Clustering</h2>
                  <div className="space-y-6">
                     <div>
@@ -108,11 +108,11 @@ export default function SciencePage() {
                         </p>
                     </div>
                 </div>
-            </div>
+            </AnimatedSection>
             
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
       <ScienceExplanationClient />
     </div>

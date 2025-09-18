@@ -87,14 +87,14 @@ export default function BenefitsPage() {
         <div className="bg-background">
             <section className="py-24 md:py-32 lg:py-40">
                 <div className="container px-4 md:px-6">
-                    <div className="flex flex-col items-center space-y-4 text-center">
+                    <AnimatedSection className="flex flex-col items-center space-y-4 text-center">
                         <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                             Benefits of Ionized Water
                         </h1>
                         <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
                             Discover the profound impact that alkaline ionized water can have on your health, hydration, and overall well-being.
                         </p>
-                    </div>
+                    </AnimatedSection>
                 </div>
             </section>
             
@@ -109,15 +109,15 @@ export default function BenefitsPage() {
                 </div>
             </AnimatedSection>
             
-            <AnimatedSection className="py-12 md:py-20 lg:py-24">
+            <section className="py-12 md:py-20 lg:py-24">
                 <div className="container px-4 md:px-6">
-                    <div className="text-center mb-12">
+                    <AnimatedSection className="text-center mb-12">
                         <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">RO vs. Alkaline Ionized Water</h2>
                         <p className="mt-2 mx-auto max-w-[700px] text-muted-foreground md:text-lg">
                             While Reverse Osmosis (RO) purifies water, it also strips it of essential minerals, making it acidic. See how ionized water is different.
                         </p>
-                    </div>
-                    <div className="overflow-x-auto">
+                    </AnimatedSection>
+                    <AnimatedSection className="overflow-x-auto" delay={200}>
                         <Card>
                              <table className="w-full">
                                 <thead className="bg-muted/50">
@@ -138,74 +138,80 @@ export default function BenefitsPage() {
                                 </tbody>
                             </table>
                         </Card>
-                    </div>
+                    </AnimatedSection>
                 </div>
-            </AnimatedSection>
+            </section>
 
-            <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/30">
+            <section className="py-12 md:py-20 lg:py-24 bg-secondary/30">
                  <div className="container px-4 md:px-6">
-                    <div className="text-center mb-12">
+                    <AnimatedSection className="text-center mb-12">
                         <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Uses of Ionized Water</h2>
                         <p className="mt-2 mx-auto max-w-[700px] text-muted-foreground md:text-lg">
                             A water ionizer is a versatile appliance. The different pH levels it produces have a wide range of uses around your home.
                         </p>
-                    </div>
+                    </AnimatedSection>
                     <div className="grid md:grid-cols-2 gap-12">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Alkaline Water Uses (for Drinking & Cleaning)</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                {alkalineUses.map((item) => (
-                                     <div key={item.ph}>
-                                        <h4 className="font-bold">{item.ph}: {item.use}</h4>
-                                        <p className="text-muted-foreground text-sm">{item.description}</p>
-                                    </div>
-                                ))}
-                            </CardContent>
-                        </Card>
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Acidic Water Uses (for Skin, Hair & Disinfecting)</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                {acidicUses.map((item) => (
-                                     <div key={item.ph}>
-                                        <h4 className="font-bold">{item.ph}: {item.use}</h4>
-                                        <p className="text-muted-foreground text-sm">{item.description}</p>
-                                    </div>
-                                ))}
-                            </CardContent>
-                        </Card>
+                        <AnimatedSection delay={200}>
+                            <Card>
+                                <CardHeader>
+                                    <CardTitle>Alkaline Water Uses (for Drinking & Cleaning)</CardTitle>
+                                </CardHeader>
+                                <CardContent className="space-y-4">
+                                    {alkalineUses.map((item) => (
+                                         <div key={item.ph}>
+                                            <h4 className="font-bold">{item.ph}: {item.use}</h4>
+                                            <p className="text-muted-foreground text-sm">{item.description}</p>
+                                        </div>
+                                    ))}
+                                </CardContent>
+                            </Card>
+                        </AnimatedSection>
+                        <AnimatedSection delay={300}>
+                            <Card>
+                                <CardHeader>
+                                    <CardTitle>Acidic Water Uses (for Skin, Hair & Disinfecting)</CardTitle>
+                                </CardHeader>
+                                <CardContent className="space-y-4">
+                                    {acidicUses.map((item) => (
+                                         <div key={item.ph}>
+                                            <h4 className="font-bold">{item.ph}: {item.use}</h4>
+                                            <p className="text-muted-foreground text-sm">{item.description}</p>
+                                        </div>
+                                    ))}
+                                </CardContent>
+                            </Card>
+                        </AnimatedSection>
                     </div>
                  </div>
-            </AnimatedSection>
+            </section>
 
-            <AnimatedSection className="py-12 md:py-20 lg:py-24">
+            <section className="py-12 md:py-20 lg:py-24">
                 <div className="container px-4 md:px-6">
-                    <div className="text-center mb-12">
+                    <AnimatedSection className="text-center mb-12">
                         <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Medical Case Studies & Reports</h2>
                         <p className="mt-2 mx-auto max-w-[700px] text-muted-foreground md:text-lg">
                             For decades, medical professionals in Japan and Korea have studied the effects of alkaline ionized water. Here are some of their findings.
                         </p>
-                    </div>
+                    </AnimatedSection>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {caseStudies.map((study, index) => (
-                            <Card key={index} className="flex flex-col">
-                                <CardHeader>
-                                    <CardTitle>{study.category}</CardTitle>
-                                </CardHeader>
-                                <CardContent className="flex-grow">
-                                    <p className="italic text-muted-foreground">"{study.quote}"</p>
-                                </CardContent>
-                                <div className="p-6 pt-0 mt-auto">
-                                   <p className="text-sm font-semibold text-right">- {study.expert}</p>
-                                </div>
-                            </Card>
+                            <AnimatedSection key={index} delay={index * 100}>
+                                <Card className="flex flex-col h-full">
+                                    <CardHeader>
+                                        <CardTitle>{study.category}</CardTitle>
+                                    </CardHeader>
+                                    <CardContent className="flex-grow">
+                                        <p className="italic text-muted-foreground">"{study.quote}"</p>
+                                    </CardContent>
+                                    <div className="p-6 pt-0 mt-auto">
+                                       <p className="text-sm font-semibold text-right">- {study.expert}</p>
+                                    </div>
+                                </Card>
+                            </AnimatedSection>
                         ))}
                     </div>
                 </div>
-            </AnimatedSection>
+            </section>
         </div>
     );
 }

@@ -26,14 +26,14 @@ export default function HydrogenWaterPage() {
         <div className="bg-background">
             <section className="py-24 md:py-32 lg:py-40">
                 <div className="container px-4 md:px-6">
-                    <div className="flex flex-col items-center space-y-4 text-center">
+                    <AnimatedSection className="flex flex-col items-center space-y-4 text-center">
                         <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                             Molecular Hydrogen: The Ultimate Antioxidant
                         </h1>
                         <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
                             Discover the science behind hydrogen-rich water and its therapeutic potential for over 170 disease models and essentially every organ in the human body.
                         </p>
-                    </div>
+                    </AnimatedSection>
                 </div>
             </section>
 
@@ -50,28 +50,30 @@ export default function HydrogenWaterPage() {
                 </div>
             </AnimatedSection>
             
-            <AnimatedSection className="py-12 md:py-20 lg:py-24">
+            <section className="py-12 md:py-20 lg:py-24">
                 <div className="container px-4 md:px-6">
-                    <div className="text-center mb-12">
+                    <AnimatedSection className="text-center mb-12">
                         <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Therapeutic Potential of Molecular Hydrogen</h2>
                         <p className="mt-2 mx-auto max-w-[700px] text-muted-foreground md:text-lg">
                            Over 1,000 scientific articles have demonstrated the potential benefits of H₂ across numerous human and animal disease models.
                         </p>
-                    </div>
+                    </AnimatedSection>
                     <div className="grid md:grid-cols-2 gap-8">
                         {hydrogenBenefits.map((benefit, index) => (
-                            <Card key={index}>
-                                <CardHeader>
-                                    <CardTitle>{benefit.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-muted-foreground">{benefit.content}</p>
-                                </CardContent>
-                            </Card>
+                            <AnimatedSection key={index} delay={index * 150}>
+                                <Card className="h-full">
+                                    <CardHeader>
+                                        <CardTitle>{benefit.title}</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-muted-foreground">{benefit.content}</p>
+                                    </CardContent>
+                                </Card>
+                            </AnimatedSection>
                         ))}
                     </div>
                 </div>
-            </AnimatedSection>
+            </section>
             
             <AnimatedSection className="py-12 md:py-20 lg:py-24 bg-secondary/30">
                 <div className="container px-4 md:px-6">
